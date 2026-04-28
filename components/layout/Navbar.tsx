@@ -110,7 +110,7 @@ function MobileMenu({
  <AnimatePresence>
   {open ? (
   <motion.div
-   className="fixed inset-0 z-60"
+   className="fixed inset-0 z-[60]"
    initial={{ opacity: 0 }}
    animate={{ opacity: 1 }}
    exit={{ opacity: 0 }}
@@ -125,7 +125,7 @@ function MobileMenu({
    animate={{ opacity: 1, y: 0 }}
    exit={{ opacity: 0, y: -12 }}
    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-   className="absolute inset-x-3 top-3 rounded-2xl border border-brand-border bg-brand-card p-5 shadow-[0_30px_100px_rgba(0,0,0,0.8)]"
+   className="absolute inset-x-3 top-3 rounded-2xl border border-brand-border bg-white p-5 shadow-[0_30px_100px_rgba(0,0,0,0.8)]"
    role="dialog"
    aria-modal="true"
    aria-label="Navigation menu"
