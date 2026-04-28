@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+ --brand-bg: #ffffff;
+ --brand-card: #f9fafb;
+ --brand-card-hover: #f3f4f6;
+ --brand-border: #e5e7eb;
+ --brand-text: #111111;
+ --brand-muted: #6b7280;
+ --brand-dim: #9ca3af;
+ /* Brand colors Collaboration Global */
+ --brand-purple: #6B4FBE;
+ --brand-purple-hover: #5A3EAE;
+ --brand-teal: #2DC7B3;
+ --brand-teal-hover: #25B0A0;
+ --reunion-accent: var(--brand-teal);
+ --reunion-accent-hover: var(--brand-teal-hover);
+}
+
+html {
+ scroll-behavior: smooth;
+}
+
+body {
+ background: var(--brand-bg);
+ color: var(--brand-text);
+ text-align: justify;
+}
+
+::selection {
+ background: var(--brand-purple);
+ color: #ffffff;
+}
+
+/* ── Hero horizontal ticker ── */
+@keyframes hero-marquee {
+ 0% { transform: translateX(0); }
+ 100% { transform: translateX(-50%); }
+}
+.animate-hero-marquee {
+ animation: hero-marquee 32s linear infinite;
+}
+
+/* ── Vertical scroll carousels (testimonials) ── */
+@keyframes marquee-up {
+ 0% { transform: translateY(0); }
+ 100% { transform: translateY(-50%); }
+}
+@keyframes marquee-down {
+ 0% { transform: translateY(-50%); }
+ 100% { transform: translateY(0); }
+}
+.animate-marquee-up {
+ animation: marquee-up 22s linear infinite;
+}
+.animate-marquee-down {
+ animation: marquee-down 28s linear infinite;
+}
+
+/* ── Horizontal testimonial marquees ── */
+@keyframes marquee-left {
+ 0% { transform: translateX(0); }
+ 100% { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+ 0% { transform: translateX(-50%); }
+ 100% { transform: translateX(0); }
+}
+.animate-marquee-left {
+ animation: marquee-left 40s linear infinite;
+ will-change: transform;
+ backface-visibility: hidden;
+}
+.animate-marquee-left:hover {
+ animation-play-state: paused;
+}
+.animate-marquee-right {
+ animation: marquee-right 52s linear infinite;
+ will-change: transform;
+ backface-visibility: hidden;
+}
+.animate-marquee-right:hover {
+ animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+ .animate-hero-marquee,
+ .animate-marquee-up,
+ .animate-marquee-down,
+ .animate-marquee-left,
+ .animate-marquee-right {
+ animation: none;
+ }
+}
+
+/* ── Scrollbar hide (carousel) ── */
+.scrollbar-hide {
+ -ms-overflow-style: none;
+ scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+ display: none;
+}
