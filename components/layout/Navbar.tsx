@@ -203,7 +203,7 @@ export function Navbar() {
    "fixed inset-x-0 top-0 z-50 transition-all duration-300",
    scrolled
    ? "border-b border-gray-200 bg-white/90 backdrop-blur-md"
-   : "bg-transparent",
+   : "border-b border-gray-200/50 bg-white md:border-none md:bg-transparent",
   )}
   >
   <Container className="flex h-16 items-center justify-between">
