@@ -159,11 +159,11 @@ export default function AboutPage() {
   label="About"
   title="Built on the belief that collaboration changes everything."
   description="In a world filled with daunting challenges it's easy to lose hope. But amidst these challenges, there's a beacon of hope: collaboration."
-  className="[background:linear-gradient(135deg,#6B4FBE_0%,#2d1654_40%,#1a3535_70%,#2DC7B3_100%)]"
+  className="[background:linear-gradient(135deg,#4a4396_0%,#655bb3_30%,#31cfc3_60%,#7be0d8_100%)]"
   />
 
   {/* ── Origin Story ── gray-50 */}
-  <section id="story" className="bg-gray-50 py-24 md:py-32">
+  <section id="story" className="bg-brand-card py-24 md:py-32">
   <Container>
    <div className="grid items-start gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
 
@@ -179,7 +179,7 @@ export default function AboutPage() {
     </motion.div>
     <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.03em] text-gray-900"
+    className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.03em] text-brand-text"
     >
     How Collaboration
     <br />
@@ -190,7 +190,7 @@ export default function AboutPage() {
      <motion.p
      key={i}
      variants={staggerItem}
-     className="text-[15px] leading-[1.85] text-gray-600"
+     className="text-[15px] leading-[1.85] text-brand-muted"
      >
      {p}
      </motion.p>
@@ -221,10 +221,10 @@ export default function AboutPage() {
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
     <div className="pointer-events-none absolute -top-10 left-1/2 h-24 w-40 -translate-x-1/2 rounded-full bg-[var(--brand-purple)]/8 blur-2xl" />
     <p className="relative text-[28px] font-black leading-none text-[var(--brand-teal)] opacity-30">&ldquo;</p>
-    <p className="relative mt-2 text-[15px] font-medium leading-[1.7] text-gray-800">
+    <p className="relative mt-2 text-[15px] font-medium leading-[1.7] text-brand-text/90">
      {STORY_QUOTE.text}
     </p>
-    <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
+    <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-brand-dim">
      {STORY_QUOTE.attribution}
     </p>
     </div>
@@ -235,8 +235,8 @@ export default function AboutPage() {
     <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
      Philosophical Root
     </p>
-    <p className="mt-3 text-sm leading-relaxed text-gray-600">
-     Inspired by <span className="font-semibold text-gray-900">Buckminster Fuller</span> Gill envisions a world where everyone's unique talents and resources are used to help each other, moving from scarcity and fear toward love and abundance for all.
+    <p className="mt-3 text-sm leading-relaxed text-brand-muted">
+     Inspired by <span className="font-semibold text-brand-text">Buckminster Fuller</span> Gill envisions a world where everyone's unique talents and resources are used to help each other, moving from scarcity and fear toward love and abundance for all.
     </p>
     </div>
    </motion.div>
@@ -251,7 +251,7 @@ export default function AboutPage() {
   className="relative overflow-hidden py-24 md:py-32"
   style={{
    background:
-   "linear-gradient(135deg, #6B4FBE 0%, #2d1654 40%, #1a3535 70%, #2DC7B3 100%)",
+   "linear-gradient(135deg, #4a4396 0%, #655bb3 30%, #31cfc3 60%, #7be0d8 100%)",
   }}
   >
   {/* Atmospheric glows */}
@@ -327,7 +327,7 @@ export default function AboutPage() {
    </motion.div>
    <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[1.08] tracking-[-0.03em] text-gray-900"
+    className="mt-4 text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[1.08] tracking-[-0.03em] text-brand-text"
    >
     How We Live
     <br />
@@ -335,7 +335,7 @@ export default function AboutPage() {
    </motion.h2>
    <motion.p
     variants={fadeUp}
-    className="mt-4 max-w-[580px] text-[15px] leading-relaxed text-gray-600"
+    className="mt-4 max-w-[580px] text-[15px] leading-relaxed text-brand-muted"
    >
     Our mission unfolds through five interconnected practices. Together they form a complete approach to building, sustaining, and amplifying collaborative community.
    </motion.p>
@@ -353,10 +353,10 @@ export default function AboutPage() {
      <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
      0{idx + 1}
      </p>
-     <p className="relative mt-3 text-[15px] font-bold tracking-tight text-gray-900">
+     <p className="relative mt-3 text-[15px] font-bold tracking-tight text-brand-text">
      {item.word}
      </p>
-     <p className="relative mt-2 text-[15px] leading-[1.75] text-gray-900">
+     <p className="relative mt-2 text-[15px] leading-[1.75] text-brand-text">
      {item.body}
      </p>
     </div>
@@ -367,7 +367,7 @@ export default function AboutPage() {
   </section>
 
   {/* ── Community Philosophy ── brand gradient */}
-  <section id="community" className="py-20 md:py-28" style={{ background: "linear-gradient(135deg, #6B4FBE 0%, #2d1654 40%, #1a3535 70%, #2DC7B3 100%)" }}>
+  <section id="community" className="py-20 md:py-28" style={{ background: "linear-gradient(135deg, #4a4396 0%, #655bb3 30%, #31cfc3 60%, #7be0d8 100%)" }}>
   <Container>
    <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
 
@@ -441,7 +441,7 @@ export default function AboutPage() {
   </section>
 
   {/* ── Books by Gill ── gray-50 */}
-  <section id="books" className="bg-gray-50 py-24 md:py-32">
+  <section id="books" className="bg-brand-card py-24 md:py-32">
   <Container>
    <motion.div
    variants={staggerContainer}
@@ -454,7 +454,7 @@ export default function AboutPage() {
    </motion.div>
    <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(2rem,3.5vw,3rem)] font-bold leading-[1.08] tracking-[-0.03em] text-gray-900"
+    className="mt-4 text-[clamp(2rem,3.5vw,3rem)] font-bold leading-[1.08] tracking-[-0.03em] text-brand-text"
    >
     Written to Help You
     <br />
@@ -462,7 +462,7 @@ export default function AboutPage() {
    </motion.h2>
    <motion.p
     variants={fadeUp}
-    className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-gray-600"
+    className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-brand-muted"
    >
     Gill Tiney's books capture the thinking, frameworks, and stories behind the movement practical guides for anyone ready to build something of significance with others.
    </motion.p>
@@ -482,10 +482,10 @@ export default function AboutPage() {
      />
      </div>
 
-     <p className="mt-5 text-[15px] font-bold leading-snug tracking-tight text-gray-900">
+     <p className="mt-5 text-[15px] font-bold leading-snug tracking-tight text-brand-text">
      {book.title}
      </p>
-     <p className="mt-3 flex-1 text-[13px] leading-[1.75] text-gray-500">
+     <p className="mt-3 flex-1 text-[13px] leading-[1.75] text-brand-muted">
      {book.description}
      </p>
 
@@ -519,7 +519,7 @@ export default function AboutPage() {
    </motion.div>
    <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(2rem,3.5vw,3rem)] font-bold leading-[1.08] tracking-[-0.03em] text-gray-900"
+    className="mt-4 text-[clamp(2rem,3.5vw,3rem)] font-bold leading-[1.08] tracking-[-0.03em] text-brand-text"
    >
     Building Impact
     <br />
@@ -527,7 +527,7 @@ export default function AboutPage() {
    </motion.h2>
    <motion.p
     variants={fadeUp}
-    className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-gray-600"
+    className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-brand-muted"
    >
     Every membership, every collaboration, every connection creates ripples of positive impact through the organisations we work alongside.
    </motion.p>
@@ -543,10 +543,10 @@ export default function AboutPage() {
       {partner.name.charAt(0)}
      </span>
      </div>
-     <p className="mt-4 text-[14px] font-semibold tracking-tight text-gray-900">
+     <p className="mt-4 text-[14px] font-semibold tracking-tight text-brand-text">
      {partner.name}
      </p>
-     <p className="mt-2 text-[13px] leading-relaxed text-gray-500">
+     <p className="mt-2 text-[13px] leading-relaxed text-brand-muted">
      {partner.description}
      </p>
      {"url" in partner && partner.url ? (
@@ -573,7 +573,7 @@ export default function AboutPage() {
   className="relative overflow-hidden py-24 md:py-32"
   style={{
    background:
-   "linear-gradient(135deg, #6B4FBE 0%, #2d1654 40%, #1a3535 70%, #2DC7B3 100%)",
+   "linear-gradient(135deg, #4a4396 0%, #655bb3 30%, #31cfc3 60%, #7be0d8 100%)",
   }}
   >
   <div

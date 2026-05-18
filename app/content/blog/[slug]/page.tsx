@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 
@@ -25,101 +26,71 @@ const POSTS: Post[] = [
     body: (
       <>
         <p>
-          What if the things that make a collaboration truly great are the same
-          things that make a life truly great? In twenty-plus years of building
-          communities and coaching collaborators, that is the pattern I keep
-          returning to.
+          What I have come to realise in my studies on collaboration is that the rules for creating an amazing collaboration are also, pretty much, the same rules to lead your best life.
         </p>
         <p>
-          Collaboration is not a tool. It is not a tactic you deploy when a
-          project gets too big for one person. It is a way of being with other
-          humans — and when it works, it is one of the most energising,
-          creative, and life-giving experiences available to us.
+          I almost feel embarrassed to be sharing the simplicity of these guidelines but then again I have seen so many people attempt collaboration and have absolutely no idea why it collapsed, that I feel a compulsion to spread the word. Basically if you see this article as common sense, you can consider yourself a natural collaborator. If you are curious and don&apos;t necessarily see how what happens in your life can actually connect to how you perform in a collaboration then you have come to the right place.
         </p>
 
-        <h2>1. Clarity of Purpose</h2>
+        <h2>1. Show Up!</h2>
         <p>
-          Every remarkable collaboration I have ever witnessed — or been part
-          of — began with a shared "why" that was bigger than any individual
-          ego. When each person in the room can articulate why this work
-          matters, the practical decisions almost make themselves.
+          First and foremost if you don&apos;t show up consistently for what you believe in you will not be seen as collaboration worthy. By showing up I mean being visible to your audience, either on social media or in person. Being there with a consistent message, being visible for what you believe in, demonstrating your specialist knowledge and being known for your corner of that specialism.
         </p>
         <p>
-          Purpose is not a mission statement on a slide deck. It is the honest
-          answer to the question: "What are we here to create, and for whom?"
-          Revisit it often. It is both compass and glue.
+          Take social media as an example. You don&apos;t have to be on every last platform churning out banal content that is easily ignored. You need to choose your audience and hang out where they hang out. Limit yourself to 3 platforms and BE there, at least 3 times or more a week. By being there I mean posting, commenting, reviewing, supporting and sharing your knowledge.
+        </p>
+        <p>
+          This visibility will bring connections and opportunities, but the work doesn&apos;t stop there. Now you have connected you need to engage and deepen the connection. All of this takes discipline, commitment and consistency. No fast pass to showing up. The same with family and friends — the best relationship is the one you have spent time nurturing and being there for them.
         </p>
 
-        <h2>2. Trust Before Tactics</h2>
+        <h2>2. Build Trust</h2>
         <p>
-          We spend enormous amounts of time choosing tools, building processes,
-          and dividing tasks — often before we have done the simpler, harder
-          work of learning to trust each other. Trust is not assumed; it is
-          built through small consistent actions over time.
+          Once you have done this, usually a 3 month minimum commitment, you can then begin to deepen the connection and build trust. People need to be able to rely on you, utilise your knowledge, try it out, see if it works — to see whether you are deserving of their time. They want to be reassured of your integrity and feel confident that if they chose to engage you they will be able to boast how wonderful you are. A tricky thing to do if you disappear from view. Your reputation is built on trust.
         </p>
         <p>
-          In practice this means showing up when you say you will, doing what
-          you said you would do, and being honest when something goes sideways.
-          Every kept promise deposits into the trust account. Every broken one
-          makes a withdrawal. The maths matters.
+          It is so easy for all of us to take family and friends for granted, but trust can still be lost if we are not careful. Be respectful of each other&apos;s time.
         </p>
 
-        <h2>3. Diversity as Strength, Not Obstacle</h2>
+        <h2>3. Confirm Common Goals and Values</h2>
         <p>
-          The best collaborations bring together people who think differently,
-          carry different expertise, and come from different backgrounds.
-          Differences are the raw material of creativity. The same-minded room
-          produces predictable outputs.
+          There is no point working with someone if your goals are not aligned. They will quickly see through you if your only goal is to make a heap of money from them. Likewise it is difficult to be inspired by someone and want to show up for them if their only goal is simply to make a ton of cash. There is nothing wrong with making money, but for the good it can do — not simply for the act of having it.
         </p>
         <p>
-          But diverse teams only outperform homogeneous ones when psychological
-          safety is present — when each voice knows it will be heard, not just
-          tolerated. Building that safety is a leadership responsibility, shared
-          by everyone in the group.
+          Digging deeper to discover your aligned values is also a practical exercise to ensure you will enjoy working with this person. They do not have to be the same, but within the same family of values and aligned with each other&apos;s purpose. If you have been regularly showing up and creating content this will already be evident to the other person — they may not realise it yet but that is why they feel comfortable in your company. They already know subconsciously that you are aligned.
         </p>
 
-        <h2>4. Generosity as Default</h2>
+        <h2>4. The Grown Up Conversation</h2>
         <p>
-          Scarcity thinking convinces us that sharing credit, sharing contacts,
-          or sharing ideas diminishes us. Abundance thinking knows the
-          opposite: when you help someone else win, the whole ecosystem grows —
-          and so do you.
-        </p>
-        <p>
-          In Collaboration Global we talk about this as moving from "what can
-          I get?" to "what can we create?" It sounds simple. It changes
-          everything.
+          Before you embark on the collaboration you will need to explore each other&apos;s mindset, attitudes and behaviours. Obviously you can embark on a collaboration without this conversation, but much better to have it before there is an issue than wait until later. That is why it is known in our community as &lsquo;the grown up conversation&rsquo; — where ego is put to one side, trust deepens, vulnerability is allowed and the relationship can grow. It explores triggers, limiting beliefs, stress hot spots and resolution responses.
         </p>
 
-        <h2>5. Honest, Loving Accountability</h2>
+        <h2>5. Rules of the Game</h2>
         <p>
-          Great collaborations hold each other to account — not through fear
-          or judgment, but through genuine care. When someone falls behind or
-          loses their way, the community does not shame them into performance;
-          it asks, "How can we help you get back on track?"
+          The fun part — where you can choose how you operate for your optimum work flow and understand how others like to be treated. Set it up and no arguments later down the line. If your creativity is best at 5am you won&apos;t necessarily be able to expect your fellow collaborators to be up at the crack of dawn with you.
+        </p>
+
+        <h2>6. Set Up the Collaboration Profiles</h2>
+        <p>
+          In short, the 12 profiles are: Visionary, Catalyst, Driver, Strategist, Financer, Salesperson, Monitor, Nurturer, Tweaker, Technician, Multiplier, Finisher. Not a personality profile at all, but a guideline to the roles required. Anyone can be any of them, but by having each role adopted as a responsibility at different times within the project a more pleasing outcome can be expected.
         </p>
         <p>
-          This is what separates a real community from a professional
-          network. The network applauds your wins. The community is still there
-          when you are struggling.
+          Away from the work environment we all like to know where we add value in a family or friendship group — take on that role and you will be indispensable.
+        </p>
+
+        <h2>7. GSD — Get It Done!</h2>
+        <p>
+          We can talk until we are blue in the face but at some point we have to take action. By spending time in this preparation as described here, the outcome is much more likely to be a success. But sometimes you learn best by just getting started.
+        </p>
+        <p>
+          Whether in business or in your daily life, we all need to collaborate. Each collaboration — whether cooking Christmas dinner together or booking a family holiday — is a thing of joy when following these guidelines.
         </p>
 
         <blockquote>
-          "Never doubt that a small group of thoughtful, committed citizens can
-          change the world. Indeed, it is the only thing that ever has." —
-          Margaret Mead
+          &ldquo;80% of success is showing up.&rdquo; — Woody Allen
         </blockquote>
 
         <p>
-          These five building blocks are also, I would argue, the building
-          blocks of your best life: purpose, trust, diversity, generosity, and
-          honest accountability. The overlap is not a coincidence. How we
-          collaborate is how we live.
-        </p>
-        <p>
-          So the question I leave you with is this: which building block needs
-          the most attention in your collaborations right now? And what would
-          shift if you gave it that attention this week?
+          Is there a part of this process you regularly use in a collaboration? What works for you?
         </p>
       </>
     ),
@@ -135,82 +106,46 @@ const POSTS: Post[] = [
     body: (
       <>
         <p>
-          Have you watched The Social Dilemma on Netflix? If you have not, I
-          encourage you to do so — not because it will make you delete every app
-          on your phone, but because awareness is the beginning of choice.
+          Social media can be a life saver, but the flip side is a sinister world that will cause a social implosion of our own making. What can we do to prevent it?
         </p>
         <p>
-          The documentary makes a compelling case that the social platforms we
-          use every day were designed, by brilliant engineers and behavioural
-          scientists, to capture and hold our attention for as long as
-          possible. The business model is not connection; it is engagement.
-          And engagement, as it turns out, is most reliably generated by
-          outrage, anxiety, and comparison.
+          Have you seen the documentary The Social Dilemma recently on Netflix? Once I saw this powerful and disturbing message, I went searching further. I very quickly discovered The Dissenters podcast and their interview with Observer journalist Carole Cadwalladr, which added meat to the bone. Her TED Talk opens up a hornet&apos;s nest — right in the laps of the people causing the problem.
         </p>
 
-        <h2>The Connection Paradox</h2>
+        <h2>What the documentary reveals</h2>
         <p>
-          Here is what I find most troubling: these tools were born from a
-          genuine desire to connect people. And they do. I have met remarkable
-          humans through LinkedIn, Twitter, and Facebook groups who have
-          become real friends, collaborators, and community members. The
-          technology is genuinely capable of bridging distances that would have
-          been unbridgeable twenty years ago.
+          In a nutshell, by using social media we are allowing ourselves to become saleable products and are being manipulated to orchestrate our world for the minority who couldn&apos;t care less for the majority. We are constantly being led by the addictive qualities of the demon that is taking over our lives — social media.
         </p>
         <p>
-          And yet. The same algorithmic logic that surfaces a message from
-          someone in New Zealand who shares your passion for regenerative
-          agriculture also surfaces content designed to inflame, divide, and
-          send you scrolling for another hour when you meant to check one
-          notification.
+          The people in the film were all heavily involved at very senior levels during the heyday and yet one by one left the jobs that they were proud of because of the sinister direction that the platforms were taking, without any responsibility being taken by the people at the top.
+        </p>
+        <p>
+          <em>Interestingly, none of the top people in these industries allow their children access to smart technology.</em>
+        </p>
+        <p>
+          We all need to be aware that advertising has been totally personalised, to the extent that false information can — and probably has already been — fed to us to influence our actions, whether that be voting or taking to the streets in protest. These adverts then disappear. We assume everyone has had them, but apparently not. This false information affects not only people&apos;s livelihoods but also huge swathes of populations being ethnically cleansed. The potential for global domination is here.
         </p>
 
-        <h2>Intentional Use vs. Habitual Use</h2>
+        <h2>What Collaboration Global does about it</h2>
         <p>
-          The antidote is not abstinence — for most of us, these platforms are
-          genuinely useful, professionally and personally. The antidote is
-          intention.
+          Part of our organisation is about coming together to discover information like this — not to take it at face value, but to research, discuss and consider how it might affect us and what we might be able to do about it. We duly spent our monthly Evolve session considering the future potential for our society in light of this information.
         </p>
         <p>
-          Intentional use means deciding, before you open the app, what you
-          are there to do. Are you publishing something? Responding to a
-          specific person? Doing research? Great — open it, do the thing,
-          close it. Habitual use means opening it because your thumb already
-          moved to the icon while your brain was thinking about something else.
-        </p>
-
-        <h2>What Collaboration Requires</h2>
-        <p>
-          Real collaboration — the kind that produces something of significance
-          — requires presence. It requires the ability to listen deeply, to sit
-          with a problem long enough to see it clearly, and to resist the urge
-          to fill every silence with a scroll.
+          This could be a very depressing conversation. Indeed, when asked, the founder of Pinterest believed civil war was the expected outcome, unless we do something about it. No one in the film offered the solution — they seem to be waiting for those at the top to find a conscience and take action.
         </p>
         <p>
-          Fragmented attention produces fragmented outcomes. The practice of
-          putting the phone face-down in a meeting is not a courtesy gesture;
-          it is an act of respect for what you are trying to build together.
+          At Collaboration Global our culture is solution focused. Being part of a community means we do not consider this as a fait accompli or that we are defenceless to do anything about it.
         </p>
 
         <blockquote>
-          "The most radical act in the modern world is to be fully present to
-          the person in front of you."
+          &ldquo;Never doubt that a small group of committed citizens can change the world. Indeed, it is the only thing that ever has.&rdquo; — Margaret Mead
         </blockquote>
 
-        <h2>A Simple Practice</h2>
         <p>
-          This week, try this: before opening any social platform, pause for
-          three seconds and name — out loud if possible — why you are opening
-          it. What do you need? What are you hoping to find or share?
+          Like no other time we are more connected through social media and yet, due to the global pandemic, it is concurrently one of the most isolating times in history. We identify that being part of a nurturing community is essential to good mental health. At Collaboration Global we work together to help each other and facilitate personal, emotional, physical, and spiritual growth — ensuring we are practising a culture based on love, connection and abundance. A world away from much of social media that promotes fear, scarcity and competition.
         </p>
         <p>
-          That three-second pause creates a tiny gap between impulse and
-          action. In that gap lives your agency. Use it.
-        </p>
-        <p>
-          Social media can be a brilliant tool for the kind of purposeful,
-          global collaboration we champion at Collaboration Global. The question
-          is whether you are using it — or it is using you.
+          We don&apos;t always know the solutions to our world&apos;s challenges, but by creating awareness and being proactive to bring these topics to the front of people&apos;s thinking we can be ready to mobilise and provide peaceful solutions. Would you like to be part of the solution?
         </p>
       </>
     ),
@@ -221,84 +156,43 @@ const POSTS: Post[] = [
     excerpt:
       "A reflective walk along the Wey and Arun Canal in West Sussex and what slowing down taught about presence, connection, and what really matters.",
     date: "September 12, 2021",
-    readTime: "4 min read",
+    readTime: "3 min read",
     category: "Reflection",
     body: (
       <>
         <p>
-          Last week I walked a stretch of the Wey and Arun Canal in West
-          Sussex. It is one of those places that does not announce itself. No
-          Instagram-famous viewpoint, no coffee shop at the trailhead. Just
-          water, reeds, the occasional heron, and a towpath that insists you
-          slow down.
+          Being &lsquo;on holiday&rsquo; is a powerful state of mind.
         </p>
         <p>
-          I had my phone with me — because of course I did — but I made a
-          deliberate choice not to look at it until I sat down at the end of
-          the walk. And something happened in those two hours that I want to
-          try to describe, though I suspect words will not quite do it justice.
-        </p>
-
-        <h2>The Permission to Simply Be</h2>
-        <p>
-          Being on holiday — truly on holiday, not "working from a nicer
-          location" — requires giving yourself permission to exist without
-          output. No deliverables. No check-ins. No inbox. Just you, moving
-          through the world at the pace the world was actually designed for.
+          I discovered a new walk yesterday and for 2 hours I was &lsquo;on holiday&rsquo; — only a 10-minute drive from where I live. It was along the Wey and Arun Canal in West Sussex and along the way we met and spoke to at least 15 people, 10 dogs, and 1 horse. We still puzzled over how locks actually worked and marvelled at the bravery of the person who suggested building a canal in the first place — what a feat of engineering over a hundred years ago, it just blows my mind.
         </p>
         <p>
-          I noticed, somewhere around the second mile, that my thoughts had
-          stopped racing. The mental to-do list that normally runs as a
-          background programme had gone quiet. I was not planning, reviewing, or
-          optimising anything. I was just walking, noticing the sound of the
-          water, feeling the sun on the back of my neck.
+          We spent time trying to identify the amazing array of wildflowers and wondered what breed the pure white cows were — refraining from giving it a quick Google, using a phone only as a camera and staying away from social media. We also loved the silence of no traffic noise and only the occasional waterfall to listen to alongside the birds.
+        </p>
+        <p>
+          It was a total break from the norm. We nearly didn&apos;t go because it had looked like rain, but the sun shone just for us and it was beautiful. Just like a full week away, it did wonders for the heart and soul as well as the body.
         </p>
 
-        <h2>What Rest Makes Possible</h2>
+        <h2>The permission to simply be</h2>
         <p>
-          We talk a great deal in the collaboration community about being
-          fully present — to our partners, our projects, our ideas. What we
-          talk about less is the rest that makes presence possible. You cannot
-          pour from an empty vessel. You cannot listen deeply when you are
-          exhausted. You cannot bring creative energy to a collaboration when
-          you have not given your own energy time to replenish.
+          Being on holiday — truly on holiday, not &ldquo;working from a nicer location&rdquo; — requires giving yourself permission to exist without output. No deliverables. No check-ins. No inbox. Just you, moving through the world at the pace the world was actually designed for.
         </p>
         <p>
-          Rest is not the opposite of productivity. It is the condition for it.
-          The walk produced nothing. And yet I came home with three ideas I had
-          not been able to access when I was "trying."
-        </p>
-
-        <h2>Connection Begins with Yourself</h2>
-        <p>
-          One of the things I have come to believe deeply is that the quality
-          of our external connections — with colleagues, collaborators, family,
-          friends — is downstream of our connection with ourselves. When we are
-          disconnected from our own rhythms, needs, and values, we bring a kind
-          of static to our relationships. Other people can feel it, even if
-          they cannot name it.
-        </p>
-        <p>
-          The canal walk reminded me what it feels like to be at home in
-          myself. Unhurried. Curious. Genuinely glad to be alive and in this
-          particular place on this particular afternoon.
+          What pocket of your world have you discovered lately? Can you suspend your everyday life for an hour or two to indulge in a mini holiday?
         </p>
 
         <blockquote>
-          "Almost everything will work again if you unplug it for a few
-          minutes, including you." — Anne Lamott
+          &ldquo;Almost everything will work again if you unplug it for a few minutes — including you.&rdquo; — Anne Lamott
         </blockquote>
 
         <p>
-          If you are reading this and cannot remember the last time you truly
-          switched off — not just reduced your workload, but genuinely rested —
-          I want to offer you this: it is not an indulgence. It is a practice.
-          It is, in fact, one of the most collaborative things you can do,
-          because it makes you more fully available to every person and project
-          that matters to you.
+          Rest is not the opposite of productivity. It is the condition for it. The walk produced nothing. And yet I came home with three ideas I had not been able to access when I was &ldquo;trying.&rdquo;
         </p>
         <p>
-          Find your canal path. Go slow. Leave the phone in your pocket.
+          If you are reading this and cannot remember the last time you truly switched off — not just reduced your workload, but genuinely rested — it is not an indulgence. It is a practice. It is, in fact, one of the most collaborative things you can do, because it makes you more fully available to every person and project that matters to you.
+        </p>
+        <p>
+          Find your canal path. Go slow. Leave the phone in your pocket. Have a great week everyone.
         </p>
       </>
     ),
@@ -309,100 +203,47 @@ const POSTS: Post[] = [
     excerpt:
       "An introduction to the movement — where we came from, what we stand for, and why collaboration is the most powerful thing we can do together.",
     date: "December 28, 2019",
-    readTime: "7 min read",
+    readTime: "4 min read",
     category: "Community",
     body: (
       <>
         <p>
-          Welcome. I am genuinely glad you are here.
+          I am so proud to introduce you to the latest incarnation of the movement to transform our world through collaboration.
         </p>
         <p>
-          I started this movement — originally called BeCollaboration, now
-          Collaboration Global — because I had a hunch that was too persistent
-          to ignore: that the way most of us had been taught to operate in
-          business and in life was leaving enormous potential on the table. Not
-          just commercial potential, though that too. Human potential. Creative
-          potential. The kind of potential that only emerges when people come
-          together with clarity, trust, and a genuine desire to build something
-          bigger than themselves.
+          Those of you who have been following my journey — through the birth of BeCollaboration, my book Making of a Movement, online publication and podcast — will know that I am passionate about making a difference, for one and for many. In fact, for as many people as possible. Which is why collaboration is so important.
         </p>
 
-        <h2>Where It Began</h2>
+        <h2>Where it began</h2>
         <p>
-          My own journey into collaboration was not, if I am honest, entirely
-          graceful. For years I operated from a place of quiet scarcity — not
-          that I would have called it that at the time. I worked hard, I
-          networked diligently, I competed for attention, contracts, and
-          credibility. And while I achieved things I was proud of, something
-          always felt unnecessarily difficult. Like I was pushing a boulder
-          uphill that could have been carried more easily by a group.
+          At the beginning of the last decade I realised that for anyone to achieve anything it is better to travel with a group of passionate people than to achieve greatness on your own. In fact, no one really does it alone — even the lone marathon runner will have a team of people supporting them.
         </p>
         <p>
-          The turning point came when I stopped asking "how do I get ahead?"
-          and started asking "what can we create together?" The shift sounds
-          simple. The experience of it was transformative.
+          For us to make a dent in this world we need to understand the art of collaboration, the nuances of what influences us, and how we can connect at a deeper level in order to create massive impact through collaboration. That is our mission at Collaboration Global.
         </p>
 
-        <h2>What We Believe</h2>
+        <h2>What we are building</h2>
         <p>
-          At the heart of Collaboration Global is a philosophical commitment:
-          that abundance is the truth, and scarcity is a story we tell
-          ourselves. When we move from fear to love, from competition to
-          co-creation, from isolated effort to genuine partnership, everything
-          gets better. Business outcomes improve. Wellbeing improves. The
-          quality of the work improves. And the world, in small but real ways,
-          improves too.
+          By creating a safe space to meet, share, discuss, develop and take action we become the catalyst for great collaborations. Online and off, there will be like-hearted people who know how to communicate, create, challenge and collaborate. They will share their knowledge so you too can be bigger than you are alone.
         </p>
         <p>
-          We are inspired by Buckminster Fuller, who understood that
-          collaboration is not just a nice thing to do — it is the most
-          efficient, most elegant, and most human way to solve problems. We are
-          inspired by Margaret Mead, who reminded us that a small group of
-          committed people can change the world. Indeed, it is the only thing
-          that ever has.
+          Collaboration isn&apos;t always a breeze — I have had to learn that the hard way — but what I do know is that by being around people who are passionate to make a difference, who understand themselves and want to support you in your mission, then together we can transform the world.
         </p>
 
-        <h2>What We Do</h2>
+        <h2>An invitation</h2>
         <p>
-          Collaboration Global is a community, a curriculum, and a practice.
-          We run monthly Community Sessions that are open to anyone — a
-          meeting of minds and hearts where guests can experience what
-          intentional collaboration feels like before they commit to anything.
-          We run the Collaborator Academy for those who want structured
-          learning and peer accountability. And Collaborator Pro for those who
-          are ready to step fully into the community: raising their profile,
-          joining and leading projects, and receiving the coaching support that
-          helps ideas become reality.
+          No small feat, I know, but just imagine if everyone started by transforming themselves, then collaborated for the good of others and shared what they learn to pay it forward for society. What could our world look like then?
         </p>
         <p>
-          We are present in 28 countries. We have supported thousands of
-          collaborations. Every membership we sell contributes to real-world
-          impact through our partnership with B1G1 — supporting everything
-          from clean water in Malawi to education in Nepal.
-        </p>
-
-        <h2>An Invitation</h2>
-        <p>
-          Wherever you are in your journey — whether you are a seasoned
-          entrepreneur looking for a community that operates at a higher level,
-          a coach or consultant who wants to stop working in isolation, a
-          creative who is tired of going it alone, or simply someone who knows
-          there must be a better way — there is a place for you here.
-        </p>
-        <p>
-          Start by coming to a Community Session. Come as a guest. Meet some
-          of the people. See how it feels. You do not have to decide anything
-          else on that day.
+          You could be part of it. Connect with Collaboration Global and join our community as we grow our movement and empower each other to make a difference — to one and to many.
         </p>
 
         <blockquote>
-          "Collaboration is not a strategy. It is a way of being — and when you
-          practise it, it changes you." — Gill Tiney
+          &ldquo;Collaboration is not a strategy. It is a way of being — and when you practise it, it changes you.&rdquo; — Gill Tiney
         </blockquote>
 
         <p>
-          This is a movement built on the belief that we are better together.
-          I hope you will help us prove it.
+          This is a movement built on the belief that we are better together. I hope you will help us prove it.
         </p>
         <p>
           With love and in collaboration,
@@ -443,7 +284,7 @@ export default async function BlogPostPage({
   return (
     <main>
       {/* Hero */}
-      <section className="pt-40 pb-16 md:pt-48 md:pb-20 [background:linear-gradient(135deg,#6B4FBE_0%,#2d1654_40%,#1a3535_70%,#2DC7B3_100%)]">
+      <section className="pt-40 pb-16 md:pt-48 md:pb-20 [background:linear-gradient(135deg,#4a4396_0%,#655bb3_30%,#31cfc3_60%,#7be0d8_100%)]">
         <Container>
           <div className="mx-auto max-w-[780px]">
             <Link
@@ -478,14 +319,12 @@ export default async function BlogPostPage({
 
             {/* Author */}
             <div className="mt-8 flex items-center gap-3 border-t border-white/10 pt-6">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--brand-teal)] text-[12px] font-bold text-white">
-                GT
+              <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full">
+                <Image src="/media/gill-portrait.jpeg" alt="Gill Tiney" fill className="object-cover" sizes="40px" />
               </div>
               <div>
                 <p className="text-sm font-semibold text-white">Gill Tiney</p>
-                <p className="text-[12px] text-white/50">
-                  Founder &amp; Collaboration Catalyst
-                </p>
+                <p className="text-[12px] text-white/50">Founder &amp; Collaboration Catalyst</p>
               </div>
             </div>
           </div>
@@ -493,15 +332,15 @@ export default async function BlogPostPage({
       </section>
 
       {/* Article body */}
-      <section className="bg-gray-50 py-16 md:py-24">
+      <section className="bg-brand-card py-16 md:py-24">
         <Container>
           <div className="mx-auto max-w-[780px]">
-            <article className="rounded-2xl border border-gray-200 bg-white px-8 py-12 shadow-sm md:px-14 md:py-16 [&_h2]:mb-4 [&_h2]:mt-10 [&_h2]:text-[1.2rem] [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:text-gray-900 [&_blockquote]:my-8 [&_blockquote]:border-l-4 [&_blockquote]:border-[var(--brand-purple)] [&_blockquote]:pl-6 [&_blockquote]:italic [&_blockquote]:text-gray-600 [&_p]:mb-5 [&_p]:text-[15px] [&_p]:leading-[1.85] [&_p]:text-gray-700 first:[&_p]:text-[17px] first:[&_p]:font-medium first:[&_p]:text-gray-800">
+            <article className="rounded-2xl border border-brand-border bg-white px-8 py-12 shadow-sm md:px-14 md:py-16 [&_h2]:mb-4 [&_h2]:mt-10 [&_h2]:text-[1.2rem] [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:text-brand-text [&_blockquote]:my-8 [&_blockquote]:border-l-4 [&_blockquote]:border-[var(--brand-purple)] [&_blockquote]:pl-6 [&_blockquote]:italic [&_blockquote]:text-brand-muted [&_p]:mb-5 [&_p]:text-[15px] [&_p]:leading-[1.85] [&_p]:text-brand-muted first:[&_p]:text-[17px] first:[&_p]:font-medium first:[&_p]:text-brand-text/90">
               {post.body}
             </article>
 
-            {/* Share / back row */}
-            <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-gray-200 pt-8">
+            {/* Back row */}
+            <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-brand-border pt-8">
               <Link
                 href="/content/blog"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-purple)] transition-colors hover:text-[var(--brand-purple-hover)]"
@@ -509,7 +348,7 @@ export default async function BlogPostPage({
                 <ArrowLeft className="h-4 w-4" />
                 All articles
               </Link>
-              <span className="text-sm text-gray-400">
+              <span className="text-sm text-brand-dim">
                 Written by Gill Tiney · Collaboration Global
               </span>
             </div>
@@ -530,15 +369,15 @@ export default async function BlogPostPage({
                   <Link
                     key={r.slug}
                     href={`/content/blog/${r.slug}`}
-                    className="group rounded-2xl border border-gray-200 bg-gray-50 p-6 transition-shadow hover:shadow-md"
+                    className="group rounded-2xl border border-brand-border bg-brand-card p-6 transition-shadow hover:shadow-md"
                   >
                     <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--brand-purple)]">
                       {r.category}
                     </span>
-                    <h3 className="mt-2 text-[15px] font-bold leading-snug text-gray-900 transition-colors group-hover:text-[var(--brand-purple)]">
+                    <h3 className="mt-2 text-[15px] font-bold leading-snug text-brand-text transition-colors group-hover:text-[var(--brand-purple)]">
                       {r.title}
                     </h3>
-                    <p className="mt-2 text-[13px] leading-relaxed text-gray-500 line-clamp-2">
+                    <p className="mt-2 text-[13px] leading-relaxed text-brand-muted line-clamp-2">
                       {r.excerpt}
                     </p>
                     <span className="mt-4 block text-[13px] font-semibold text-[var(--brand-purple)]">

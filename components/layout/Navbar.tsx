@@ -33,7 +33,7 @@ function LogoMark() {
 function DesktopNavItem({ item, scrolled }: { item: NavLink; scrolled: boolean }) {
  const [open, setOpen] = useState(false);
  const linkCls = scrolled
- ? "text-gray-800 hover:text-gray-900"
+ ? "text-brand-text/90 hover:text-brand-text"
  : "text-white hover:text-white/70";
 
  if (!item.children?.length) {
@@ -70,13 +70,13 @@ function DesktopNavItem({ item, scrolled }: { item: NavLink; scrolled: boolean }
    animate={{ opacity: 1, y: 0 }}
    exit={{ opacity: 0, y: 8 }}
    transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-   className="absolute left-0 top-full z-50 mt-3 w-56 rounded-xl border border-gray-200 bg-white p-2 shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
+   className="absolute left-0 top-full z-50 mt-3 w-56 rounded-xl border border-brand-border bg-white p-2 shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
    >
    {item.children.map((child) => (
     <Link
     key={child.href}
     href={child.href}
-    className="block rounded-lg px-3 py-2 text-sm text-gray-600 transition-colors hover:bg-gray-50 hover:text-gray-900"
+    className="block rounded-lg px-3 py-2 text-sm text-brand-muted transition-colors hover:bg-brand-card hover:text-brand-text"
     >
     {child.label}
     </Link>
@@ -136,7 +136,7 @@ function MobileMenu({
     </Link>
     <button
     type="button"
-    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:bg-gray-100"
+    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-border text-brand-muted hover:bg-brand-card-hover"
     onClick={onClose}
     aria-label="Close menu"
     >
@@ -149,7 +149,7 @@ function MobileMenu({
     <div key={item.href} className="py-1">
      <Link
      href={item.href}
-     className="block rounded-lg px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-100"
+     className="block rounded-lg px-3 py-2 text-base font-medium text-brand-text/90 hover:bg-brand-card-hover"
      onClick={onClose}
      >
      {item.label}
@@ -160,7 +160,7 @@ function MobileMenu({
       <Link
        key={child.href}
        href={child.href}
-       className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+       className="block rounded-lg px-3 py-2 text-sm text-brand-muted hover:bg-brand-card-hover hover:text-brand-text"
        onClick={onClose}
       >
        {child.label}
@@ -202,8 +202,8 @@ export function Navbar() {
   className={cn(
    "fixed inset-x-0 top-0 z-50 transition-all duration-300",
    scrolled
-   ? "border-b border-gray-200 bg-white/90 backdrop-blur-md"
-   : "border-b border-gray-200/50 bg-white md:border-none md:bg-transparent",
+   ? "border-b border-brand-border bg-white/90 backdrop-blur-md"
+   : "border-b border-brand-border/50 bg-white md:border-none md:bg-transparent",
   )}
   >
   <Container className="flex h-16 items-center justify-between">
@@ -230,7 +230,7 @@ export function Navbar() {
 
    <button
    type="button"
-   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:bg-gray-100 md:hidden"
+   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-border text-brand-muted hover:bg-brand-card-hover md:hidden"
    onClick={() => setMobileOpen(true)}
    aria-label="Open menu"
    >

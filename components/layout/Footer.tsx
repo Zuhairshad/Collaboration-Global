@@ -18,7 +18,7 @@ export function Footer() {
     className="h-[70px] w-auto md:h-[84px]"
    />
    </div>
-   <p className="mt-5 text-[clamp(1.2rem,2.5vw,2rem)] font-medium tracking-tight text-gray-400">
+   <p className="mt-5 text-[clamp(1.2rem,2.5vw,2rem)] font-medium tracking-tight text-brand-dim">
    Shaping Tomorrow.
    </p>
   </div>
@@ -29,7 +29,7 @@ export function Footer() {
    <Link
     key={item.href}
     href={item.href}
-    className="text-sm text-gray-500 transition-colors hover:text-gray-900"
+    className="text-sm text-brand-muted transition-colors hover:text-brand-text"
    >
     {item.label}
    </Link>
@@ -44,7 +44,7 @@ export function Footer() {
     href={link.url}
     target="_blank"
     rel="noopener noreferrer"
-    className="text-sm text-gray-400 transition-colors hover:text-gray-900"
+    className="text-sm text-brand-dim transition-colors hover:text-brand-text"
    >
     {link.platform}
    </a>
@@ -64,8 +64,8 @@ export function Footer() {
     />
    </div>
    </div>
-   <p className="mt-3 text-xs text-gray-400">{FOOTER.copyright}</p>
-   <p className="mt-1 text-xs text-gray-300">{FOOTER.designerCredit}</p>
+   <p className="mt-3 text-xs text-brand-dim">{FOOTER.copyright}</p>
+   <p className="mt-1 text-xs text-brand-dim/70">{FOOTER.designerCredit}</p>
   </div>
   </Container>
  </footer>

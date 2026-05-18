@@ -22,7 +22,7 @@ export function ImpactMap() {
    </motion.div>
    <motion.h2
    variants={fadeUp}
-   className="mx-auto mt-4 max-w-[600px] text-[clamp(2.2rem,4.2vw,3.8rem)] font-bold leading-[1.06] tracking-[-0.03em] text-black"
+   className="mx-auto mt-4 max-w-[600px] text-[clamp(2.2rem,4.2vw,3.8rem)] font-bold leading-[1.06] tracking-[-0.03em] text-brand-text"
    >
    28+ Countries.
    <br />
@@ -30,7 +30,7 @@ export function ImpactMap() {
    </motion.h2>
    <motion.p
    variants={fadeUp}
-   className="mx-auto mt-4 max-w-[480px] text-[15px] leading-relaxed text-gray-500"
+   className="mx-auto mt-4 max-w-[480px] text-[15px] leading-relaxed text-brand-muted"
    >
    Members across six continents collaborating, growing, and creating
    real-world impact together.
@@ -43,7 +43,7 @@ export function ImpactMap() {
    initial="hidden"
    whileInView="visible"
    viewport={{ once: true, margin: "-60px" }}
-   className="mt-12 overflow-hidden rounded-2xl border border-gray-200"
+   className="mt-12 overflow-hidden rounded-2xl border border-brand-border"
   >
    <iframe
    loading="lazy"

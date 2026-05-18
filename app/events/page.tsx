@@ -63,11 +63,11 @@ export default function EventsPage() {
   label="Events"
   title="Monthly Community Sessions."
   description="Once a month we create a space for people to come together and connect with other like-hearted and like-minded people. Free. Open to anyone. Just show up."
-  className="[background:linear-gradient(135deg,#6B4FBE_0%,#2d1654_40%,#1a3535_70%,#2DC7B3_100%)]"
+  className="[background:linear-gradient(135deg,#4a4396_0%,#655bb3_30%,#31cfc3_60%,#7be0d8_100%)]"
   />
 
   {/* ── Intro + Booking Card ── gray-50 */}
-  <section className="bg-gray-50 py-24 md:py-32">
+  <section className="bg-brand-card py-24 md:py-32">
   <Container>
    <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
 
@@ -83,7 +83,7 @@ export default function EventsPage() {
     </motion.div>
     <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.03em] text-gray-900"
+    className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.03em] text-brand-text"
     >
     A meeting of
     <br />
@@ -91,13 +91,13 @@ export default function EventsPage() {
     </motion.h2>
     <motion.p
     variants={fadeUp}
-    className="mt-5 text-[15px] leading-[1.85] text-gray-600"
+    className="mt-5 text-[15px] leading-[1.85] text-brand-muted"
     >
     Whether you're an entrepreneur, a creative, a coach, or simply someone who believes in the power of working together Community Sessions are your invitation to step in.
     </motion.p>
     <motion.p
     variants={fadeUp}
-    className="mt-4 text-[15px] leading-[1.85] text-gray-600"
+    className="mt-4 text-[15px] leading-[1.85] text-brand-muted"
     >
     We nurture authentic relationships and provide a space for genuine connection, building trust and fulfilling aspirations. Come as a guest. There's no commitment, no pressure just real people and real conversation.
     </motion.p>
@@ -134,10 +134,10 @@ export default function EventsPage() {
     <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
      Monthly Community Meeting
     </p>
-    <p className="relative mt-3 text-[2.6rem] font-black leading-none tracking-tight text-gray-900">
+    <p className="relative mt-3 text-[2.6rem] font-black leading-none tracking-tight text-brand-text">
      Free
     </p>
-    <p className="mt-1 text-sm text-gray-500">
+    <p className="mt-1 text-sm text-brand-muted">
      Hosted on Zoom · Booked via Eventbrite
     </p>
 
@@ -152,7 +152,7 @@ export default function EventsPage() {
       <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[var(--brand-teal)]/15">
       <Zap className="h-2.5 w-2.5 text-[var(--brand-teal)]" strokeWidth={2.5} />
       </span>
-      <span className="text-[13.5px] leading-relaxed text-gray-700">{f}</span>
+      <span className="text-[13.5px] leading-relaxed text-brand-muted">{f}</span>
      </div>
      ))}
     </div>
@@ -167,7 +167,7 @@ export default function EventsPage() {
      <ExternalLink className="h-3.5 w-3.5 shrink-0" strokeWidth={1.8} />
     </a>
 
-    <p className="mt-4 text-center text-[11px] text-gray-400">
+    <p className="mt-4 text-center text-[11px] text-brand-dim">
      All sessions listed at the link above. Booking takes under a minute.
     </p>
     </div>
@@ -191,7 +191,7 @@ export default function EventsPage() {
    </motion.div>
    <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.03em] text-gray-900"
+    className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.03em] text-brand-text"
    >
     Simple, open,
     <br />
@@ -210,10 +210,10 @@ export default function EventsPage() {
       strokeWidth={1.8}
      />
      </div>
-     <p className="mt-4 text-[15px] font-bold tracking-tight text-gray-900">
+     <p className="mt-4 text-[15px] font-bold tracking-tight text-brand-text">
      {item.title}
      </p>
-     <p className="mt-2 text-[13px] leading-[1.75] text-gray-500">
+     <p className="mt-2 text-[13px] leading-[1.75] text-brand-muted">
      {item.body}
      </p>
     </div>
@@ -234,11 +234,11 @@ export default function EventsPage() {
    className="mx-auto max-w-[820px]"
    >
    <motion.div variants={fadeUp}>
-    <SectionLabel className="text-black/60">What to Expect</SectionLabel>
+    <SectionLabel className="text-brand-text/60">What to Expect</SectionLabel>
    </motion.div>
    <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(1.9rem,3.6vw,3rem)] font-bold leading-[1.1] tracking-[-0.03em] text-black"
+    className="mt-4 text-[clamp(1.9rem,3.6vw,3rem)] font-bold leading-[1.1] tracking-[-0.03em] text-brand-text"
    >
     You'll leave with more
     <br />
@@ -259,7 +259,7 @@ export default function EventsPage() {
      className="flex items-start gap-3"
     >
      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-black/15">
-     <ArrowRight className="h-3 w-3 text-black/60" strokeWidth={2.5} />
+     <ArrowRight className="h-3 w-3 text-brand-text/60" strokeWidth={2.5} />
      </span>
      <span className="text-[15px] leading-relaxed text-slate-900">{item}</span>
     </motion.li>
@@ -281,7 +281,7 @@ export default function EventsPage() {
   </section>
 
   {/* ── What Comes Next ── gray-50 */}
-  <section className="bg-gray-50 py-24 md:py-32">
+  <section className="bg-brand-card py-24 md:py-32">
   <Container>
    <motion.div
    variants={staggerContainer}
@@ -294,13 +294,13 @@ export default function EventsPage() {
    </motion.div>
    <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.03em] text-gray-900"
+    className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.03em] text-brand-text"
    >
     Ready to go deeper?
    </motion.h2>
    <motion.p
     variants={fadeUp}
-    className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-gray-600"
+    className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-brand-muted"
    >
     Community Sessions are just the beginning. When you're ready for structured learning, accountability, or full collaboration membership is waiting.
    </motion.p>
@@ -313,13 +313,13 @@ export default function EventsPage() {
     <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
      Learn &amp; Build
     </p>
-    <p className="mt-3 text-xl font-bold tracking-tight text-gray-900">
+    <p className="mt-3 text-xl font-bold tracking-tight text-brand-text">
      Collaborator Academy
     </p>
-    <p className="mt-1 text-2xl font-black tracking-tight text-gray-700">
+    <p className="mt-1 text-2xl font-black tracking-tight text-brand-muted">
      £30 / month
     </p>
-    <p className="mt-4 text-[13.5px] leading-[1.75] text-gray-600">
+    <p className="mt-4 text-[13.5px] leading-[1.75] text-brand-muted">
      Short learning bursts, recorded sessions, accountability groups, and peer Q&As built for steady progress without judgement.
     </p>
     <Button
@@ -340,13 +340,13 @@ export default function EventsPage() {
     <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
      Full Membership
     </p>
-    <p className="relative mt-3 text-xl font-bold tracking-tight text-gray-900">
+    <p className="relative mt-3 text-xl font-bold tracking-tight text-brand-text">
      Collaborator Pro
     </p>
     <p className="relative mt-1 text-2xl font-black tracking-tight text-[var(--brand-teal)]">
      £50 / month
     </p>
-    <p className="relative mt-4 text-[13.5px] leading-[1.75] text-gray-600">
+    <p className="relative mt-4 text-[13.5px] leading-[1.75] text-brand-muted">
      Raise your profile, collaborate on real projects, get coaching, and become part of a community operating within a paradigm of Love, Connection and Abundance.
     </p>
     <Button
@@ -368,7 +368,7 @@ export default function EventsPage() {
   className="relative overflow-hidden py-24 md:py-32"
   style={{
    background:
-   "linear-gradient(135deg, #6B4FBE 0%, #2d1654 40%, #1a3535 70%, #2DC7B3 100%)",
+   "linear-gradient(135deg, #4a4396 0%, #655bb3 30%, #31cfc3 60%, #7be0d8 100%)",
   }}
   >
   <div

@@ -6,6 +6,7 @@ import { OFFERINGS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { ImageBlock } from "@/components/media/ImageBlock";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/animations";
 
 export function Offerings() {
@@ -27,12 +28,12 @@ export function Offerings() {
    </motion.div>
    <motion.h2
    variants={fadeUp}
-   className="mx-auto mt-4 max-w-[600px] text-[clamp(2.2rem,4.2vw,3.8rem)] font-bold leading-[1.06] tracking-[-0.03em] text-black"
+   className="mx-auto mt-4 max-w-[600px] text-[clamp(2.2rem,4.2vw,3.8rem)] font-bold leading-[1.06] tracking-[-0.03em] text-brand-text"
    >
    Choose Your Experience.
    </motion.h2>
    {freeOffering && (
-   <motion.p variants={fadeUp} className="mx-auto mt-4 max-w-[500px] text-[15px] leading-relaxed text-gray-500">
+   <motion.p variants={fadeUp} className="mx-auto mt-4 max-w-[500px] text-[15px] leading-relaxed text-brand-muted">
     Start with a{" "}
     <a href={freeOffering.cta.href} className="font-semibold text-[var(--reunion-accent)] underline underline-offset-2">
     free Community Session
@@ -40,6 +41,9 @@ export function Offerings() {
     then step into the tier that fits your journey.
    </motion.p>
    )}
+   <motion.div variants={fadeUp}>
+    <ImageBlock id="story-community-2" variant="landscape" className="mt-6 mx-auto max-w-[480px]" />
+   </motion.div>
   </motion.div>
 
   <motion.div
@@ -58,7 +62,7 @@ export function Offerings() {
     className={`relative flex flex-col rounded-2xl border p-8 ${
     offering.highlighted
      ? "border-[var(--reunion-accent)]/30 bg-[var(--reunion-accent)]/[0.04]"
-     : "border-gray-100 bg-gray-50"
+     : "border-gray-100 bg-brand-card"
     }`}
    >
     {offering.highlighted && (
@@ -70,13 +74,13 @@ export function Offerings() {
     <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--reunion-accent)]">
     {offering.tag}
     </p>
-    <p className="mt-3 text-xl font-bold tracking-tight text-black">
+    <p className="mt-3 text-xl font-bold tracking-tight text-brand-text">
     {offering.title}
     </p>
-    <p className="mt-1 text-3xl font-bold tracking-tight text-black">
+    <p className="mt-1 text-3xl font-bold tracking-tight text-brand-text">
     {offering.price}
     </p>
-    <p className="mt-4 text-[14px] leading-relaxed text-gray-500">
+    <p className="mt-4 text-[14px] leading-relaxed text-brand-muted">
     {offering.description}
     </p>
 
@@ -84,7 +88,7 @@ export function Offerings() {
     {offering.features.map((f) => (
      <li key={f} className="flex items-start gap-3">
      <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--reunion-accent)]" strokeWidth={2.5} />
-     <span className="text-[14px] text-gray-600">{f}</span>
+     <span className="text-[14px] text-brand-muted">{f}</span>
      </li>
     ))}
     </ul>
@@ -93,7 +97,7 @@ export function Offerings() {
     <Button
      href={offering.cta.href}
      variant={offering.highlighted ? "accent" : "outline"}
-     className={`w-full gap-2 text-sm normal-case tracking-normal ${!offering.highlighted ? "border-gray-200 text-black hover:bg-gray-100" : ""}`}
+     className={`w-full gap-2 text-sm normal-case tracking-normal ${!offering.highlighted ? "border-brand-border text-brand-text hover:bg-brand-card-hover" : ""}`}
     >
      {offering.cta.label}
      <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={1.8} />

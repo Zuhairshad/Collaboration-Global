@@ -32,10 +32,10 @@ function AudienceCard({
   <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
   0{index + 1}
   </p>
-  <p className="relative mt-3 text-[15px] font-semibold tracking-tight text-gray-900">
+  <p className="relative mt-3 text-[15px] font-semibold tracking-tight text-brand-text">
   {title}
   </p>
-  <p className="relative mt-2 text-[13px] leading-relaxed text-gray-500">
+  <p className="relative mt-2 text-[13px] leading-relaxed text-brand-muted">
   {description}
   </p>
  </div>
@@ -79,7 +79,7 @@ export function Pillars() {
  const col2 = WHO_ATTENDS.filter((_, i) => i % 2 === 1); // 1, 3, 5
 
  return (
- <section id="pillars" className="overflow-hidden bg-gray-50 py-24 md:py-32">
+ <section id="pillars" className="overflow-hidden bg-brand-card py-24 md:py-32">
   <Container>
   <div className="grid items-center gap-12 lg:grid-cols-[1fr_2fr] lg:gap-16">
 
@@ -96,7 +96,7 @@ export function Pillars() {
 
    <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[1.08] tracking-[-0.03em] text-gray-900"
+    className="mt-4 text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[1.08] tracking-[-0.03em] text-brand-text"
    >
     Made for
     <br />
@@ -110,8 +110,8 @@ export function Pillars() {
     variants={fadeUp}
     className="mt-8 rounded-2xl border border-brand-border bg-brand-card p-6"
    >
-    <Users className="h-6 w-6 text-gray-400" strokeWidth={1.5} />
-    <p className="mt-3 text-[14px] leading-relaxed text-gray-600">
+    <Users className="h-6 w-6 text-brand-dim" strokeWidth={1.5} />
+    <p className="mt-3 text-[14px] leading-relaxed text-brand-muted">
     From entrepreneurs to educators if you believe in the power
     of collaboration, this is your community.
     </p>

@@ -18,8 +18,8 @@ const BLOCKS = [
   { Icon: Gem, text: "Find opportunities to experiment and evolve." },
  ],
  cta: { label: "Reserve Your Seat", href: "#cta" },
- image: "/images/philosophy-speaker.png",
- imageAlt: "Professional speaker at a community event",
+ image: "/media/cta-community-trio.jpeg",
+ imageAlt: "Collaboration Global members laughing together",
  imageFirst: true,
  },
  {
@@ -32,8 +32,8 @@ const BLOCKS = [
   { Icon: TrendingUp, text: "Leave inspired, informed, and ready to create." },
  ],
  cta: { label: "View Agenda", href: "/events" },
- image: "/images/philosophy-crowd.png",
- imageAlt: "Engaged audience at a professional summit",
+ image: "/media/cta-gill-laptop.jpg",
+ imageAlt: "Gill Tiney working outdoors with laptop",
  imageFirst: false,
  },
 ] as const;
@@ -42,21 +42,26 @@ function CTABlock({ block }: { block: typeof BLOCKS[number] }) {
  const imageVariant = block.imageFirst ? slideInLeft : slideInRight;
  const textVariant = block.imageFirst ? slideInRight : slideInLeft;
 
+ const isPortrait = block.imageFirst === false;
+
  const imageCol = (
  <motion.div
   variants={imageVariant}
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, margin: "-60px" }}
-  className="overflow-hidden rounded-2xl"
+  className="group overflow-hidden rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.12)]"
  >
-  <div className="relative aspect-[1.15/1] w-full">
+  <div
+  className="relative w-full"
+  style={{ aspectRatio: isPortrait ? "3/4" : "4/3" }}
+  >
   <Image
    src={block.image}
    alt={block.imageAlt}
    fill
    sizes="(max-width: 1024px) 100vw, 50vw"
-   className="object-cover transition-transform duration-700 hover:scale-[1.02]"
+   className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
   />
   </div>
  </motion.div>
@@ -74,7 +79,7 @@ function CTABlock({ block }: { block: typeof BLOCKS[number] }) {
   {block.label}
   </p>
 
-  <h2 className="mt-4 text-[clamp(2rem,3.8vw,3.2rem)] font-bold leading-[1.1] tracking-[-0.02em] text-black whitespace-pre-line">
+  <h2 className="mt-4 text-[clamp(2rem,3.8vw,3.2rem)] font-bold leading-[1.1] tracking-[-0.02em] text-brand-text whitespace-pre-line">
   {block.heading}
   </h2>
 
@@ -95,7 +100,7 @@ function CTABlock({ block }: { block: typeof BLOCKS[number] }) {
     className={`h-[15px] w-[15px] shrink-0 ${block.labelColor}`}
     strokeWidth={2.5}
    />
-   <span className="text-[14px] font-medium text-gray-700">
+   <span className="text-[14px] font-medium text-brand-muted">
     {bullet.text}
    </span>
    </motion.li>
@@ -106,10 +111,10 @@ function CTABlock({ block }: { block: typeof BLOCKS[number] }) {
   <Button
    href={block.cta.href}
    variant="outline"
-   className="group h-[46px] gap-3 rounded-full border border-gray-300 px-6 text-[14px] font-bold text-gray-900 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all"
+   className="group h-[46px] gap-3 rounded-full border border-gray-300 px-6 text-[14px] font-bold text-brand-text hover:border-brand-text hover:bg-brand-text hover:text-white transition-all"
   >
    {block.cta.label}
-   <div className="flex h-5 w-5 items-center justify-center rounded-sm bg-gray-100 transition-colors group-hover:bg-gray-800">
+   <div className="flex h-5 w-5 items-center justify-center rounded-sm bg-brand-card-hover transition-colors group-hover:bg-gray-800">
     <ArrowRight className="h-3 w-3" strokeWidth={3} />
    </div>
   </Button>

@@ -29,7 +29,7 @@ export function FAQ() {
    </motion.div>
    <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(1.9rem,3.6vw,3rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-gray-900"
+    className="mt-4 text-[clamp(1.9rem,3.6vw,3rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-brand-text"
    >
     Your Questions,
     <br />
@@ -37,7 +37,7 @@ export function FAQ() {
    </motion.h2>
    <motion.p
     variants={fadeUp}
-    className="mt-5 text-[15px] leading-relaxed text-gray-600"
+    className="mt-5 text-[15px] leading-relaxed text-brand-muted"
    >
     Still have questions? We&apos;re happy to help.
    </motion.p>
@@ -74,10 +74,10 @@ export function FAQ() {
      onClick={() => setOpenIdx(open ? null : idx)}
      aria-expanded={open}
      >
-     <span className="text-sm font-medium tracking-tight text-gray-900 md:text-[15px]">
+     <span className="text-sm font-medium tracking-tight text-brand-text md:text-[15px]">
       {item.question}
      </span>
-     <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-gray-500 transition-colors">
+     <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-brand-border bg-brand-card text-brand-muted transition-colors">
       {open ? (
       <Minus className="h-3.5 w-3.5" strokeWidth={2} />
       ) : (
@@ -95,7 +95,7 @@ export function FAQ() {
       transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
       className="overflow-hidden"
       >
-      <div className="px-6 pb-6 text-[14px] leading-relaxed text-gray-600 md:text-[15px]">
+      <div className="px-6 pb-6 text-[14px] leading-relaxed text-brand-muted md:text-[15px]">
        {item.answer}
       </div>
       </motion.div>

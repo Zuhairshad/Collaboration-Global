@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, Smile } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { ImageBlock } from "@/components/media/ImageBlock";
 
 type Msg = { id: number; from: "bot" | "user"; text: string };
 
@@ -63,7 +64,7 @@ function TypingBubble() {
   <div className="h-7 w-7 shrink-0 overflow-hidden rounded-full ring-2 ring-white/10">
   <Image src="/icon.png" alt="CG" width={28} height={28} className="h-full w-full object-cover" />
   </div>
-  <div className="flex items-center gap-1.5 rounded-2xl rounded-bl-md bg-[#1e1e32] px-4 py-3.5">
+  <div className="flex items-center gap-1.5 rounded-2xl rounded-bl-md bg-[#2a2420] px-4 py-3.5">
   {[0, 0.18, 0.36].map((delay, i) => (
    <motion.span
    key={i}
@@ -94,14 +95,14 @@ function Bubble({ msg }: { msg: Msg }) {
   <div
   className={`max-w-[78%] rounded-2xl px-4 py-2.5 text-[13.5px] leading-[1.7] ${
    isBot
-   ? "rounded-bl-md bg-[#1e1e32] text-white/90"
+   ? "rounded-bl-md bg-[#2a2420] text-white/90"
    : "rounded-br-md text-white"
   }`}
   style={
    isBot
    ? { boxShadow: "0 2px 12px rgba(0,0,0,0.3)" }
    : {
-    background: "linear-gradient(135deg, #6B4FBE 0%, #2DC7B3 100%)",
+    background: "linear-gradient(135deg, #655bb3 0%, #31cfc3 100%)",
     boxShadow: "0 2px 16px rgba(107,79,190,0.45)",
     }
   }
@@ -180,7 +181,7 @@ export function Philosophy() {
   ref={sectionRef}
   id="philosophy"
   className="py-24 md:py-32"
-  style={{ background: "linear-gradient(135deg, #6B4FBE 0%, #4A3FA0 30%, #2E8B9A 65%, #2DC7B3 100%)" }}
+  style={{ background: "linear-gradient(135deg, #4a4396 0%, #655bb3 30%, #31cfc3 65%, #7be0d8 100%)" }}
  >
   <Container>
   {/* Heading */}
@@ -198,6 +199,11 @@ export function Philosophy() {
    <p className="mx-auto mt-5 max-w-[520px] text-[15px] leading-relaxed text-white/70">
    See how we think about collaboration, community, and what it means to build something that truly matters.
    </p>
+
+   {/* Mobile enhancement layer block */}
+   <div className="mt-8 mb-2">
+    <ImageBlock id="story-moment-3" variant="landscape" className="mx-auto" />
+   </div>
   </motion.div>
 
   {/* Chat widget */}
@@ -218,7 +224,7 @@ export function Philosophy() {
    {/* Header */}
    <div
     className="relative flex items-center gap-3 px-5 py-4"
-    style={{ background: "linear-gradient(135deg, #1a0e2e 0%, #2d1654 60%, #1a2e2e 100%)" }}
+    style={{ background: "linear-gradient(135deg, #241e18 0%, #2a2420 60%, #1e2e2a 100%)" }}
    >
     {/* macOS dots */}
     <div className="flex items-center gap-1.5 mr-1">
@@ -233,11 +239,11 @@ export function Philosophy() {
     <p className="text-[13.5px] font-semibold leading-none text-white">Collaboration Global</p>
     <div className="mt-1 flex items-center gap-1.5">
      <motion.span
-     className="block h-1.5 w-1.5 rounded-full bg-emerald-400"
+     className="block h-1.5 w-1.5 rounded-full bg-[var(--brand-teal)]"
      animate={{ opacity: [1, 0.4, 1] }}
      transition={{ duration: 2, repeat: Infinity }}
      />
-     <p className="text-[10.5px] text-emerald-400 font-medium">Active now</p>
+     <p className="text-[10.5px] text-[var(--brand-teal)] font-medium">Active now</p>
     </div>
     </div>
    </div>
@@ -246,7 +252,7 @@ export function Philosophy() {
    <div
     ref={chatRef}
     className="flex h-[420px] flex-col gap-3.5 overflow-y-auto px-4 py-5 scrollbar-hide"
-    style={{ background: "#0c0c18" }}
+    style={{ background: "#181410" }}
    >
     {/* Date separator */}
     <div className="flex items-center gap-3 py-1">
@@ -264,7 +270,7 @@ export function Philosophy() {
    {/* Input bar */}
    <div
     className="flex items-center gap-3 px-4 py-3.5 border-t border-white/[0.06]"
-    style={{ background: "#0e0e1c" }}
+    style={{ background: "#1a1610" }}
    >
     <div className="flex flex-1 items-center gap-2 rounded-full bg-white/[0.07] px-4 py-2.5 border border-white/[0.08]">
     <Smile className="h-4 w-4 shrink-0 text-white/25" />
@@ -272,7 +278,7 @@ export function Philosophy() {
     </div>
     <button
     className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
-    style={{ background: "linear-gradient(135deg, #6B4FBE, #2DC7B3)" }}
+    style={{ background: "linear-gradient(135deg, #655bb3, #31cfc3)" }}
     tabIndex={-1}
     >
     <Send className="h-3.5 w-3.5 text-white" />

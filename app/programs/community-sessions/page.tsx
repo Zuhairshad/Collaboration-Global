@@ -44,11 +44,11 @@ export default function CommunitySessionsPage() {
   label="Programs"
   title="Community Sessions."
   description="Once a month we create a space for people to come together in the Zoom room and connect with other like-hearted and like-minded people. Free. Open to anyone."
-  className="[background:linear-gradient(135deg,#6B4FBE_0%,#2d1654_40%,#1a3535_70%,#2DC7B3_100%)]"
+  className="[background:linear-gradient(135deg,#4a4396_0%,#655bb3_30%,#31cfc3_60%,#7be0d8_100%)]"
   />
 
   {/* ── Intro ── gray-50 */}
-  <section className="bg-gray-50 py-24 md:py-32">
+  <section className="bg-brand-card py-24 md:py-32">
   <Container>
    <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
 
@@ -64,7 +64,7 @@ export default function CommunitySessionsPage() {
     </motion.div>
     <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.03em] text-gray-900"
+    className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.03em] text-brand-text"
     >
     A meeting of
     <br />
@@ -72,13 +72,13 @@ export default function CommunitySessionsPage() {
     </motion.h2>
     <motion.p
     variants={fadeUp}
-    className="mt-5 text-[15px] leading-[1.85] text-gray-600"
+    className="mt-5 text-[15px] leading-[1.85] text-brand-muted"
     >
     Whether connecting online or in-person, we all have a basic desire to be part of something where we can connect at a deeper level. Community Sessions are that space a monthly gathering built for authentic connection, open to everyone.
     </motion.p>
     <motion.p
     variants={fadeUp}
-    className="mt-4 text-[15px] leading-[1.85] text-gray-600"
+    className="mt-4 text-[15px] leading-[1.85] text-brand-muted"
     >
     Come as a guest, meet the community, and explore what collaboration can unlock for you. No commitment needed just bring yourself.
     </motion.p>
@@ -117,11 +117,11 @@ export default function CommunitySessionsPage() {
     <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
      Community Sessions
     </p>
-    <p className="relative mt-3 text-[3.2rem] font-black leading-none tracking-tight text-gray-900">
+    <p className="relative mt-3 text-[3.2rem] font-black leading-none tracking-tight text-brand-text">
      Free
     </p>
-    <p className="mt-1 text-sm text-gray-500">open to anyone · monthly · via Zoom</p>
-    <p className="mt-5 text-[13.5px] leading-relaxed text-gray-600">
+    <p className="mt-1 text-sm text-brand-muted">open to anyone · monthly · via Zoom</p>
+    <p className="mt-5 text-[13.5px] leading-relaxed text-brand-muted">
      Booked through Eventbrite. Attend as a guest as many times as you like no strings attached.
     </p>
     <div className="mt-6 space-y-3">
@@ -135,7 +135,7 @@ export default function CommunitySessionsPage() {
       <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[var(--brand-teal)]/15">
       <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-teal)]" />
       </span>
-      <span className="text-[13.5px] text-gray-700">{f}</span>
+      <span className="text-[13.5px] text-brand-muted">{f}</span>
      </div>
      ))}
     </div>
@@ -168,7 +168,7 @@ export default function CommunitySessionsPage() {
    </motion.div>
    <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.03em] text-gray-900"
+    className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.03em] text-brand-text"
    >
     Show up. Connect.
     <br />
@@ -187,10 +187,10 @@ export default function CommunitySessionsPage() {
       strokeWidth={1.8}
      />
      </div>
-     <p className="mt-4 text-[15px] font-bold tracking-tight text-gray-900">
+     <p className="mt-4 text-[15px] font-bold tracking-tight text-brand-text">
      {item.title}
      </p>
-     <p className="mt-2 text-[13px] leading-[1.75] text-gray-500">
+     <p className="mt-2 text-[13px] leading-[1.75] text-brand-muted">
      {item.body}
      </p>
     </div>
@@ -211,11 +211,11 @@ export default function CommunitySessionsPage() {
    className="mx-auto max-w-[760px]"
    >
    <motion.div variants={fadeUp}>
-    <SectionLabel className="text-black/60">What Comes Next</SectionLabel>
+    <SectionLabel className="text-brand-text/60">What Comes Next</SectionLabel>
    </motion.div>
    <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(1.9rem,3.6vw,3rem)] font-bold leading-[1.1] tracking-[-0.03em] text-black"
+    className="mt-4 text-[clamp(1.9rem,3.6vw,3rem)] font-bold leading-[1.1] tracking-[-0.03em] text-brand-text"
    >
     Loved the session?
     <br />
@@ -236,8 +236,8 @@ export default function CommunitySessionsPage() {
     variants={staggerItem}
     className="rounded-2xl bg-black/10 p-6"
     >
-    <p className="text-sm font-bold text-black">Collaborator Academy</p>
-    <p className="mt-2 text-[13px] leading-relaxed text-black/70">
+    <p className="text-sm font-bold text-brand-text">Collaborator Academy</p>
+    <p className="mt-2 text-[13px] leading-relaxed text-brand-text/70">
      Learning, Q&As, recorded sessions, and accountability for £30/month.
     </p>
     <Button
@@ -254,8 +254,8 @@ export default function CommunitySessionsPage() {
     variants={staggerItem}
     className="rounded-2xl bg-black/10 p-6"
     >
-    <p className="text-sm font-bold text-black">Collaborator Pro</p>
-    <p className="mt-2 text-[13px] leading-relaxed text-black/70">
+    <p className="text-sm font-bold text-brand-text">Collaborator Pro</p>
+    <p className="mt-2 text-[13px] leading-relaxed text-brand-text/70">
      Full membership with profile, projects, coaching, and community for £50/month.
     </p>
     <Button
@@ -277,7 +277,7 @@ export default function CommunitySessionsPage() {
   className="relative overflow-hidden py-24 md:py-32"
   style={{
    background:
-   "linear-gradient(135deg, #6B4FBE 0%, #2d1654 40%, #1a3535 70%, #2DC7B3 100%)",
+   "linear-gradient(135deg, #4a4396 0%, #655bb3 30%, #31cfc3 60%, #7be0d8 100%)",
   }}
   >
   <div

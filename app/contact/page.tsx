@@ -19,7 +19,7 @@ const SOCIAL_SVGS: Record<string, React.ReactNode> = {
 };
 
 const inputCls =
-  "w-full rounded-xl border border-gray-200 bg-white px-4 text-sm text-gray-900 placeholder:text-gray-400 focus:border-brand-purple focus:outline-none focus:ring-2 focus:ring-brand-purple/20 transition-colors";
+  "w-full rounded-xl border border-brand-border bg-white px-4 text-sm text-brand-text placeholder:text-brand-dim focus:border-brand-purple focus:outline-none focus:ring-2 focus:ring-brand-purple/20 transition-colors";
 
 export default function ContactPage() {
   const [isPending, startTransition] = useTransition();
@@ -60,23 +60,23 @@ export default function ContactPage() {
         label="Contact"
         title="Let's connect."
         description="Ask a question, explore membership, or share an idea for collaboration."
-        className="[background:linear-gradient(135deg,#6B4FBE_0%,#2d1654_40%,#1a3535_70%,#2DC7B3_100%)]"
+        className="[background:linear-gradient(135deg,#4a4396_0%,#655bb3_30%,#31cfc3_60%,#7be0d8_100%)]"
       />
 
-      <section className="bg-gray-50 py-16 md:py-20">
+      <section className="bg-brand-card py-16 md:py-20">
         <Container>
           <div className="mx-auto max-w-[1100px] grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
 
             {/* ── Contact form ── */}
             <RevealOnScroll>
               <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-10">
-                <p className="text-sm font-semibold tracking-tight text-gray-900">Email Us</p>
+                <p className="text-sm font-semibold tracking-tight text-brand-text">Email Us</p>
 
                 {result?.success ? (
                   <div className="mt-8 flex flex-col items-center gap-3 py-12 text-center">
                     <CheckCircle className="h-10 w-10 text-brand-teal" />
-                    <p className="font-medium text-gray-900">Message sent!</p>
-                    <p className="text-sm text-gray-500">We'll be in touch shortly.</p>
+                    <p className="font-medium text-brand-text">Message sent!</p>
+                    <p className="text-sm text-brand-muted">We'll be in touch shortly.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleContactSubmit} className="mt-6 grid gap-3">
@@ -110,7 +110,7 @@ export default function ContactPage() {
                     {/* Math captcha — only rendered after client mount */}
                     {captcha && (
                     <div>
-                      <label className="mb-1.5 block text-xs text-gray-500">
+                      <label className="mb-1.5 block text-xs text-brand-muted">
                         Spam check: {captcha.a} + {captcha.b} = ?
                       </label>
                       <input
@@ -153,7 +153,7 @@ export default function ContactPage() {
               {/* Contact details */}
               <RevealOnScroll delay={0.05}>
                 <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
-                  <p className="text-sm font-semibold tracking-tight text-gray-900">Contact Details</p>
+                  <p className="text-sm font-semibold tracking-tight text-brand-text">Contact Details</p>
                   <div className="mt-6 space-y-4">
                     <a
                       href={`tel:${SITE_META.phone.replace(/[^+\d]/g, "")}`}
@@ -163,8 +163,8 @@ export default function ContactPage() {
                         <Phone className="h-4 w-4" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-400 mb-0.5">Phone</p>
-                        <p className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors">
+                        <p className="text-xs text-brand-dim mb-0.5">Phone</p>
+                        <p className="text-sm text-brand-muted group-hover:text-brand-text transition-colors">
                           {SITE_META.phone}
                         </p>
                       </div>
@@ -177,8 +177,8 @@ export default function ContactPage() {
                         <Mail className="h-4 w-4" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-400 mb-0.5">Email</p>
-                        <p className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors">
+                        <p className="text-xs text-brand-dim mb-0.5">Email</p>
+                        <p className="text-sm text-brand-muted group-hover:text-brand-text transition-colors">
                           {SITE_META.email}
                         </p>
                       </div>
@@ -190,7 +190,7 @@ export default function ContactPage() {
               {/* Social links */}
               <RevealOnScroll delay={0.1}>
                 <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
-                  <p className="text-sm font-semibold tracking-tight text-gray-900">Let's Get Social</p>
+                  <p className="text-sm font-semibold tracking-tight text-brand-text">Let's Get Social</p>
                   <div className="mt-5 flex flex-wrap gap-3">
                     {SOCIAL_LINKS.map((s) => (
                       <a
@@ -199,7 +199,7 @@ export default function ContactPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={s.platform}
-                        className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:border-brand-purple hover:bg-brand-purple/5 hover:text-brand-purple"
+                        className="flex h-10 w-10 items-center justify-center rounded-full border border-brand-border text-brand-muted transition-colors hover:border-brand-purple hover:bg-brand-purple/5 hover:text-brand-purple"
                       >
                         {SOCIAL_SVGS[s.platform]}
                       </a>
@@ -211,10 +211,10 @@ export default function ContactPage() {
               {/* Newsletter */}
               <RevealOnScroll delay={0.15}>
                 <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
-                  <p className="text-sm font-semibold tracking-tight text-gray-900">
+                  <p className="text-sm font-semibold tracking-tight text-brand-text">
                     Subscribe for Event Updates
                   </p>
-                  <p className="mt-1.5 text-sm text-gray-500">
+                  <p className="mt-1.5 text-sm text-brand-muted">
                     Stay in the loop on upcoming events and community sessions.
                   </p>
                   {newsletterDone ? (

@@ -69,7 +69,7 @@ export default function ProgramsPage() {
   label="Programs"
   title="A simple path: free → learning → full membership."
   description="Start with a Community Session, step into the Academy for structured growth, or join Pro for full support and real collaboration opportunities."
-  className="[background:linear-gradient(135deg,#6B4FBE_0%,#2d1654_40%,#1a3535_70%,#2DC7B3_100%)]"
+  className="[background:linear-gradient(135deg,#4a4396_0%,#655bb3_30%,#31cfc3_60%,#7be0d8_100%)]"
   />
 
   {/* ── Program cards ── white */}
@@ -87,7 +87,7 @@ export default function ProgramsPage() {
    </motion.div>
    <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.03em] text-gray-900"
+    className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.03em] text-brand-text"
    >
     Every level of
     <br />
@@ -120,19 +120,19 @@ export default function ProgramsPage() {
      {p.tag}
      </p>
 
-     <p className="relative mt-3 text-xl font-bold tracking-tight text-gray-900">
+     <p className="relative mt-3 text-xl font-bold tracking-tight text-brand-text">
      {p.title}
      </p>
 
      <p
      className={`relative mt-1 text-[1.6rem] font-black leading-none tracking-tight ${
-      p.accent ? "text-[var(--brand-teal)]" : "text-gray-700"
+      p.accent ? "text-[var(--brand-teal)]" : "text-brand-muted"
      }`}
      >
      {p.price}
      </p>
 
-     <p className="relative mt-4 text-[13.5px] leading-[1.75] text-gray-600">
+     <p className="relative mt-4 text-[13.5px] leading-[1.75] text-brand-muted">
      {p.description}
      </p>
 
@@ -145,7 +145,7 @@ export default function ProgramsPage() {
        strokeWidth={2.5}
        />
       </span>
-      <span className="text-[13px] text-gray-700">{f}</span>
+      <span className="text-[13px] text-brand-muted">{f}</span>
       </li>
      ))}
      </ul>
@@ -167,13 +167,13 @@ export default function ProgramsPage() {
 
    {/* Not sure strip */}
    <RevealOnScroll delay={0.1}>
-   <div className="mt-8 overflow-hidden rounded-2xl border border-gray-100 bg-gray-50 p-7 shadow-sm">
+   <div className="mt-8 overflow-hidden rounded-2xl border border-gray-100 bg-brand-card p-7 shadow-sm">
     <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
     <div>
-     <p className="text-[15px] font-semibold text-gray-900">
+     <p className="text-[15px] font-semibold text-brand-text">
      Not sure where to start?
      </p>
-     <p className="mt-1.5 text-[13.5px] text-gray-500">
+     <p className="mt-1.5 text-[13.5px] text-brand-muted">
      Attend a free Community Session and meet the community first no commitment needed.
      </p>
     </div>
@@ -211,11 +211,11 @@ export default function ProgramsPage() {
    className="mx-auto max-w-[860px] text-center"
    >
    <motion.div variants={fadeUp} className="flex justify-center">
-    <SectionLabel className="text-black/60">Our Belief</SectionLabel>
+    <SectionLabel className="text-brand-text/60">Our Belief</SectionLabel>
    </motion.div>
    <motion.h2
     variants={fadeUp}
-    className="mt-4 text-[clamp(1.9rem,3.6vw,3rem)] font-bold leading-[1.1] tracking-[-0.03em] text-black"
+    className="mt-4 text-[clamp(1.9rem,3.6vw,3rem)] font-bold leading-[1.1] tracking-[-0.03em] text-brand-text"
    >
     We want to help each other reach our full potential so together we can make a difference.
    </motion.h2>
@@ -230,8 +230,8 @@ export default function ProgramsPage() {
      variants={staggerItem}
      className="rounded-2xl bg-black/10 p-6"
     >
-     <p className="text-3xl font-black text-black">{stat.label}</p>
-     <p className="mt-1 text-[13px] text-black/65">{stat.sub}</p>
+     <p className="text-3xl font-black text-brand-text">{stat.label}</p>
+     <p className="mt-1 text-[13px] text-brand-text/65">{stat.sub}</p>
     </motion.div>
     ))}
    </motion.div>

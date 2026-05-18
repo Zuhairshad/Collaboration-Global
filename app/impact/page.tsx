@@ -28,7 +28,7 @@ function HeroMedia({
  : "";
 
  return (
- <div className="group relative aspect-[16/8] w-full overflow-hidden rounded-2xl border border-white/[0.07] shadow-[0_12px_80px_rgba(107,79,190,0.12)]">
+ <div className="group relative aspect-[16/8] w-full overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
   {/* Video playing state */}
   {isVideo && playing ? (
   <iframe
@@ -130,7 +130,7 @@ function ContentPanel({ item }: { item: ImpactItem }) {
     ease: [0.16, 1, 0.3, 1],
     delay: 0.12 + i * 0.06,
     }}
-    className="relative overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.03] p-4 backdrop-blur-md"
+    className="relative overflow-hidden rounded-xl border border-gray-200 bg-white p-4 shadow-sm"
    >
     {/* Corner accent */}
     <div
@@ -138,15 +138,15 @@ function ContentPanel({ item }: { item: ImpactItem }) {
     style={{
      background:
      i % 2 === 0
-      ? "radial-gradient(circle, rgba(45,199,179,0.4) 0%, transparent 70%)"
-      : "radial-gradient(circle, rgba(107,79,190,0.4) 0%, transparent 70%)",
+      ? "radial-gradient(circle, rgba(45,199,179,0.5) 0%, transparent 70%)"
+      : "radial-gradient(circle, rgba(107,79,190,0.5) 0%, transparent 70%)",
     }}
     aria-hidden
     />
-    <p className="text-2xl font-bold tracking-tight text-white md:text-3xl">
+    <p className="text-2xl font-bold tracking-tight text-brand-text md:text-3xl">
     {stat.value}
     </p>
-    <p className="mt-1 text-xs font-medium uppercase tracking-[0.15em] text-white/60">
+    <p className="mt-1 text-xs font-medium uppercase tracking-[0.15em] text-brand-muted">
     {stat.label}
     </p>
    </motion.div>
@@ -155,49 +155,31 @@ function ContentPanel({ item }: { item: ImpactItem }) {
   )}
 
   {/* ── Main content card ── */}
-  <div className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.03] p-7 backdrop-blur-xl md:p-9">
-  {/* Inner glow accents */}
-  <div
-   className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full opacity-25"
-   style={{
-   background:
-    "radial-gradient(circle, rgba(107,79,190,0.2) 0%, transparent 70%)",
-   }}
-   aria-hidden
-  />
-  <div
-   className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full opacity-15"
-   style={{
-   background:
-    "radial-gradient(circle, rgba(45,199,179,0.2) 0%, transparent 70%)",
-   }}
-   aria-hidden
-  />
-
+  <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-7 shadow-sm md:p-9">
   {/* Description */}
-  <p className="relative text-[17px] leading-[1.85] text-white/85 md:text-lg">
+  <p className="text-[17px] leading-[1.85] text-brand-text md:text-lg">
    {item.description}
   </p>
 
   {/* Deep dive section */}
-  <div className="relative mt-7 border-t border-white/[0.06] pt-7">
+  <div className="mt-7 border-t border-gray-100 pt-7">
    <div className="flex items-center gap-2">
    <div className="h-1 w-5 rounded-full bg-[var(--brand-teal)]" />
    <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--brand-teal)]">
     Deep Dive
    </p>
    </div>
-   <p className="mt-4 text-base leading-[1.9] text-white/75 md:text-[17px]">
+   <p className="mt-4 text-base leading-[1.9] text-brand-muted md:text-[17px]">
    {item.details}
    </p>
   </div>
 
   {/* Highlights */}
   {item.highlights && item.highlights.length > 0 && (
-   <div className="relative mt-7 border-t border-white/[0.06] pt-7">
+   <div className="mt-7 border-t border-gray-100 pt-7">
    <div className="flex items-center gap-2">
     <div className="h-1 w-5 rounded-full bg-[var(--brand-purple)]" />
-    <p className="text-xs font-bold uppercase tracking-[0.2em] text-purple-300">
+    <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--brand-purple)]">
     Key Highlights
     </p>
    </div>
@@ -215,10 +197,10 @@ function ContentPanel({ item }: { item: ImpactItem }) {
      className="flex items-start gap-3"
     >
      <CheckCircle2
-     className="mt-0.5 h-[18px] w-[18px] shrink-0 text-[var(--brand-teal)]" 
+     className="mt-0.5 h-[18px] w-[18px] shrink-0 text-[var(--brand-teal)]"
      strokeWidth={2}
      />
-     <span className="text-[15px] leading-[1.75] text-white/75 md:text-base">
+     <span className="text-[15px] leading-[1.75] text-brand-muted md:text-base">
      {h}
      </span>
     </motion.li>
@@ -229,12 +211,12 @@ function ContentPanel({ item }: { item: ImpactItem }) {
 
   {/* External link */}
   {item.url && (
-   <div className="relative mt-7 border-t border-white/[0.06] pt-6">
+   <div className="mt-7 border-t border-gray-100 pt-6">
    <a
     href={item.url}
     target="_blank"
     rel="noopener noreferrer"
-    className="group/link inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-6 py-3 text-sm font-medium text-white/80 transition-all duration-300 hover:border-[var(--brand-teal)]/30 hover:bg-[var(--brand-teal)]/10 hover:text-[var(--brand-teal)]"
+    className="group/link inline-flex items-center gap-2 rounded-full border border-brand-border bg-slate-50 px-6 py-3 text-sm font-medium text-brand-muted transition-all duration-300 hover:border-[var(--brand-teal)] hover:bg-[var(--brand-teal)]/5 hover:text-[var(--brand-teal)]"
    >
     Learn more about {item.title.split(':')[0].trim()}
     <ExternalLink className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-0.5" strokeWidth={2} />
@@ -284,14 +266,14 @@ function NavTabs({
   {/* Arrows */}
   <button
   onClick={() => scroll("left")}
-  className="absolute -left-3 top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 backdrop-blur-sm transition-colors hover:bg-white/10 hover:text-white md:flex"
+  className="absolute -left-3 top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-400 shadow-sm transition-colors hover:border-gray-300 hover:text-gray-700 md:flex"
   aria-label="Scroll left"
   >
   <ChevronLeft className="h-4 w-4" />
   </button>
   <button
   onClick={() => scroll("right")}
-  className="absolute -right-3 top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 backdrop-blur-sm transition-colors hover:bg-white/10 hover:text-white md:flex"
+  className="absolute -right-3 top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-400 shadow-sm transition-colors hover:border-gray-300 hover:text-gray-700 md:flex"
   aria-label="Scroll right"
   >
   <ChevronRight className="h-4 w-4" />
@@ -311,8 +293,8 @@ function NavTabs({
     onClick={() => onSelect(item)}
     className={`group relative flex-shrink-0 rounded-xl px-5 py-3 text-left transition-all duration-300 ${
     isActive
-     ? "bg-white/[0.07] shadow-[0_0_20px_rgba(107,79,190,0.1)]"
-     : "bg-transparent hover:bg-white/[0.04]"
+     ? "bg-white shadow-sm border border-gray-200"
+     : "bg-transparent hover:bg-white/60"
     }`}
    >
     {/* Active indicator bar */}
@@ -326,14 +308,14 @@ function NavTabs({
 
     <span
     className={`block whitespace-nowrap text-[13px] font-semibold tracking-tight transition-colors ${
-     isActive ? "text-white" : "text-white/40 group-hover:text-white/60"
+     isActive ? "text-brand-text" : "text-gray-400 group-hover:text-gray-600"
     }`}
     >
     {item.title}
     </span>
     <span
     className={`mt-0.5 block whitespace-nowrap text-[11px] transition-colors ${
-     isActive ? "text-white/50" : "text-white/20 group-hover:text-white/30"
+     isActive ? "text-brand-muted" : "text-gray-300 group-hover:text-gray-400"
     }`}
     >
     {item.subtitle}
@@ -359,30 +341,7 @@ export default function ImpactPage() {
  }, []);
 
  return (
- <main
-  className="relative min-h-screen overflow-hidden"
-  style={{
-  background:
-   "linear-gradient(175deg, #120528 0%, #0e0620 30%, #0a0412 65%, #06020c 100%)",
-  }}
- >
-  {/* Ambient glow */}
-  <div
-  className="pointer-events-none absolute -left-[15%] top-[5%] h-[60vh] w-[50vw] rounded-full opacity-30"
-  style={{
-   background:
-   "radial-gradient(ellipse, rgba(107,79,190,0.2) 0%, transparent 70%)",
-  }}
-  aria-hidden
-  />
-  <div
-  className="pointer-events-none absolute -right-[10%] top-[40%] h-[50vh] w-[40vw] rounded-full opacity-20"
-  style={{
-   background:
-   "radial-gradient(ellipse, rgba(45,199,179,0.12) 0%, transparent 70%)",
-  }}
-  aria-hidden
-  />
+ <main className="relative min-h-screen overflow-hidden bg-slate-50">
 
   {/* ── Page header ── */}
   <section className="relative z-10 pb-6 pt-28 text-center md:pt-36">
@@ -398,10 +357,10 @@ export default function ImpactPage() {
     Global Impact
     </span>
    </div>
-   <h1 className="text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.06] tracking-[-0.03em] text-white">
+   <h1 className="text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.06] tracking-[-0.03em] text-brand-text">
     Where Purpose Meets Action
    </h1>
-   <p className="mx-auto mt-5 max-w-[540px] text-base leading-relaxed text-white/70 md:text-lg">
+   <p className="mx-auto mt-5 max-w-[540px] text-base leading-relaxed text-brand-muted md:text-lg">
     Explore the partners and movements that turn collaboration into
     measurable, lasting change across the globe.
    </p>
@@ -456,7 +415,7 @@ export default function ImpactPage() {
      className={`h-2 rounded-full transition-all duration-300 ${
      item.id === active.id
       ? "w-7 bg-[var(--brand-teal)]"
-      : "w-2 bg-white/15 hover:bg-white/30"
+      : "w-2 bg-gray-300 hover:bg-gray-400"
      }`}
      aria-label={`Go to ${item.title}`}
     />
