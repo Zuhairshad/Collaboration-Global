@@ -48,7 +48,7 @@ const VIDEOS = [
   {
     id: "R8MEzol5J6g",
     title: "Transforming the Paradigm with Gill Tiney",
-    description: "Gill explores how collaboration shifts us from competition to co-creation — and why that shift changes everything.",
+    description: "Gill explores how collaboration shifts us from competition to co-creation, and why that shift changes everything.",
     duration: "4:12",
   },
   {

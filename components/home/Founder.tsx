@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
@@ -10,20 +10,19 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 
-function parseYouTube(url: string): { id: string; start?: number } {
-  const idMatch = url.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
-  const startMatch = url.match(/[?&]t=(\d+)/);
-  return {
-    id: idMatch?.[1] ?? "",
-    start: startMatch ? Number(startMatch[1]) : undefined,
-  };
-}
+const VIDEO_SRC = "/media/founder-video.mp4";
+const VIDEO_POSTER = "/media/founder-poster.jpg";
 
 export function Founder() {
-  const { id: videoId, start } = parseYouTube(FOUNDER.tedxUrl);
-  const embedSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1${start ? `&start=${start}` : ""}`;
-  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
   const [playing, setPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePlay = () => {
+    setPlaying(true);
+    requestAnimationFrame(() => {
+      videoRef.current?.play().catch(() => {});
+    });
+  };
 
   return (
     <section id="founder" className="bg-slate-50 py-24 md:py-32">
@@ -37,7 +36,7 @@ export function Founder() {
         >
           {/* Label */}
           <motion.div variants={fadeUp}>
-            <SectionLabel>TEDx Talk</SectionLabel>
+            <SectionLabel>Meet the Founder</SectionLabel>
           </motion.div>
 
           {/* Heading */}
@@ -58,65 +57,63 @@ export function Founder() {
           {/* ── BIG VIDEO PLAYER ── */}
           <motion.div
             variants={fadeUp}
-            className="mt-12 w-full max-w-[1100px] overflow-hidden rounded-2xl"
-            style={{ boxShadow: "0 40px 120px rgba(49,207,195,0.08), 0 20px 60px rgba(0,0,0,0.7)" }}
+            className="relative mt-12 w-full max-w-[1100px] overflow-hidden rounded-2xl ring-1 ring-white/5"
+            style={{ boxShadow: "0 40px 120px rgba(49,207,195,0.12), 0 20px 60px rgba(0,0,0,0.55)" }}
           >
-            <div className="relative aspect-video w-full bg-black">
+            <div className="relative aspect-video w-full bg-gradient-to-br from-slate-900 via-slate-950 to-black">
               {playing ? (
-                <iframe
-                  src={embedSrc}
-                  title={`${FOUNDER.name} TEDx Talk`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="absolute inset-0 h-full w-full"
+                <video
+                  ref={videoRef}
+                  src={VIDEO_SRC}
+                  poster={VIDEO_POSTER}
+                  controls
+                  playsInline
+                  className="absolute inset-0 h-full w-full bg-black"
                 />
               ) : (
                 <button
-                  onClick={() => setPlaying(true)}
+                  onClick={handlePlay}
                   className="group absolute inset-0 h-full w-full cursor-pointer"
-                  aria-label="Play TEDx Talk"
+                  aria-label={`Play ${FOUNDER.name} founder video`}
                 >
                   {/* Thumbnail */}
                   <Image
-                    src={thumbnailUrl}
-                    alt={`${FOUNDER.name} TEDx Talk`}
+                    src={VIDEO_POSTER}
+                    alt={`${FOUNDER.name} — founder of Collaboration Global`}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    priority
+                    className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
                   />
 
-                  {/* Subtle dark scrim — keeps image visible but adds depth */}
-                  <div className="absolute inset-0 bg-black/30 transition-colors duration-300 group-hover:bg-black/20" />
+                  {/* Soft scrim with teal vignette for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/55 via-black/20 to-[rgba(49,207,195,0.18)] transition-opacity duration-500 group-hover:opacity-90" />
 
-                  {/* Duration */}
-                  <div className="absolute right-4 top-4 rounded-md bg-black/60 px-2.5 py-1 text-[11px] font-bold tabular-nums text-white backdrop-blur-sm">
-                    19:58
-                  </div>
-
-                  {/* TEDx badge */}
-                  <div className="absolute left-4 top-4 rounded-full bg-[#E62B1E]/90 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
-                    TEDxMaidMarianWay
+                  {/* Brand badge */}
+                  <div className="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white shadow-[0_4px_20px_rgba(0,0,0,0.25)] backdrop-blur-md ring-1 ring-white/20">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-teal)]" />
+                    Founder Story
                   </div>
 
                   {/* Centre play button */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="relative">
-                      <div className="absolute inset-0 scale-[2] rounded-full bg-[var(--brand-teal)]/20 blur-2xl" />
-                      <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-white/25 bg-white/10 backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:bg-white/20">
-                        <Play className="ml-1.5 h-8 w-8 text-white" fill="white" strokeWidth={0} />
+                      <div className="absolute inset-0 scale-[2.4] rounded-full bg-[var(--brand-teal)]/25 blur-2xl transition-opacity duration-500 group-hover:opacity-80" />
+                      <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-white/30 bg-white/15 backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:bg-white/25 group-hover:border-white/50">
+                        <Play className="ml-1.5 h-8 w-8 text-white drop-shadow-lg" fill="white" strokeWidth={0} />
                       </div>
                     </div>
                   </div>
 
-                  {/* Bottom overlay: title + speaker */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent px-6 pb-6 pt-16">
-                    <p className="text-[15px] font-bold leading-snug text-white">
-                      What Comes Next? How True Collaboration Changes Everything
-                    </p>
-                    <div className="mt-2.5 flex items-center gap-2.5">
-                      <div className="relative h-7 w-7 shrink-0 overflow-hidden rounded-full ring-1 ring-white/20">
-                        <Image src="/media/gill-portrait.jpeg" alt="Gill Tiney" fill className="object-cover" sizes="28px" />
+                  {/* Bottom overlay: speaker */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent px-6 pb-6 pt-20">
+                    <div className="flex items-center gap-3">
+                      <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full ring-2 ring-white/25">
+                        <Image src="/media/gill-portrait.jpeg" alt="Gill Tiney" fill className="object-cover" sizes="36px" />
                       </div>
-                      <span className="text-[13px] text-white/70">{FOUNDER.name} · {FOUNDER.title}</span>
+                      <div className="flex flex-col text-left leading-tight">
+                        <span className="text-[14px] font-semibold text-white">{FOUNDER.name}</span>
+                        <span className="text-[12px] text-white/70">{FOUNDER.title}</span>
+                      </div>
                     </div>
                   </div>
                 </button>

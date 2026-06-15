@@ -32,7 +32,6 @@ html {
 body {
   background: var(--brand-bg);
   color: var(--brand-text);
-  text-align: justify;
 }
 
 ::selection {

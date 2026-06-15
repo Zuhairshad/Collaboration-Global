@@ -19,7 +19,7 @@ const POSTS: Post[] = [
     slug: "the-building-blocks-of-your-best-collaboration",
     title: "The Building Blocks of Your Best Collaboration!",
     excerpt:
-      "The rules for creating an amazing collaboration are also, pretty much, the same rules to lead your best life — discover the principles that make both work.",
+      "The rules for creating an amazing collaboration are also, pretty much, the same rules to lead your best life, discover the principles that make both work.",
     date: "April 30, 2024",
     readTime: "6 min read",
     category: "Collaboration",
@@ -40,12 +40,12 @@ const POSTS: Post[] = [
           Take social media as an example. You don&apos;t have to be on every last platform churning out banal content that is easily ignored. You need to choose your audience and hang out where they hang out. Limit yourself to 3 platforms and BE there, at least 3 times or more a week. By being there I mean posting, commenting, reviewing, supporting and sharing your knowledge.
         </p>
         <p>
-          This visibility will bring connections and opportunities, but the work doesn&apos;t stop there. Now you have connected you need to engage and deepen the connection. All of this takes discipline, commitment and consistency. No fast pass to showing up. The same with family and friends — the best relationship is the one you have spent time nurturing and being there for them.
+          This visibility will bring connections and opportunities, but the work doesn&apos;t stop there. Now you have connected you need to engage and deepen the connection. All of this takes discipline, commitment and consistency. No fast pass to showing up. The same with family and friends, the best relationship is the one you have spent time nurturing and being there for them.
         </p>
 
         <h2>2. Build Trust</h2>
         <p>
-          Once you have done this, usually a 3 month minimum commitment, you can then begin to deepen the connection and build trust. People need to be able to rely on you, utilise your knowledge, try it out, see if it works — to see whether you are deserving of their time. They want to be reassured of your integrity and feel confident that if they chose to engage you they will be able to boast how wonderful you are. A tricky thing to do if you disappear from view. Your reputation is built on trust.
+          Once you have done this, usually a 3 month minimum commitment, you can then begin to deepen the connection and build trust. People need to be able to rely on you, utilise your knowledge, try it out, see if it works, to see whether you are deserving of their time. They want to be reassured of your integrity and feel confident that if they chose to engage you they will be able to boast how wonderful you are. A tricky thing to do if you disappear from view. Your reputation is built on trust.
         </p>
         <p>
           It is so easy for all of us to take family and friends for granted, but trust can still be lost if we are not careful. Be respectful of each other&apos;s time.
@@ -53,20 +53,20 @@ const POSTS: Post[] = [
 
         <h2>3. Confirm Common Goals and Values</h2>
         <p>
-          There is no point working with someone if your goals are not aligned. They will quickly see through you if your only goal is to make a heap of money from them. Likewise it is difficult to be inspired by someone and want to show up for them if their only goal is simply to make a ton of cash. There is nothing wrong with making money, but for the good it can do — not simply for the act of having it.
+          There is no point working with someone if your goals are not aligned. They will quickly see through you if your only goal is to make a heap of money from them. Likewise it is difficult to be inspired by someone and want to show up for them if their only goal is simply to make a ton of cash. There is nothing wrong with making money, but for the good it can do, not simply for the act of having it.
         </p>
         <p>
-          Digging deeper to discover your aligned values is also a practical exercise to ensure you will enjoy working with this person. They do not have to be the same, but within the same family of values and aligned with each other&apos;s purpose. If you have been regularly showing up and creating content this will already be evident to the other person — they may not realise it yet but that is why they feel comfortable in your company. They already know subconsciously that you are aligned.
+          Digging deeper to discover your aligned values is also a practical exercise to ensure you will enjoy working with this person. They do not have to be the same, but within the same family of values and aligned with each other&apos;s purpose. If you have been regularly showing up and creating content this will already be evident to the other person, they may not realise it yet but that is why they feel comfortable in your company. They already know subconsciously that you are aligned.
         </p>
 
         <h2>4. The Grown Up Conversation</h2>
         <p>
-          Before you embark on the collaboration you will need to explore each other&apos;s mindset, attitudes and behaviours. Obviously you can embark on a collaboration without this conversation, but much better to have it before there is an issue than wait until later. That is why it is known in our community as &lsquo;the grown up conversation&rsquo; — where ego is put to one side, trust deepens, vulnerability is allowed and the relationship can grow. It explores triggers, limiting beliefs, stress hot spots and resolution responses.
+          Before you embark on the collaboration you will need to explore each other&apos;s mindset, attitudes and behaviours. Obviously you can embark on a collaboration without this conversation, but much better to have it before there is an issue than wait until later. That is why it is known in our community as &lsquo;the grown up conversation&rsquo;, where ego is put to one side, trust deepens, vulnerability is allowed and the relationship can grow. It explores triggers, limiting beliefs, stress hot spots and resolution responses.
         </p>
 
         <h2>5. Rules of the Game</h2>
         <p>
-          The fun part — where you can choose how you operate for your optimum work flow and understand how others like to be treated. Set it up and no arguments later down the line. If your creativity is best at 5am you won&apos;t necessarily be able to expect your fellow collaborators to be up at the crack of dawn with you.
+          The fun part, where you can choose how you operate for your optimum work flow and understand how others like to be treated. Set it up and no arguments later down the line. If your creativity is best at 5am you won&apos;t necessarily be able to expect your fellow collaborators to be up at the crack of dawn with you.
         </p>
 
         <h2>6. Set Up the Collaboration Profiles</h2>
@@ -74,19 +74,19 @@ const POSTS: Post[] = [
           In short, the 12 profiles are: Visionary, Catalyst, Driver, Strategist, Financer, Salesperson, Monitor, Nurturer, Tweaker, Technician, Multiplier, Finisher. Not a personality profile at all, but a guideline to the roles required. Anyone can be any of them, but by having each role adopted as a responsibility at different times within the project a more pleasing outcome can be expected.
         </p>
         <p>
-          Away from the work environment we all like to know where we add value in a family or friendship group — take on that role and you will be indispensable.
+          Away from the work environment we all like to know where we add value in a family or friendship group, take on that role and you will be indispensable.
         </p>
 
-        <h2>7. GSD — Get It Done!</h2>
+        <h2>7. GSD, Get It Done!</h2>
         <p>
           We can talk until we are blue in the face but at some point we have to take action. By spending time in this preparation as described here, the outcome is much more likely to be a success. But sometimes you learn best by just getting started.
         </p>
         <p>
-          Whether in business or in your daily life, we all need to collaborate. Each collaboration — whether cooking Christmas dinner together or booking a family holiday — is a thing of joy when following these guidelines.
+          Whether in business or in your daily life, we all need to collaborate. Each collaboration, whether cooking Christmas dinner together or booking a family holiday, is a thing of joy when following these guidelines.
         </p>
 
         <blockquote>
-          &ldquo;80% of success is showing up.&rdquo; — Woody Allen
+          &ldquo;80% of success is showing up.&rdquo;, Woody Allen
         </blockquote>
 
         <p>
@@ -99,7 +99,7 @@ const POSTS: Post[] = [
     slug: "are-you-awake-to-the-social-dilemma",
     title: "Are you awake to The Social Dilemma?",
     excerpt:
-      "Social media connects us and divides us in equal measure. Gill explores how we can use these tools with intention — not be used by them.",
+      "Social media connects us and divides us in equal measure. Gill explores how we can use these tools with intention, not be used by them.",
     date: "March 13, 2024",
     readTime: "5 min read",
     category: "Mindset",
@@ -109,12 +109,12 @@ const POSTS: Post[] = [
           Social media can be a life saver, but the flip side is a sinister world that will cause a social implosion of our own making. What can we do to prevent it?
         </p>
         <p>
-          Have you seen the documentary The Social Dilemma recently on Netflix? Once I saw this powerful and disturbing message, I went searching further. I very quickly discovered The Dissenters podcast and their interview with Observer journalist Carole Cadwalladr, which added meat to the bone. Her TED Talk opens up a hornet&apos;s nest — right in the laps of the people causing the problem.
+          Have you seen the documentary The Social Dilemma recently on Netflix? Once I saw this powerful and disturbing message, I went searching further. I very quickly discovered The Dissenters podcast and their interview with Observer journalist Carole Cadwalladr, which added meat to the bone. Her TED Talk opens up a hornet&apos;s nest, right in the laps of the people causing the problem.
         </p>
 
         <h2>What the documentary reveals</h2>
         <p>
-          In a nutshell, by using social media we are allowing ourselves to become saleable products and are being manipulated to orchestrate our world for the minority who couldn&apos;t care less for the majority. We are constantly being led by the addictive qualities of the demon that is taking over our lives — social media.
+          In a nutshell, by using social media we are allowing ourselves to become saleable products and are being manipulated to orchestrate our world for the minority who couldn&apos;t care less for the majority. We are constantly being led by the addictive qualities of the demon that is taking over our lives, social media.
         </p>
         <p>
           The people in the film were all heavily involved at very senior levels during the heyday and yet one by one left the jobs that they were proud of because of the sinister direction that the platforms were taking, without any responsibility being taken by the people at the top.
@@ -123,26 +123,26 @@ const POSTS: Post[] = [
           <em>Interestingly, none of the top people in these industries allow their children access to smart technology.</em>
         </p>
         <p>
-          We all need to be aware that advertising has been totally personalised, to the extent that false information can — and probably has already been — fed to us to influence our actions, whether that be voting or taking to the streets in protest. These adverts then disappear. We assume everyone has had them, but apparently not. This false information affects not only people&apos;s livelihoods but also huge swathes of populations being ethnically cleansed. The potential for global domination is here.
+          We all need to be aware that advertising has been totally personalised, to the extent that false information can, and probably has already been, fed to us to influence our actions, whether that be voting or taking to the streets in protest. These adverts then disappear. We assume everyone has had them, but apparently not. This false information affects not only people&apos;s livelihoods but also huge swathes of populations being ethnically cleansed. The potential for global domination is here.
         </p>
 
         <h2>What Collaboration Global does about it</h2>
         <p>
-          Part of our organisation is about coming together to discover information like this — not to take it at face value, but to research, discuss and consider how it might affect us and what we might be able to do about it. We duly spent our monthly Evolve session considering the future potential for our society in light of this information.
+          Part of our organisation is about coming together to discover information like this, not to take it at face value, but to research, discuss and consider how it might affect us and what we might be able to do about it. We duly spent our monthly Evolve session considering the future potential for our society in light of this information.
         </p>
         <p>
-          This could be a very depressing conversation. Indeed, when asked, the founder of Pinterest believed civil war was the expected outcome, unless we do something about it. No one in the film offered the solution — they seem to be waiting for those at the top to find a conscience and take action.
+          This could be a very depressing conversation. Indeed, when asked, the founder of Pinterest believed civil war was the expected outcome, unless we do something about it. No one in the film offered the solution, they seem to be waiting for those at the top to find a conscience and take action.
         </p>
         <p>
           At Collaboration Global our culture is solution focused. Being part of a community means we do not consider this as a fait accompli or that we are defenceless to do anything about it.
         </p>
 
         <blockquote>
-          &ldquo;Never doubt that a small group of committed citizens can change the world. Indeed, it is the only thing that ever has.&rdquo; — Margaret Mead
+          &ldquo;Never doubt that a small group of committed citizens can change the world. Indeed, it is the only thing that ever has.&rdquo;, Margaret Mead
         </blockquote>
 
         <p>
-          Like no other time we are more connected through social media and yet, due to the global pandemic, it is concurrently one of the most isolating times in history. We identify that being part of a nurturing community is essential to good mental health. At Collaboration Global we work together to help each other and facilitate personal, emotional, physical, and spiritual growth — ensuring we are practising a culture based on love, connection and abundance. A world away from much of social media that promotes fear, scarcity and competition.
+          Like no other time we are more connected through social media and yet, due to the global pandemic, it is concurrently one of the most isolating times in history. We identify that being part of a nurturing community is essential to good mental health. At Collaboration Global we work together to help each other and facilitate personal, emotional, physical, and spiritual growth, ensuring we are practising a culture based on love, connection and abundance. A world away from much of social media that promotes fear, scarcity and competition.
         </p>
         <p>
           We don&apos;t always know the solutions to our world&apos;s challenges, but by creating awareness and being proactive to bring these topics to the front of people&apos;s thinking we can be ready to mobilise and provide peaceful solutions. Would you like to be part of the solution?
@@ -164,10 +164,10 @@ const POSTS: Post[] = [
           Being &lsquo;on holiday&rsquo; is a powerful state of mind.
         </p>
         <p>
-          I discovered a new walk yesterday and for 2 hours I was &lsquo;on holiday&rsquo; — only a 10-minute drive from where I live. It was along the Wey and Arun Canal in West Sussex and along the way we met and spoke to at least 15 people, 10 dogs, and 1 horse. We still puzzled over how locks actually worked and marvelled at the bravery of the person who suggested building a canal in the first place — what a feat of engineering over a hundred years ago, it just blows my mind.
+          I discovered a new walk yesterday and for 2 hours I was &lsquo;on holiday&rsquo;, only a 10-minute drive from where I live. It was along the Wey and Arun Canal in West Sussex and along the way we met and spoke to at least 15 people, 10 dogs, and 1 horse. We still puzzled over how locks actually worked and marvelled at the bravery of the person who suggested building a canal in the first place, what a feat of engineering over a hundred years ago, it just blows my mind.
         </p>
         <p>
-          We spent time trying to identify the amazing array of wildflowers and wondered what breed the pure white cows were — refraining from giving it a quick Google, using a phone only as a camera and staying away from social media. We also loved the silence of no traffic noise and only the occasional waterfall to listen to alongside the birds.
+          We spent time trying to identify the amazing array of wildflowers and wondered what breed the pure white cows were, refraining from giving it a quick Google, using a phone only as a camera and staying away from social media. We also loved the silence of no traffic noise and only the occasional waterfall to listen to alongside the birds.
         </p>
         <p>
           It was a total break from the norm. We nearly didn&apos;t go because it had looked like rain, but the sun shone just for us and it was beautiful. Just like a full week away, it did wonders for the heart and soul as well as the body.
@@ -175,21 +175,21 @@ const POSTS: Post[] = [
 
         <h2>The permission to simply be</h2>
         <p>
-          Being on holiday — truly on holiday, not &ldquo;working from a nicer location&rdquo; — requires giving yourself permission to exist without output. No deliverables. No check-ins. No inbox. Just you, moving through the world at the pace the world was actually designed for.
+          Being on holiday, truly on holiday, not &ldquo;working from a nicer location&rdquo;, requires giving yourself permission to exist without output. No deliverables. No check-ins. No inbox. Just you, moving through the world at the pace the world was actually designed for.
         </p>
         <p>
           What pocket of your world have you discovered lately? Can you suspend your everyday life for an hour or two to indulge in a mini holiday?
         </p>
 
         <blockquote>
-          &ldquo;Almost everything will work again if you unplug it for a few minutes — including you.&rdquo; — Anne Lamott
+          &ldquo;Almost everything will work again if you unplug it for a few minutes, including you.&rdquo;, Anne Lamott
         </blockquote>
 
         <p>
           Rest is not the opposite of productivity. It is the condition for it. The walk produced nothing. And yet I came home with three ideas I had not been able to access when I was &ldquo;trying.&rdquo;
         </p>
         <p>
-          If you are reading this and cannot remember the last time you truly switched off — not just reduced your workload, but genuinely rested — it is not an indulgence. It is a practice. It is, in fact, one of the most collaborative things you can do, because it makes you more fully available to every person and project that matters to you.
+          If you are reading this and cannot remember the last time you truly switched off, not just reduced your workload, but genuinely rested, it is not an indulgence. It is a practice. It is, in fact, one of the most collaborative things you can do, because it makes you more fully available to every person and project that matters to you.
         </p>
         <p>
           Find your canal path. Go slow. Leave the phone in your pocket. Have a great week everyone.
@@ -201,7 +201,7 @@ const POSTS: Post[] = [
     slug: "welcome-to-collaboration-global",
     title: "Welcome to Collaboration Global",
     excerpt:
-      "An introduction to the movement — where we came from, what we stand for, and why collaboration is the most powerful thing we can do together.",
+      "An introduction to the movement, where we came from, what we stand for, and why collaboration is the most powerful thing we can do together.",
     date: "December 28, 2019",
     readTime: "4 min read",
     category: "Community",
@@ -211,12 +211,12 @@ const POSTS: Post[] = [
           I am so proud to introduce you to the latest incarnation of the movement to transform our world through collaboration.
         </p>
         <p>
-          Those of you who have been following my journey — through the birth of BeCollaboration, my book Making of a Movement, online publication and podcast — will know that I am passionate about making a difference, for one and for many. In fact, for as many people as possible. Which is why collaboration is so important.
+          Those of you who have been following my journey, through the birth of BeCollaboration, my book Making of a Movement, online publication and podcast, will know that I am passionate about making a difference, for one and for many. In fact, for as many people as possible. Which is why collaboration is so important.
         </p>
 
         <h2>Where it began</h2>
         <p>
-          At the beginning of the last decade I realised that for anyone to achieve anything it is better to travel with a group of passionate people than to achieve greatness on your own. In fact, no one really does it alone — even the lone marathon runner will have a team of people supporting them.
+          At the beginning of the last decade I realised that for anyone to achieve anything it is better to travel with a group of passionate people than to achieve greatness on your own. In fact, no one really does it alone, even the lone marathon runner will have a team of people supporting them.
         </p>
         <p>
           For us to make a dent in this world we need to understand the art of collaboration, the nuances of what influences us, and how we can connect at a deeper level in order to create massive impact through collaboration. That is our mission at Collaboration Global.
@@ -227,7 +227,7 @@ const POSTS: Post[] = [
           By creating a safe space to meet, share, discuss, develop and take action we become the catalyst for great collaborations. Online and off, there will be like-hearted people who know how to communicate, create, challenge and collaborate. They will share their knowledge so you too can be bigger than you are alone.
         </p>
         <p>
-          Collaboration isn&apos;t always a breeze — I have had to learn that the hard way — but what I do know is that by being around people who are passionate to make a difference, who understand themselves and want to support you in your mission, then together we can transform the world.
+          Collaboration isn&apos;t always a breeze, I have had to learn that the hard way, but what I do know is that by being around people who are passionate to make a difference, who understand themselves and want to support you in your mission, then together we can transform the world.
         </p>
 
         <h2>An invitation</h2>
@@ -235,11 +235,11 @@ const POSTS: Post[] = [
           No small feat, I know, but just imagine if everyone started by transforming themselves, then collaborated for the good of others and shared what they learn to pay it forward for society. What could our world look like then?
         </p>
         <p>
-          You could be part of it. Connect with Collaboration Global and join our community as we grow our movement and empower each other to make a difference — to one and to many.
+          You could be part of it. Connect with Collaboration Global and join our community as we grow our movement and empower each other to make a difference, to one and to many.
         </p>
 
         <blockquote>
-          &ldquo;Collaboration is not a strategy. It is a way of being — and when you practise it, it changes you.&rdquo; — Gill Tiney
+          &ldquo;Collaboration is not a strategy. It is a way of being, and when you practise it, it changes you.&rdquo;, Gill Tiney
         </blockquote>
 
         <p>

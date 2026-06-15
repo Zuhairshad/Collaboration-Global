@@ -45,7 +45,7 @@ export const MEDIA_REGISTRY: readonly MediaItem[] = [
     src: "/media/member-anne-scottlin.jpg",
     category: "collaborators",
     title: "Anne Scottlin",
-    caption: "Anne Scottlin — community member and collaboration champion.",
+    caption: "Anne Scottlin, community member and collaboration champion.",
     relatedEntity: "Anne Scottlin",
   },
   {
@@ -53,7 +53,7 @@ export const MEDIA_REGISTRY: readonly MediaItem[] = [
     src: "/media/member-harold-azmann.jpeg",
     category: "collaborators",
     title: "Harald Azmann",
-    caption: "Harald Azmann — values-led entrepreneur and Collaboration Global member.",
+    caption: "Harald Azmann, values-led entrepreneur and Collaboration Global member.",
     relatedEntity: "Harald Azmann",
   },
   {
@@ -61,7 +61,7 @@ export const MEDIA_REGISTRY: readonly MediaItem[] = [
     src: "/media/member-alessandro-ferullo.jpg",
     category: "collaborators",
     title: "Alessandro Ferullo",
-    caption: "Alessandro Ferullo — holistic business leader and community member.",
+    caption: "Alessandro Ferullo, holistic business leader and community member.",
     relatedEntity: "Alessandro Ferullo",
   },
 
@@ -79,7 +79,7 @@ export const MEDIA_REGISTRY: readonly MediaItem[] = [
     src: "/media/gill-portrait.jpeg",
     category: "founder",
     title: "Gill Tiney",
-    caption: "Gill Tiney — founder of Collaboration Global and author of The Making of a Movement.",
+    caption: "Gill Tiney, founder of Collaboration Global and author of The Making of a Movement.",
     relatedEntity: "Gill Tiney",
   },
   {
@@ -94,7 +94,7 @@ export const MEDIA_REGISTRY: readonly MediaItem[] = [
     id: "founder-laptop",
     src: "/media/gill-laptop.jpg",
     category: "founder",
-    title: "Gill Tiney — Working",
+    title: "Gill Tiney, Working",
     caption: "Gill Tiney building the collaboration movement from the ground up.",
     relatedEntity: "Gill Tiney",
   },
@@ -118,7 +118,7 @@ export const MEDIA_REGISTRY: readonly MediaItem[] = [
     id: "community-london-dinner",
     src: "/media/community-london-dinner.jpeg",
     category: "lifestyle",
-    title: "Community Dinner — London",
+    title: "Community Dinner, London",
     caption: "Members of Collaboration Global gathering over dinner in London.",
   },
   {
@@ -161,7 +161,7 @@ export const MEDIA_REGISTRY: readonly MediaItem[] = [
     src: "/media/community-connection-sunset.jpg",
     category: "lifestyle",
     title: "Connection at Sunset",
-    caption: "Friendship, joy, and abundance — the heart of Collaboration Global.",
+    caption: "Friendship, joy, and abundance, the heart of Collaboration Global.",
   },
   {
     id: "story-collaboration",
@@ -227,7 +227,7 @@ export const MEDIA_REGISTRY: readonly MediaItem[] = [
     id: "book-together-wonderful",
     src: "/media/book-together-wonderful.jpg",
     category: "partners",
-    title: "The Making of a Movement — Book",
+    title: "The Making of a Movement, Book",
     caption: "Gill Tiney's book on building a collaboration movement from the ground up.",
     relatedEntity: "Books",
   },

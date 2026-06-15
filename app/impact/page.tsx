@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -331,14 +332,32 @@ function NavTabs({
 /* ─────────────────────────────────────────────
  Page
  ───────────────────────────────────────────── */
+const PARTNER_ROUTES: Record<string, string> = {
+ b1g1: "/impact/b1g1",
+ orb: "/impact/orb",
+ "love-foundation": "/impact/love-foundation",
+ "mental-health": "/impact/mental-health",
+ "arts-culture": "/impact/arts-culture",
+ pinksocks: "/impact/pinksocks",
+};
+
 export default function ImpactPage() {
+ const router = useRouter();
  const [active, setActive] = useState<ImpactItem>(GLOBAL_IMPACT_DATA[0]);
  const [playing, setPlaying] = useState(false);
 
- const handleSelect = useCallback((item: ImpactItem) => {
- setActive(item);
- setPlaying(false);
- }, []);
+ const handleSelect = useCallback(
+ (item: ImpactItem) => {
+  const route = PARTNER_ROUTES[item.id];
+  if (route) {
+  router.push(route);
+  return;
+  }
+  setActive(item);
+  setPlaying(false);
+ },
+ [router]
+ );
 
  return (
  <main className="relative min-h-screen overflow-hidden bg-slate-50">

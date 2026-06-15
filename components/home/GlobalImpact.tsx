@@ -127,8 +127,7 @@ export function GlobalImpact() {
     return (
         <section
             id="impact"
-            className="py-12 md:py-16 overflow-hidden relative"
-            style={{ background: "linear-gradient(135deg, #4a4396 0%, #655bb3 30%, #31cfc3 60%, #7be0d8 100%)" }}
+            className="bg-slate-50 py-12 md:py-16 overflow-hidden relative"
         >
             <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8 relative">
 
@@ -148,6 +147,7 @@ export function GlobalImpact() {
 
                         const styles = getCardStyles(offset);
                         const isActive = offset === 0;
+                        const borderColor = idx % 2 === 0 ? "#655bb3" : "#31cfc3";
 
                         return (
                             <motion.div
@@ -169,11 +169,11 @@ export function GlobalImpact() {
                                     damping: 38,
                                     mass: 1,
                                 }}
-                                style={{ zIndex: styles.zIndex }}
-                                className={`absolute top-0 w-[300px] h-[380px] sm:w-[340px] sm:h-[420px] md:w-[380px] md:h-[480px] rounded-[32px] overflow-hidden border transition-all duration-300 select-none text-left flex flex-col justify-between touch-pan-y cursor-grab active:cursor-grabbing text-gray-900 ${
+                                style={{ zIndex: styles.zIndex, borderColor, borderWidth: 4 }}
+                                className={`absolute top-0 w-[300px] h-[380px] sm:w-[340px] sm:h-[420px] md:w-[380px] md:h-[480px] overflow-hidden border-solid transition-all duration-300 select-none text-left flex flex-col justify-between touch-pan-y cursor-grab active:cursor-grabbing text-gray-900 ${
                                     isActive
-                                        ? "bg-white border-white shadow-2xl"
-                                        : "bg-white/70 border-white/50 shadow-md"
+                                        ? "bg-white shadow-2xl"
+                                        : "bg-white/95 shadow-md"
                                 }`}
                             >
                                 {/* Card Internal Layout Base */}
@@ -210,7 +210,7 @@ export function GlobalImpact() {
 
                                 {/* Subtle dimming on inactive cards */}
                                 {!isActive && (
-                                    <div className="absolute inset-0 bg-white/30 pointer-events-none" />
+                                    <div className="absolute inset-0 bg-slate-50/40 pointer-events-none" />
                                 )}
                             </motion.div>
                         );
@@ -224,7 +224,7 @@ export function GlobalImpact() {
                     <div className="flex items-center justify-center gap-2 sm:gap-6">
                         <button
                             onClick={handlePrev}
-                            className="p-2 sm:p-3 text-white/70 hover:text-white transition-colors cursor-pointer"
+                            className="p-2 sm:p-3 text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
                             aria-label="Swipe left / previous partner"
                         >
                             <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -239,7 +239,7 @@ export function GlobalImpact() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -4 }}
                                 transition={{ duration: 0.15 }}
-                                className="text-[clamp(1.5rem,2.8vw,2.4rem)] font-bold leading-tight tracking-tight text-white px-1"
+                                className="text-[clamp(1.5rem,2.8vw,2.4rem)] font-bold leading-tight tracking-tight text-brand-text px-1"
                             >
                                 Where Changemakers Connect.
                             </motion.h2>
@@ -247,7 +247,7 @@ export function GlobalImpact() {
 
                         <button
                             onClick={handleNext}
-                            className="p-2 sm:p-3 text-white/70 hover:text-white transition-colors cursor-pointer"
+                            className="p-2 sm:p-3 text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
                             aria-label="Swipe right / next partner"
                         >
                             <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -257,15 +257,15 @@ export function GlobalImpact() {
                     </div>
 
                     {/* Muted Subtitle directly below */}
-                    <p className="mt-1.5 sm:mt-2 text-[13px] sm:text-[14px] text-white/70 max-w-md mx-auto px-4">
+                    <p className="mt-1.5 sm:mt-2 text-[13px] sm:text-[14px] text-brand-muted max-w-md mx-auto px-4">
                         Collaboration Global brings purpose-driven leaders together to build projects of true significance.
                     </p>
 
-                    {/* Premium Black Pill Button exactly like the Framer screenshot CTA */}
+                    {/* CTA pill */}
                     <div className="mt-4 sm:mt-5 flex justify-center">
                         <a
                             href="/programs/collaborator-pro"
-                            className="px-6 py-2.5 bg-white hover:bg-white/90 text-gray-900 text-[13px] sm:text-[14px] font-medium tracking-wide rounded-full transition-all shadow-sm block"
+                            className="px-6 py-2.5 bg-[var(--brand-purple)] hover:bg-[var(--brand-purple-hover)] text-white text-[13px] sm:text-[14px] font-medium tracking-wide rounded-full transition-all shadow-sm block"
                         >
                             Learn more
                         </a>
@@ -279,8 +279,8 @@ export function GlobalImpact() {
                                 onClick={() => setActiveIndex(i)}
                                 className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                                     i === activeIndex
-                                        ? "w-4 sm:w-5 bg-white"
-                                        : "w-1.5 bg-white/30 hover:bg-white/60"
+                                        ? "w-4 sm:w-5 bg-[var(--brand-purple)]"
+                                        : "w-1.5 bg-slate-300 hover:bg-slate-400"
                                 }`}
                                 aria-label={`Select partner ${i + 1}`}
                             />

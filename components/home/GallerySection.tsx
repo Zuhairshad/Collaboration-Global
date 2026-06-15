@@ -43,10 +43,10 @@ export function GallerySection() {
       </motion.div>
 
       <Container>
-        {/* Top row — 4 expandable images */}
+        {/* Top row, 4 expandable images */}
         <ExpandableGallery images={TOP_IMAGES} />
 
-        {/* Middle — 2 landscape images */}
+        {/* Middle, 2 landscape images */}
         <div className="my-3 grid grid-cols-2 gap-3">
           <div className="relative aspect-[16/9] overflow-hidden rounded-2xl shadow-sm">
             <Image
@@ -68,7 +68,7 @@ export function GallerySection() {
           </div>
         </div>
 
-        {/* Bottom row — 4 expandable images */}
+        {/* Bottom row, 4 expandable images */}
         <ExpandableGallery images={BOTTOM_IMAGES} />
       </Container>
     </section>

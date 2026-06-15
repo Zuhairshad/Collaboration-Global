@@ -158,7 +158,7 @@ const BENEFITS = [
   },
   {
     title: "Video Tutorials & Support Materials",
-    body: "A growing library of video content covering business, personal development and collaboration — on mobile and desktop, any time you need it.",
+    body: "A growing library of video content covering business, personal development and collaboration, on mobile and desktop, any time you need it.",
   },
   {
     title: "Growing Resource Library",
@@ -176,7 +176,7 @@ export default function AcademyPage() {
       <section className="relative flex min-h-screen flex-col justify-end overflow-hidden">
         <Image
           src="/images/hero-collaboration.png"
-          alt="All together different — Collaborator Academy"
+          alt="All together different, Collaborator Academy"
           fill
           priority
           className="object-cover"
@@ -270,7 +270,7 @@ export default function AcademyPage() {
                 variants={fadeUp}
                 className="mt-4 text-[15px] leading-[1.85] text-brand-muted"
               >
-                We are a community who share their knowledge. No one has all the answers — but together we can work out 99.9% of what we need. With 24/7 access via mobile and desktop, Gill Tiney&apos;s lifetime of experience in collaborative success is always within reach.
+                We are a community who share their knowledge. No one has all the answers, but together we can work out 99.9% of what we need. With 24/7 access via mobile and desktop, Gill Tiney&apos;s lifetime of experience in collaborative success is always within reach.
               </motion.p>
 
               {/* Mobile image */}
@@ -290,7 +290,7 @@ export default function AcademyPage() {
               </motion.div>
             </motion.div>
 
-            {/* Image — desktop */}
+            {/* Image, desktop */}
             <RevealOnScroll className="hidden md:block">
               <div className="overflow-hidden rounded-2xl shadow-sm">
                 <Image
@@ -405,7 +405,7 @@ export default function AcademyPage() {
                 </div>
                 <p className="mt-1 text-xs text-brand-dim">Cancel anytime · No contracts</p>
                 <p className="mt-5 text-[13.5px] leading-relaxed text-brand-muted">
-                  Membership to Collaboration Global — Connect, Collaborate, Grow.
+                  Membership to Collaboration Global, Connect, Collaborate, Grow.
                 </p>
                 <ul className="mt-5 space-y-2.5">
                   {[

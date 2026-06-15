@@ -112,7 +112,7 @@ const PILLARS = [
   {
     icon: Heart,
     title: "Connect",
-    body: "Connect more deeply to yourself and others. Love is our superpower — but how can we love others if we don't have capacity for ourselves?",
+    body: "Connect more deeply to yourself and others. Love is our superpower, but how can we love others if we don't have capacity for ourselves?",
   },
   {
     icon: Users,
@@ -127,7 +127,7 @@ const PILLARS = [
   {
     icon: Compass,
     title: "Discover",
-    body: "Discover what the world looks like when we operate from abundance — partnering with B1G1 to give as we grow.",
+    body: "Discover what the world looks like when we operate from abundance, partnering with B1G1 to give as we grow.",
   },
 ] as const;
 
@@ -146,7 +146,7 @@ const INCLUDED = [
   },
   {
     title: "Podcast Guest Appearance",
-    body: "Be a featured guest on the Being Human — Hidden Depths podcast to share your story and expertise.",
+    body: "Be a featured guest on the Being Human, Hidden Depths podcast to share your story and expertise.",
   },
   {
     title: "Private Community Groups",
@@ -166,7 +166,7 @@ const INCLUDED = [
   },
   {
     title: "Full Academy Access",
-    body: "Everything inside the Collaborator Academy — meetings, resources, Q&As — is fully included.",
+    body: "Everything inside the Collaborator Academy, meetings, resources, Q&As, is fully included.",
   },
   {
     title: "Orientation Sessions",
@@ -224,7 +224,7 @@ export default function CollaboratorProPage() {
               variants={staggerItem}
               className="mt-5 max-w-[500px] text-[16px] leading-relaxed text-white/65"
             >
-              Collaborator Pro is full community membership — the platform, the people, and the support to raise your profile and build something of real significance.
+              Collaborator Pro is full community membership, the platform, the people, and the support to raise your profile and build something of real significance.
             </motion.p>
             <motion.div
               variants={staggerItem}
@@ -235,7 +235,7 @@ export default function CollaboratorProPage() {
                 variant="accent"
                 className="gap-2 text-sm normal-case tracking-normal"
               >
-                Join Collaborator Pro — £50/month
+                Join Collaborator Pro, £50/month
                 <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={1.8} />
               </Button>
               <Button
@@ -294,7 +294,7 @@ export default function CollaboratorProPage() {
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
-            {/* Image — desktop */}
+            {/* Image, desktop */}
             <RevealOnScroll className="hidden md:block">
               <div className="overflow-hidden rounded-2xl shadow-sm">
                 <Image
@@ -328,13 +328,13 @@ export default function CollaboratorProPage() {
                 variants={fadeUp}
                 className="mt-5 text-[15px] leading-[1.85] text-brand-muted"
               >
-                In business we are all doing a million different things to stand out in our marketplace. As Pro members, we combine our skills and talents to help each other grow and ultimately collaborate on projects together — paying forward our learning to support others in business and beyond.
+                In business we are all doing a million different things to stand out in our marketplace. As Pro members, we combine our skills and talents to help each other grow and ultimately collaborate on projects together, paying forward our learning to support others in business and beyond.
               </motion.p>
               <motion.p
                 variants={fadeUp}
                 className="mt-4 text-[15px] leading-[1.85] text-brand-muted"
               >
-                Being able to ask for support from a community who know your story, your needs, and who genuinely want to see you succeed — that's beyond measure. You become part of a growing community operating within a new paradigm of Love, Connection, and Abundance.
+                Being able to ask for support from a community who know your story, your needs, and who genuinely want to see you succeed, that's beyond measure. You become part of a growing community operating within a new paradigm of Love, Connection, and Abundance.
               </motion.p>
 
               {/* Mobile image */}

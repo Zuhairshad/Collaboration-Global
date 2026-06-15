@@ -25,7 +25,7 @@ export default function ContactPage() {
   const [isPending, startTransition] = useTransition();
   const [result, setResult] = useState<ContactResult | null>(null);
 
-  /* ── Math captcha — initialized client-side only to avoid SSR mismatch ── */
+  /* ── Math captcha, initialized client-side only to avoid SSR mismatch ── */
   const [captcha, setCaptcha] = useState<{ a: number; b: number } | null>(null);
   useEffect(() => {
     setCaptcha({
@@ -107,7 +107,7 @@ export default function ContactPage() {
                       required
                     />
 
-                    {/* Math captcha — only rendered after client mount */}
+                    {/* Math captcha, only rendered after client mount */}
                     {captcha && (
                     <div>
                       <label className="mb-1.5 block text-xs text-brand-muted">
@@ -128,7 +128,7 @@ export default function ContactPage() {
                         required
                       />
                       {captchaError && (
-                        <p className="mt-1 text-xs text-red-500">Incorrect — try again.</p>
+                        <p className="mt-1 text-xs text-red-500">Incorrect, try again.</p>
                       )}
                     </div>
                     )}

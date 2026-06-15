@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
@@ -9,6 +10,12 @@ import { NAV_LINKS, SITE_META, type NavLink } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+
+/** Routes that render on a light background from the top — navbar should default to dark-on-light styling instead of white text */
+function hasLightHero(pathname: string | null): boolean {
+ if (!pathname) return false;
+ return pathname.startsWith("/impact/");
+}
 
 /** Filter out Home (logo handles it) and Contact (CTA button handles it) */
 const DESKTOP_NAV = NAV_LINKS.filter(
@@ -188,6 +195,9 @@ function MobileMenu({
 export function Navbar() {
  const [scrolled, setScrolled] = useState(false);
  const [mobileOpen, setMobileOpen] = useState(false);
+ const pathname = usePathname();
+ const forceLight = hasLightHero(pathname);
+ const useDarkLinks = scrolled || forceLight;
 
  useEffect(() => {
  const onScroll = () => setScrolled(window.scrollY > 12);
@@ -201,7 +211,7 @@ export function Navbar() {
   <header
   className={cn(
    "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-   scrolled
+   useDarkLinks
    ? "border-b border-brand-border bg-white/90 backdrop-blur-md"
    : "border-b border-brand-border/50 bg-white md:border-none md:bg-transparent",
   )}
@@ -213,7 +223,7 @@ export function Navbar() {
 
    <nav className="hidden items-center gap-7 md:flex">
    {DESKTOP_NAV.map((item) => (
-    <DesktopNavItem key={item.href} item={item} scrolled={scrolled} />
+    <DesktopNavItem key={item.href} item={item} scrolled={useDarkLinks} />
    ))}
    </nav>
 
