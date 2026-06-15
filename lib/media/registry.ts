@@ -137,7 +137,7 @@ export const MEDIA_REGISTRY: readonly MediaItem[] = [
   },
   {
     id: "community-zoom",
-    src: "/media/community-zoom.png",
+    src: "/media/community-zoom.jpg",
     category: "lifestyle",
     title: "Global Community Online",
     caption: "Collaboration Global members connecting from across the world.",

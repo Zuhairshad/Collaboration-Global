@@ -59,7 +59,7 @@ export function GallerySection() {
           </div>
           <div className="relative aspect-[16/9] overflow-hidden rounded-2xl shadow-sm">
             <Image
-              src="/media/gallery-zoom-session.png"
+              src="/media/gallery-zoom-session.jpg"
               alt="Collaboration Global online session"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"

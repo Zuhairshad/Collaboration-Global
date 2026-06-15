@@ -176,7 +176,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
  ],
  heroItalicLine: "Let’s change the world, one small business at a time.",
  portraitImage: "/media/orb-founders.jpg",
- bannerImage: "/media/orb-members.png",
+ bannerImage: "/media/orb-members.jpg",
  bannerAlt: "ORB member community",
  bannerAspect: "2000/1600",
  primaryCta: { label: "Explore the ORB Standard", href: "https://www.orbuk.org.uk" },
@@ -193,7 +193,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "It’s the difference between performing values and operating from them, and you can feel the gap a mile off.",
  ],
  videoBlock1: {
-  thumb: "/media/orb-members.png",
+  thumb: "/media/orb-members.jpg",
   alt: "ORB community of responsible business owners",
  },
 
@@ -380,7 +380,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "Peer connection: a volunteer-led network that multiplies touchpoints far beyond what professional services could ever scale to alone.",
  ],
  videoBlock2: {
-  thumb: "/media/wmhf-collage.png",
+  thumb: "/media/wmhf-collage.jpg",
   alt: "World Mental Health Forum community",
  },
 
