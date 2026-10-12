@@ -44,7 +44,7 @@ export default function CommunitySessionsPage() {
   label="Programs"
   title="Community Sessions."
   description="Once a month we create a space for people to come together in the Zoom room and connect with other like-hearted and like-minded people. Free. Open to anyone."
-  className="[background:linear-gradient(135deg,#4a4396_0%,#655bb3_30%,#31cfc3_60%,#7be0d8_100%)]"
+  className="bg-brand-gradient"
   />
 
   {/* ── Intro ── gray-50 */}
@@ -111,9 +111,9 @@ export default function CommunitySessionsPage() {
     whileInView="visible"
     viewport={{ once: true, margin: "-60px" }}
    >
-    <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+    <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
-    <div className="pointer-events-none absolute -top-10 left-1/2 h-24 w-48 -translate-x-1/2 rounded-full bg-[var(--brand-purple)]/8 blur-2xl" />
+    <div className="pointer-events-none absolute -top-20 left-1/2 h-44 w-[272px] max-w-full -translate-x-1/2 [background:radial-gradient(closest-side,color-mix(in_srgb,var(--brand-purple)_8%,transparent),transparent)]" />
     <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
      Community Sessions
     </p>
@@ -179,7 +179,7 @@ export default function CommunitySessionsPage() {
    <div className="mt-12 grid gap-4 md:grid-cols-2">
    {WHAT_TO_EXPECT.map((item, idx) => (
     <RevealOnScroll key={item.title} delay={0.05 + idx * 0.05}>
-    <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-7 shadow-sm">
+    <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-7">
      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--brand-teal)]/10">
      <item.Icon
@@ -211,7 +211,7 @@ export default function CommunitySessionsPage() {
    className="mx-auto max-w-[760px]"
    >
    <motion.div variants={fadeUp}>
-    <SectionLabel className="text-brand-text/60">What Comes Next</SectionLabel>
+    <SectionLabel className="text-brand-text/80">What Comes Next</SectionLabel>
    </motion.div>
    <motion.h2
     variants={fadeUp}
@@ -237,7 +237,7 @@ export default function CommunitySessionsPage() {
     className="rounded-2xl bg-black/10 p-6"
     >
     <p className="text-sm font-bold text-brand-text">Collaborator Academy</p>
-    <p className="mt-2 text-[13px] leading-relaxed text-brand-text/70">
+    <p className="mt-2 text-[13px] leading-relaxed text-brand-text/80">
      Learning, Q&As, recorded sessions, and accountability for £30/month.
     </p>
     <Button
@@ -255,7 +255,7 @@ export default function CommunitySessionsPage() {
     className="rounded-2xl bg-black/10 p-6"
     >
     <p className="text-sm font-bold text-brand-text">Collaborator Pro</p>
-    <p className="mt-2 text-[13px] leading-relaxed text-brand-text/70">
+    <p className="mt-2 text-[13px] leading-relaxed text-brand-text/80">
      Full membership with profile, projects, coaching, and community for £50/month.
     </p>
     <Button
@@ -274,14 +274,10 @@ export default function CommunitySessionsPage() {
 
   {/* ── CTA ── dark */}
   <section
-  className="relative overflow-hidden py-24 md:py-32"
-  style={{
-   background:
-   "linear-gradient(135deg, #4a4396 0%, #655bb3 30%, #31cfc3 60%, #7be0d8 100%)",
-  }}
+  className="bg-brand-gradient relative overflow-hidden py-24 md:py-32"
   >
   <div
-   className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30"
+   className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[600px] max-w-full -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30"
    style={{ background: "radial-gradient(ellipse, rgba(107,79,190,0.3) 0%, transparent 65%)" }}
    aria-hidden
   />
@@ -294,7 +290,7 @@ export default function CommunitySessionsPage() {
    className="relative text-center"
    >
    <motion.div variants={fadeUp} className="flex justify-center">
-    <SectionLabel>Book Now</SectionLabel>
+    <SectionLabel className="text-white">Book Now</SectionLabel>
    </motion.div>
    <motion.h2
     variants={fadeUp}
@@ -306,7 +302,7 @@ export default function CommunitySessionsPage() {
    </motion.h2>
    <motion.p
     variants={fadeUp}
-    className="mx-auto mt-5 max-w-[460px] text-[15px] leading-relaxed text-white/55"
+    className="mx-auto mt-5 max-w-[460px] text-[15px] leading-relaxed text-white"
    >
     No commitment. No cost. Just real people, real connection, and real collaboration.
    </motion.p>

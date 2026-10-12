@@ -63,7 +63,7 @@ export default function EventsPage() {
   label="Events"
   title="Monthly Community Sessions."
   description="Once a month we create a space for people to come together and connect with other like-hearted and like-minded people. Free. Open to anyone. Just show up."
-  className="[background:linear-gradient(135deg,#4a4396_0%,#655bb3_30%,#31cfc3_60%,#7be0d8_100%)]"
+  className="bg-brand-gradient"
   />
 
   {/* ── Intro + Booking Card ── gray-50 */}
@@ -93,13 +93,13 @@ export default function EventsPage() {
     variants={fadeUp}
     className="mt-5 text-[15px] leading-[1.85] text-brand-muted"
     >
-    Whether you're an entrepreneur, a creative, a coach, or simply someone who believes in the power of working together Community Sessions are your invitation to step in.
+    Whether you&apos;re an entrepreneur, a creative, a coach, or simply someone who believes in the power of working together Community Sessions are your invitation to step in.
     </motion.p>
     <motion.p
     variants={fadeUp}
     className="mt-4 text-[15px] leading-[1.85] text-brand-muted"
     >
-    We nurture authentic relationships and provide a space for genuine connection, building trust and fulfilling aspirations. Come as a guest. There's no commitment, no pressure just real people and real conversation.
+    We nurture authentic relationships and provide a space for genuine connection, building trust and fulfilling aspirations. Come as a guest. There&apos;s no commitment, no pressure just real people and real conversation.
     </motion.p>
     <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-3">
     <Button
@@ -127,9 +127,9 @@ export default function EventsPage() {
     whileInView="visible"
     viewport={{ once: true, margin: "-60px" }}
    >
-    <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+    <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
-    <div className="pointer-events-none absolute -top-10 left-1/2 h-24 w-48 -translate-x-1/2 rounded-full bg-[var(--brand-purple)]/8 blur-2xl" />
+    <div className="pointer-events-none absolute -top-20 left-1/2 h-44 w-[272px] max-w-full -translate-x-1/2 [background:radial-gradient(closest-side,color-mix(in_srgb,var(--brand-purple)_8%,transparent),transparent)]" />
 
     <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
      Monthly Community Meeting
@@ -202,7 +202,7 @@ export default function EventsPage() {
    <div className="mt-12 grid gap-4 md:grid-cols-2">
    {HOW_IT_WORKS.map((item, idx) => (
     <RevealOnScroll key={item.title} delay={0.05 + idx * 0.05}>
-    <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-7 shadow-sm">
+    <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-7">
      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--brand-teal)]/10">
      <item.Icon
@@ -234,13 +234,13 @@ export default function EventsPage() {
    className="mx-auto max-w-[820px]"
    >
    <motion.div variants={fadeUp}>
-    <SectionLabel className="text-brand-text/60">What to Expect</SectionLabel>
+    <SectionLabel className="text-brand-text/80">What to Expect</SectionLabel>
    </motion.div>
    <motion.h2
     variants={fadeUp}
     className="mt-4 text-[clamp(1.9rem,3.6vw,3rem)] font-bold leading-[1.1] tracking-[-0.03em] text-brand-text"
    >
-    You'll leave with more
+    You&apos;ll leave with more
     <br />
     than you arrived with.
    </motion.h2>
@@ -302,13 +302,13 @@ export default function EventsPage() {
     variants={fadeUp}
     className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-brand-muted"
    >
-    Community Sessions are just the beginning. When you're ready for structured learning, accountability, or full collaboration membership is waiting.
+    Community Sessions are just the beginning. When you&apos;re ready for structured learning, accountability, or full collaboration membership is waiting.
    </motion.p>
    </motion.div>
 
    <div className="mt-12 grid gap-5 md:grid-cols-2">
    <RevealOnScroll delay={0.06}>
-    <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+    <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/50 to-transparent" />
     <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
      Learn &amp; Build
@@ -334,9 +334,9 @@ export default function EventsPage() {
    </RevealOnScroll>
 
    <RevealOnScroll delay={0.1}>
-    <div className="group relative h-full overflow-hidden rounded-2xl border border-[var(--brand-teal)]/30 bg-white p-8 shadow-sm">
+    <div className="group relative h-full overflow-hidden rounded-2xl border border-[var(--brand-teal)]/30 bg-white p-6 shadow-sm md:p-8">
     <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--brand-teal)] to-transparent" />
-    <div className="pointer-events-none absolute -top-10 left-1/2 h-24 w-48 -translate-x-1/2 rounded-full bg-[var(--brand-teal)]/8 blur-2xl" />
+    <div className="pointer-events-none absolute -top-20 left-1/2 h-44 w-[272px] max-w-full -translate-x-1/2 [background:radial-gradient(closest-side,color-mix(in_srgb,var(--brand-teal)_8%,transparent),transparent)]" />
     <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
      Full Membership
     </p>
@@ -365,14 +365,10 @@ export default function EventsPage() {
 
   {/* ── Final CTA ── dark */}
   <section
-  className="relative overflow-hidden py-24 md:py-32"
-  style={{
-   background:
-   "linear-gradient(135deg, #4a4396 0%, #655bb3 30%, #31cfc3 60%, #7be0d8 100%)",
-  }}
+  className="bg-brand-gradient relative overflow-hidden py-24 md:py-32"
   >
   <div
-   className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30"
+   className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[600px] max-w-full -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30"
    style={{
    background:
     "radial-gradient(ellipse, rgba(107,79,190,0.3) 0%, transparent 65%)",
@@ -388,7 +384,7 @@ export default function EventsPage() {
    className="relative text-center"
    >
    <motion.div variants={fadeUp} className="flex justify-center">
-    <SectionLabel>Book Now</SectionLabel>
+    <SectionLabel className="text-white">Book Now</SectionLabel>
    </motion.div>
    <motion.h2
     variants={fadeUp}
@@ -400,7 +396,7 @@ export default function EventsPage() {
    </motion.h2>
    <motion.p
     variants={fadeUp}
-    className="mx-auto mt-5 max-w-[460px] text-[15px] leading-relaxed text-white/55"
+    className="mx-auto mt-5 max-w-[460px] text-[15px] leading-relaxed text-white"
    >
     No commitment. No cost. Just real people, real connection, and real collaboration once a month, every month.
    </motion.p>

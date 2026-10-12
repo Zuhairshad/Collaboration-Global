@@ -14,8 +14,8 @@ import { TESTIMONIALS } from "@/lib/constants";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/animations";
 
 const AVATAR_GRADIENTS = [
-  "linear-gradient(135deg,#655bb3 0%,#31cfc3 100%)",
-  "linear-gradient(135deg,#31cfc3 0%,#7be0d8 100%)",
+  "linear-gradient(135deg,#655bb3 0%,#1d8079 100%)",
+  "linear-gradient(135deg,#1d8079 0%,#17736d 100%)",
   "linear-gradient(135deg,#4a4396 0%,#655bb3 100%)",
 ];
 
@@ -56,7 +56,7 @@ function PhilosophyCard({
       style={{ x, scale, zIndex: idx + 1 }}
       className="absolute inset-0"
     >
-      <div className="flex h-full flex-col rounded-2xl bg-white px-8 py-9 shadow-2xl md:px-12">
+      <div className="flex h-full flex-col rounded-2xl bg-white px-8 py-9 shadow-xl md:px-12">
         <span className="text-[52px] font-black leading-none text-[var(--brand-teal)]/20">&ldquo;</span>
         <p className="mt-2 flex-1 text-[17px] leading-[1.8] text-brand-text">
           {t.quote}
@@ -76,7 +76,82 @@ function PhilosophyCard({
   );
 }
 
+function StaticPhilosophyCard({
+  t,
+  idx,
+  total,
+}: {
+  t: { quote: string; name: string; role: string };
+  idx: number;
+  total: number;
+}) {
+  return (
+    <div className="flex flex-col rounded-2xl bg-white p-5 shadow-lg sm:p-6">
+      <span className="text-[44px] font-black leading-none text-[var(--brand-teal)]/20">&ldquo;</span>
+      <p className="mt-1 text-[15px] leading-[1.75] text-brand-text">{t.quote}</p>
+      <div className="mt-5 flex items-center gap-3 border-t border-brand-border pt-4">
+        <Avatar name={t.name} />
+        <div className="min-w-0">
+          <p className="text-[15px] font-bold text-brand-text">{t.name}</p>
+          <p className="text-[13px] text-brand-muted">{t.role}</p>
+        </div>
+        <span className="ml-auto shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal)]">
+          {String(idx + 1).padStart(2, "0")}&nbsp;/&nbsp;{String(total).padStart(2, "0")}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function PhilosophyIntro() {
+  return (
+    <div>
+      <SectionLabel className="text-white">Our Philosophy</SectionLabel>
+      <h2 className="mt-4 text-[clamp(1.9rem,3.6vw,3rem)] font-bold leading-[1.1] tracking-[-0.03em] text-white">
+        Together we can work out
+        <br />99.9% of what we need.
+      </h2>
+      <p className="mt-5 text-[15px] leading-[1.85] text-white">
+        Authentic people helping each other be bigger and better than they can be alone. No judgement. No ridicule. No question is stupid.
+      </p>
+      <div className="mt-7 rounded-2xl bg-[var(--brand-purple)] px-5 py-5 sm:px-7 sm:py-6">
+        <p className="text-[28px] font-black leading-none text-white/25">&ldquo;</p>
+        <p className="mt-2 text-[14.5px] font-medium leading-[1.75] text-white/90">
+          Never doubt that a group of committed citizens can change the world. Indeed, it is the only thing that ever has.
+        </p>
+        <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/90">Margaret Mead</p>
+      </div>
+    </div>
+  );
+}
+
 function PhilosophySection() {
+  return (
+    <>
+      {/* Mobile: plain stacked list in normal flow */}
+      <section className="bg-brand-gradient py-20 md:hidden">
+        <Container>
+          <PhilosophyIntro />
+          <div className="mt-10 space-y-4">
+            {FEATURED_TESTIMONIALS.map((t, idx) => (
+              <StaticPhilosophyCard
+                key={t.name}
+                t={t}
+                idx={idx}
+                total={FEATURED_TESTIMONIALS.length}
+              />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* md+: pinned scroll-driven card stack */}
+      <PinnedPhilosophySection />
+    </>
+  );
+}
+
+function PinnedPhilosophySection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -84,32 +159,13 @@ function PhilosophySection() {
   });
 
   return (
-    <div ref={containerRef} style={{ height: "300vh" }}>
-      <div
-        className="sticky top-0 flex h-screen items-center overflow-hidden"
-        style={{ background: "linear-gradient(135deg,#4a4396 0%,#31cfc3 60%,#7be0d8 100%)" }}
-      >
+    <div ref={containerRef} className="hidden md:block" style={{ height: "300svh" }}>
+      <div className="bg-brand-gradient sticky top-0 flex h-svh items-center overflow-hidden">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
             {/* Left: Philosophy text */}
-            <div>
-              <SectionLabel className="text-white/60">Our Philosophy</SectionLabel>
-              <h2 className="mt-4 text-[clamp(1.9rem,3.6vw,3rem)] font-bold leading-[1.1] tracking-[-0.03em] text-white">
-                Together we can work out
-                <br />99.9% of what we need.
-              </h2>
-              <p className="mt-5 text-[15px] leading-[1.85] text-white/80">
-                Authentic people helping each other be bigger and better than they can be alone. No judgement. No ridicule. No question is stupid.
-              </p>
-              <div className="mt-7 rounded-2xl bg-[var(--brand-purple)] px-7 py-6">
-                <p className="text-[28px] font-black leading-none text-white/25">&ldquo;</p>
-                <p className="mt-2 text-[14.5px] font-medium leading-[1.75] text-white/85">
-                  Never doubt that a group of committed citizens can change the world. Indeed, it is the only thing that ever has.
-                </p>
-                <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">Margaret Mead</p>
-              </div>
-            </div>
+            <PhilosophyIntro />
 
             {/* Right: Testimonial cards sliding in from right */}
             <div className="relative" style={{ height: "420px" }}>
@@ -173,12 +229,13 @@ export default function AcademyPage() {
     <main>
 
       {/* ── HERO ── */}
-      <section className="relative flex min-h-screen flex-col justify-end overflow-hidden">
+      <section className="relative flex min-h-svh flex-col justify-end overflow-hidden">
         <Image
           src="/images/hero-collaboration.png"
           alt="All together different, Collaborator Academy"
           fill
-          priority
+          preload
+          sizes="100vw"
           className="object-cover"
           style={{ objectPosition: "center 30%" }}
         />
@@ -231,7 +288,7 @@ export default function AcademyPage() {
                 Attend a free session first
               </Button>
             </motion.div>
-            <motion.p variants={staggerItem} className="mt-4 text-[12px] text-white/30">
+            <motion.p variants={staggerItem} className="mt-4 text-[12px] text-white/60">
               You&apos;ll have a chance to review your selection. Cancel anytime.
             </motion.p>
           </motion.div>
@@ -296,9 +353,10 @@ export default function AcademyPage() {
                 <Image
                   src="/media/story-community-2.jpg"
                   alt="Community session in progress"
-                  width={640}
-                  height={500}
-                  className="w-full object-cover"
+                  width={1066}
+                  height={1600}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="h-auto w-full object-cover"
                 />
               </div>
             </RevealOnScroll>
@@ -347,8 +405,8 @@ export default function AcademyPage() {
                   marginBottom: idx < BENEFITS.length - 1 ? "180px" : "60px",
                 }}
               >
-                <div className="rounded-2xl border border-brand-border bg-white px-8 py-10 shadow-[0_4px_28px_rgba(0,0,0,0.08)]">
-                  <div className="flex items-start gap-6">
+                <div className="rounded-2xl border border-brand-border bg-white px-5 py-7 shadow-[0_4px_28px_rgba(0,0,0,0.08)] sm:px-8 md:py-10">
+                  <div className="flex items-start gap-4 sm:gap-6">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--brand-purple)]/10">
                       <span className="text-[13px] font-black tracking-tight text-[var(--brand-purple)]">
                         {String(idx + 1).padStart(2, "0")}
@@ -393,7 +451,7 @@ export default function AcademyPage() {
 
               <motion.div
                 variants={fadeUp}
-                className="relative mt-10 overflow-hidden rounded-2xl border border-brand-border bg-white p-8 shadow-sm"
+                className="relative mt-10 overflow-hidden rounded-2xl border border-brand-border bg-white p-6 shadow-sm md:p-8"
               >
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
                 <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">

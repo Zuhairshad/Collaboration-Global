@@ -50,7 +50,7 @@ function CTABlock({ block }: { block: typeof BLOCKS[number] }) {
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, margin: "-60px" }}
-  className="group overflow-hidden rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.12)]"
+  className="group overflow-hidden rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.10)] md:shadow-[0_20px_60px_rgba(0,0,0,0.12)]"
  >
   <div
   className="relative w-full"
@@ -60,7 +60,7 @@ function CTABlock({ block }: { block: typeof BLOCKS[number] }) {
    src={block.image}
    alt={block.imageAlt}
    fill
-   sizes="(max-width: 1024px) 100vw, 50vw"
+   sizes="(max-width: 1023px) 100vw, 45vw"
    className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
   />
   </div>
@@ -88,7 +88,7 @@ function CTABlock({ block }: { block: typeof BLOCKS[number] }) {
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, margin: "-60px" }}
-  className="mt-8 space-y-4"
+  className="mt-6 space-y-4 md:mt-8"
   >
   {block.bullets.map((bullet) => (
    <motion.li
@@ -107,11 +107,11 @@ function CTABlock({ block }: { block: typeof BLOCKS[number] }) {
   ))}
   </motion.ul>
 
-  <motion.div variants={fadeUp} className="mt-10">
+  <motion.div variants={fadeUp} className="mt-8 md:mt-10">
   <Button
    href={block.cta.href}
    variant="outline"
-   className="group h-[46px] gap-3 rounded-full border border-gray-300 px-6 text-[14px] font-bold text-brand-text hover:border-brand-text hover:bg-brand-text hover:text-white transition-all"
+   className="group h-[46px] gap-3 rounded-full border border-gray-300 px-6 text-[14px] font-bold text-brand-text hover:border-brand-text hover:bg-brand-text hover:text-white transition-colors"
   >
    {block.cta.label}
    <div className="flex h-5 w-5 items-center justify-center rounded-sm bg-brand-card-hover transition-colors group-hover:bg-gray-800">
@@ -123,7 +123,7 @@ function CTABlock({ block }: { block: typeof BLOCKS[number] }) {
  );
 
  return (
- <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
+ <div className="grid items-center gap-10 md:gap-12 lg:grid-cols-2 lg:gap-24">
   {block.imageFirst ? (
   <>
    {imageCol}
@@ -141,9 +141,9 @@ function CTABlock({ block }: { block: typeof BLOCKS[number] }) {
 
 export function CTASection() {
  return (
- <section id="cta" className="bg-white py-24 md:py-40">
+ <section id="cta" className="overflow-x-clip bg-white py-20 md:py-40">
   <Container>
-  <div className="flex flex-col gap-32 md:gap-48">
+  <div className="flex flex-col gap-24 md:gap-48">
    {BLOCKS.map((block) => (
    <CTABlock key={block.label} block={block} />
    ))}

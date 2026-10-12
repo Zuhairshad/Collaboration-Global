@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 type Variant = "primary" | "outline" | "accent";
 
 const base =
- "inline-flex items-center justify-center whitespace-nowrap rounded-full px-7 py-3.5 text-xs font-medium uppercase tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 disabled:pointer-events-none disabled:opacity-50";
+ "inline-flex items-center justify-center whitespace-nowrap rounded-full px-7 py-3.5 text-xs font-medium uppercase tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-purple)]/60 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
  primary: "bg-white text-brand-text hover:bg-white/90",

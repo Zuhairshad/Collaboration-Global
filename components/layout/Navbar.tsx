@@ -22,16 +22,20 @@ const DESKTOP_NAV = NAV_LINKS.filter(
  (l) => l.href !== "/" && l.href !== "/contact",
 );
 
-function LogoMark() {
+/**
+ * logo.jpg has a white background (1921x544). On the solid white header it sits
+ * seamlessly; the white "pill" is only drawn when the header is transparent over
+ * the dark hero (desktop, top of page). Padding stays constant so nothing shifts.
+ */
+function LogoMark({ pill = false }: { pill?: boolean }) {
  return (
- <div className="rounded-lg bg-white px-2.5 py-1.5">
+ <div className={cn("rounded-lg px-2.5 py-1.5", pill && "md:bg-white")}>
   <Image
   src="/logo.jpg"
   alt={SITE_META.name}
-  width={140}
-  height={37}
+  width={141}
+  height={40}
   className="h-[30px] w-auto"
-  priority
   />
  </div>
  );
@@ -77,7 +81,7 @@ function DesktopNavItem({ item, scrolled }: { item: NavLink; scrolled: boolean }
    animate={{ opacity: 1, y: 0 }}
    exit={{ opacity: 0, y: 8 }}
    transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-   className="absolute left-0 top-full z-50 mt-3 w-56 rounded-xl border border-brand-border bg-white p-2 shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
+   className="absolute left-0 top-full z-50 mt-3 w-56 rounded-xl border border-brand-border bg-white p-2 shadow-[0_12px_32px_rgba(0,0,0,0.12)]"
    >
    {item.children.map((child) => (
     <Link
@@ -132,7 +136,7 @@ function MobileMenu({
    animate={{ opacity: 1, y: 0 }}
    exit={{ opacity: 0, y: -12 }}
    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-   className="absolute inset-x-3 top-3 rounded-2xl border border-brand-border bg-white p-5 shadow-[0_30px_100px_rgba(0,0,0,0.8)]"
+   className="absolute inset-x-3 top-3 rounded-2xl border border-brand-border bg-white p-5 shadow-[0_12px_32px_rgba(0,0,0,0.12)]"
    role="dialog"
    aria-modal="true"
    aria-label="Navigation menu"
@@ -143,11 +147,11 @@ function MobileMenu({
     </Link>
     <button
     type="button"
-    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-border text-brand-muted hover:bg-brand-card-hover"
+    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-brand-text transition-colors hover:bg-brand-card"
     onClick={onClose}
     aria-label="Close menu"
     >
-    <X className="h-5 w-5" />
+    <X className="h-[18px] w-[18px]" strokeWidth={1.8} />
     </button>
    </div>
 
@@ -200,7 +204,11 @@ export function Navbar() {
  const useDarkLinks = scrolled || forceLight;
 
  useEffect(() => {
- const onScroll = () => setScrolled(window.scrollY > 12);
+ // Functional update returning the same value lets React bail out of re-rendering.
+ const onScroll = () => {
+  const next = window.scrollY > 12;
+  setScrolled((prev) => (prev === next ? prev : next));
+ };
  onScroll();
  window.addEventListener("scroll", onScroll, { passive: true });
  return () => window.removeEventListener("scroll", onScroll);
@@ -210,15 +218,15 @@ export function Navbar() {
  <>
   <header
   className={cn(
-   "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+   "fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-300",
    useDarkLinks
-   ? "border-b border-brand-border bg-white/90 backdrop-blur-md"
-   : "border-b border-brand-border/50 bg-white md:border-none md:bg-transparent",
+   ? "border-brand-border/70 bg-white"
+   : "border-brand-border/70 bg-white md:border-b-0 md:bg-transparent",
   )}
   >
   <Container className="flex h-16 items-center justify-between">
    <Link href="/" aria-label="Go to homepage">
-   <LogoMark />
+   <LogoMark pill={!useDarkLinks} />
    </Link>
 
    <nav className="hidden items-center gap-7 md:flex">
@@ -240,11 +248,11 @@ export function Navbar() {
 
    <button
    type="button"
-   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-border text-brand-muted hover:bg-brand-card-hover md:hidden"
+   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-brand-text transition-colors hover:bg-brand-card md:hidden"
    onClick={() => setMobileOpen(true)}
    aria-label="Open menu"
    >
-   <Menu className="h-5 w-5" />
+   <Menu className="h-[18px] w-[18px]" strokeWidth={1.8} />
    </button>
   </Container>
   </header>

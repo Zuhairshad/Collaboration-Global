@@ -25,7 +25,7 @@ export function Founder() {
   };
 
   return (
-    <section id="founder" className="bg-slate-50 py-24 md:py-32">
+    <section id="founder" className="bg-slate-50 py-16 md:py-32">
       <Container>
         <motion.div
           variants={staggerContainer}
@@ -57,8 +57,8 @@ export function Founder() {
           {/* ── BIG VIDEO PLAYER ── */}
           <motion.div
             variants={fadeUp}
-            className="relative mt-12 w-full max-w-[1100px] overflow-hidden rounded-2xl ring-1 ring-white/5"
-            style={{ boxShadow: "0 40px 120px rgba(49,207,195,0.12), 0 20px 60px rgba(0,0,0,0.55)" }}
+            className="relative mt-8 w-full max-w-[1100px] overflow-hidden rounded-2xl ring-1 ring-white/5 md:mt-12"
+            style={{ boxShadow: "0 20px 50px rgba(0,0,0,0.22)" }}
           >
             <div className="relative aspect-video w-full bg-gradient-to-br from-slate-900 via-slate-950 to-black">
               {playing ? (
@@ -68,6 +68,7 @@ export function Founder() {
                   poster={VIDEO_POSTER}
                   controls
                   playsInline
+                  preload="none"
                   className="absolute inset-0 h-full w-full bg-black"
                 />
               ) : (
@@ -81,7 +82,7 @@ export function Founder() {
                     src={VIDEO_POSTER}
                     alt={`${FOUNDER.name} — founder of Collaboration Global`}
                     fill
-                    priority
+                    sizes="(max-width: 1100px) 100vw, 1100px"
                     className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
                   />
 
@@ -89,7 +90,7 @@ export function Founder() {
                   <div className="absolute inset-0 bg-gradient-to-br from-black/55 via-black/20 to-[rgba(49,207,195,0.18)] transition-opacity duration-500 group-hover:opacity-90" />
 
                   {/* Brand badge */}
-                  <div className="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white shadow-[0_4px_20px_rgba(0,0,0,0.25)] backdrop-blur-md ring-1 ring-white/20">
+                  <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-black/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white shadow-[0_4px_12px_rgba(0,0,0,0.2)] ring-1 ring-white/20 md:left-5 md:top-5 md:text-[11px]">
                     <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-teal)]" />
                     Founder Story
                   </div>
@@ -97,15 +98,18 @@ export function Founder() {
                   {/* Centre play button */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="relative">
-                      <div className="absolute inset-0 scale-[2.4] rounded-full bg-[var(--brand-teal)]/25 blur-2xl transition-opacity duration-500 group-hover:opacity-80" />
-                      <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-white/30 bg-white/15 backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:bg-white/25 group-hover:border-white/50">
-                        <Play className="ml-1.5 h-8 w-8 text-white drop-shadow-lg" fill="white" strokeWidth={0} />
+                      <div
+                        className="absolute inset-0 scale-[2.4] rounded-full transition-opacity duration-500 group-hover:opacity-80"
+                        style={{ background: "radial-gradient(circle, rgba(49,207,195,0.3) 0%, rgba(49,207,195,0.12) 40%, transparent 70%)" }}
+                      />
+                      <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-white/30 bg-black/25 transition-[transform,background-color,border-color] duration-300 group-hover:scale-110 group-hover:border-white/50 group-hover:bg-black/15 md:h-20 md:w-20">
+                        <Play className="ml-1 h-6 w-6 text-white drop-shadow-lg md:ml-1.5 md:h-8 md:w-8" fill="white" strokeWidth={0} />
                       </div>
                     </div>
                   </div>
 
                   {/* Bottom overlay: speaker */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent px-6 pb-6 pt-20">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent px-4 pb-4 pt-10 md:px-6 md:pb-6 md:pt-20">
                     <div className="flex items-center gap-3">
                       <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full ring-2 ring-white/25">
                         <Image src="/media/gill-portrait.jpeg" alt="Gill Tiney" fill className="object-cover" sizes="36px" />

@@ -19,10 +19,10 @@ export default function PublicationPage() {
    <div className="mx-auto max-w-[900px]">
    <RevealOnScroll>
     <Card className="p-6 md:p-10">
-    <p className="text-sm font-semibold tracking-tight text-white">
+    <p className="text-sm font-semibold tracking-tight text-brand-text">
      Read on Issuu
     </p>
-    <p className="mt-4 text-sm leading-relaxed text-white/70 md:text-[15px] md:leading-[1.8]">
+    <p className="mt-4 text-sm leading-relaxed text-brand-muted md:text-[15px] md:leading-[1.8]">
      The Quest is a quarterly publication exploring collaboration, impact,
      and the stories of people creating change.
     </p>

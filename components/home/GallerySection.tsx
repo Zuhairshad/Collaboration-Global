@@ -47,13 +47,13 @@ export function GallerySection() {
         <ExpandableGallery images={TOP_IMAGES} />
 
         {/* Middle, 2 landscape images */}
-        <div className="my-3 grid grid-cols-2 gap-3">
+        <div className="my-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
           <div className="relative aspect-[16/9] overflow-hidden rounded-2xl shadow-sm">
             <Image
               src="/media/gallery-london-lunch.jpeg"
               alt="Collaboration Global London lunch"
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 639px) 100vw, 50vw"
               className="object-cover"
             />
           </div>
@@ -62,7 +62,7 @@ export function GallerySection() {
               src="/media/gallery-zoom-session.jpg"
               alt="Collaboration Global online session"
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 639px) 100vw, 50vw"
               className="object-cover"
             />
           </div>

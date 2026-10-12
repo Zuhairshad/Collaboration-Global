@@ -13,7 +13,7 @@ export function Footer() {
    <Image
     src="/logo.jpg"
     alt={SITE_META.name}
-    width={340}
+    width={318}
     height={90}
     className="h-[70px] w-auto md:h-[84px]"
    />
@@ -58,7 +58,7 @@ export function Footer() {
     <Image
     src="/logo.jpg"
     alt={SITE_META.name}
-    width={100}
+    width={92}
     height={26}
     className="h-6 w-auto"
     />

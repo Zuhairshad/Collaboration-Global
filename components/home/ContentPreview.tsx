@@ -16,7 +16,7 @@ const PROGRAM_META = [
 
 export function ContentPreview() {
  return (
- <section id="programs" className="bg-brand-card py-24 md:py-32">
+ <section id="programs" className="bg-brand-card py-20 md:py-32">
   <Container>
   <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
 
@@ -70,12 +70,13 @@ export function ContentPreview() {
     <a
     key={offering.title}
     href={offering.cta.href}
-    className="group block rounded-2xl bg-white border border-gray-100 p-7 transition-colors hover:bg-brand-card shadow-sm"
-    style={{
-     position: "sticky",
-     top: `${96 + idx * 22}px`,
+    className="group block rounded-2xl bg-white border border-gray-100 p-6 md:p-7 transition-colors hover:bg-brand-card shadow-sm lg:sticky lg:top-[var(--stack-top)]"
+    style={
+     {
+     "--stack-top": `${96 + idx * 22}px`,
      zIndex: idx + 1,
-    }}
+     } as React.CSSProperties
+    }
     >
     {/* Time / price badge */}
     <p className={`text-sm font-semibold ${PROGRAM_META[idx].color}`}>

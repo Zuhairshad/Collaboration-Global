@@ -20,10 +20,10 @@ export default function ContentPage() {
    <div className="mx-auto max-w-[1100px] grid gap-4 lg:grid-cols-3">
    <RevealOnScroll>
     <Card className="flex h-full flex-col">
-    <p className="text-sm font-semibold tracking-tight text-white">
+    <p className="text-sm font-semibold tracking-tight text-brand-text">
      Podcast
     </p>
-    <p className="mt-3 text-sm text-white/65">
+    <p className="mt-3 text-sm text-brand-muted">
      {CONTENT_HUB.podcast.name}
     </p>
     <div className="mt-8">
@@ -36,10 +36,10 @@ export default function ContentPage() {
 
    <RevealOnScroll delay={0.05}>
     <Card className="flex h-full flex-col">
-    <p className="text-sm font-semibold tracking-tight text-white">
+    <p className="text-sm font-semibold tracking-tight text-brand-text">
      Publication
     </p>
-    <p className="mt-3 text-sm text-white/65">
+    <p className="mt-3 text-sm text-brand-muted">
      {CONTENT_HUB.publication.name}
     </p>
     <div className="mt-8">
@@ -56,10 +56,10 @@ export default function ContentPage() {
 
    <RevealOnScroll delay={0.1}>
     <Card className="flex h-full flex-col">
-    <p className="text-sm font-semibold tracking-tight text-white">
+    <p className="text-sm font-semibold tracking-tight text-brand-text">
      Books
     </p>
-    <p className="mt-3 text-sm text-white/65">Frameworks and stories</p>
+    <p className="mt-3 text-sm text-brand-muted">Frameworks and stories</p>
     <div className="mt-8">
      <Button href="/content/books" variant="outline" className="w-full">
      Explore
@@ -72,7 +72,7 @@ export default function ContentPage() {
    <div className="mx-auto max-w-[1100px] mt-10 text-center">
    <Link
     href="/content/blog"
-    className="text-sm font-medium text-white/70 underline-offset-4 hover:text-white hover:underline"
+    className="text-sm font-medium text-brand-muted underline-offset-4 hover:text-brand-text hover:underline"
    >
     Read the blog
    </Link>
