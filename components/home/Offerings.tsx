@@ -11,7 +11,6 @@ import { fadeUp, staggerContainer, staggerItem } from "@/lib/animations";
 
 export function Offerings() {
  const paidOfferings = OFFERINGS.filter((o) => o.price !== "Free");
- const freeOffering = OFFERINGS.find((o) => o.price === "Free");
 
  return (
  <section id="offerings" className="bg-white py-24 md:py-32">
@@ -32,15 +31,9 @@ export function Offerings() {
    >
    Choose Your Experience.
    </motion.h2>
-   {freeOffering && (
    <motion.p variants={fadeUp} className="mx-auto mt-4 max-w-[500px] text-[15px] leading-relaxed text-brand-muted">
-    Start with a{" "}
-    <a href={freeOffering.cta.href} className="font-semibold text-[var(--reunion-accent)] underline underline-offset-2">
-    free Community Session
-    </a>{" "}
-    then step into the tier that fits your journey.
+    Explore whether you are suited to a learning space in The Academy or a proactive space as a Collaborator Pro.
    </motion.p>
-   )}
    <motion.div variants={fadeUp}>
     <ImageBlock id="story-community-2" variant="landscape" className="mt-6 mx-auto max-w-[480px]" />
    </motion.div>
