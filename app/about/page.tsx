@@ -159,7 +159,7 @@ export default function AboutPage() {
   label="About"
   title="Built on the belief that collaboration changes everything."
   description="In a world filled with daunting challenges it's easy to lose hope. But amidst these challenges, there's a beacon of hope: collaboration."
-  className="bg-brand-gradient"
+  className="bg-brand-gradient pt-32 pb-16 md:pt-40 md:pb-28"
   />
 
   {/* ── Origin Story ── gray-50 */}
