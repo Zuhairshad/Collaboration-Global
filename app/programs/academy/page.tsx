@@ -200,7 +200,7 @@ export default function AcademyPage() {
       {/* ── HERO ── */}
       <section className="relative flex min-h-svh flex-col justify-end overflow-hidden">
         <Image
-          src="/images/hero-collaboration.png"
+          src="/images/academy-hero.jpg"
           alt="All together different, Collaborator Academy"
           fill
           preload
