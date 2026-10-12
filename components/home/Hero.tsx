@@ -114,12 +114,12 @@ export function Hero({ className }: { className?: string }) {
       {/* ── Content layer ── */}
       <div className="relative z-10 flex min-h-svh flex-1 flex-col px-8 pb-0 pt-24 sm:px-14 md:min-h-0 lg:px-[11%]">
 
-        {/* Main copy vertically centred */}
+        {/* Main copy: bottom of the first screen on phones, vertically centred from md */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="flex flex-1 flex-col justify-start pt-8 md:justify-center md:pt-0"
+          className="flex flex-1 flex-col justify-end pb-14 md:justify-center md:pb-0"
         >
           {/* Meta line */}
           <motion.div
