@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Star } from "lucide-react";
-import Image from "next/image";
 import { TESTIMONIALS } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
 
@@ -29,49 +28,25 @@ function QuoteIcon() {
 
 function TestimonialCard({ t, mobile = false }: { t: Testimonial; mobile?: boolean }) {
     return (
-        <div
+        <figure
             className={
                 mobile
-                    ? "w-[85vw] max-w-[340px] min-h-[320px] shrink-0 snap-center rounded-[32px] border border-gray-100 bg-white p-6 shadow-sm flex flex-col justify-between"
-                    : "w-[340px] sm:w-[440px] md:w-[500px] h-[340px] sm:h-[380px] md:h-[420px] shrink-0 rounded-[32px] border border-gray-100 bg-white p-8 sm:p-10 shadow-sm flex flex-col justify-between select-none hover:shadow-md transition-shadow"
+                    ? "w-[85vw] max-w-[340px] shrink-0 snap-center rounded-[32px] border border-gray-100 bg-white p-6 shadow-sm"
+                    : "w-[340px] sm:w-[440px] md:w-[500px] shrink-0 rounded-[32px] border border-gray-100 bg-white p-8 sm:p-10 shadow-sm select-none hover:shadow-md transition-shadow"
             }
         >
-            <div className="flex-1 flex flex-col justify-between">
-                <div>
-                    <div className="flex items-center justify-between mb-4">
-                        <QuoteIcon />
-                        <div className="flex gap-1">
-                            {[...Array(5)].map((_, i) => (
-                                <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
-                            ))}
-                        </div>
-                    </div>
-                    <p className={`text-[15px] sm:text-[16px] md:text-[16.5px] leading-relaxed text-brand-muted italic${mobile ? "" : " line-clamp-7"}`}>
-                        {"\""}{t.quote}{"\""}
-                    </p>
-                </div>
-
-                <div className="mt-4 pt-4 border-t border-gray-50 flex items-center gap-4">
-                    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                        <Image
-                            src={t.avatar}
-                            alt={t.name}
-                            fill
-                            className="object-cover"
-                            sizes="48px"
-                        />
-                    </div>
-                    <div>
-                        <p className="text-[16px] font-bold text-brand-text leading-tight">
-                            {t.name}
-                        </p>
-                        <p className="text-[13px] text-brand-muted leading-tight mt-1">
-                            {t.role}
-                        </p>
-                    </div>
+            <div className="flex items-center justify-between mb-4">
+                <QuoteIcon />
+                <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                    ))}
                 </div>
             </div>
-        </div>
+            <blockquote className="text-[15px] sm:text-[16px] md:text-[16.5px] leading-relaxed text-brand-muted italic">
+                {"\""}{t.quote}{"\""}
+            </blockquote>
+        </figure>
     );
 }
 
@@ -111,7 +86,7 @@ export function Testimonials() {
                 <TestimonialsHeader />
                 <div className="flex overflow-x-auto snap-x snap-mandatory scroll-px-5 gap-4 px-5 pb-4 scrollbar-hide">
                     {TESTIMONIALS.map((t, idx) => (
-                        <TestimonialCard key={`${t.name}-${idx}`} t={t} mobile />
+                        <TestimonialCard key={idx} t={t} mobile />
                     ))}
                 </div>
             </div>
@@ -130,7 +105,7 @@ export function Testimonials() {
                             className="flex gap-5 sm:gap-6 flex-nowrap w-max will-change-transform pr-[30vw]"
                         >
                             {TESTIMONIALS.map((t, idx) => (
-                                <TestimonialCard key={`${t.name}-${idx}`} t={t} />
+                                <TestimonialCard key={idx} t={t} />
                             ))}
                         </motion.div>
                     </div>

@@ -33,7 +33,7 @@ export function PageHeader({
  const isDark = resolvedTone === "dark";
 
  return (
- <section className={cn("pt-28 pb-14 md:pt-32 md:pb-20", className)}>
+ <section className={cn("pt-32 pb-16 md:pt-40 md:pb-28", className)}>
   <Container>
   <div className="mx-auto max-w-[900px] text-center">
    {label ? (

@@ -13,32 +13,13 @@ import { ImageBlock } from "@/components/media/ImageBlock";
 import { TESTIMONIALS } from "@/lib/constants";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/animations";
 
-const AVATAR_GRADIENTS = [
-  "linear-gradient(135deg,#655bb3 0%,#1d8079 100%)",
-  "linear-gradient(135deg,#1d8079 0%,#17736d 100%)",
-  "linear-gradient(135deg,#4a4396 0%,#655bb3 100%)",
-];
-
-function Avatar({ name }: { name: string }) {
-  const initials = name.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase();
-  const gradient = AVATAR_GRADIENTS[name.charCodeAt(0) % AVATAR_GRADIENTS.length];
-  return (
-    <div
-      className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full ring-2 ring-white/40"
-      style={{ background: gradient }}
-    >
-      <span className="text-[15px] font-black text-white">{initials}</span>
-    </div>
-  );
-}
-
 function PhilosophyCard({
   t,
   idx,
   total,
   progress,
 }: {
-  t: { quote: string; name: string; role: string };
+  t: { quote: string };
   idx: number;
   total: number;
   progress: MotionValue<number>;
@@ -54,23 +35,16 @@ function PhilosophyCard({
   return (
     <motion.div
       style={{ x, scale, zIndex: idx + 1 }}
-      className="absolute inset-0"
+      className="[grid-area:1/1]"
     >
       <div className="flex h-full flex-col rounded-2xl bg-white px-8 py-9 shadow-xl md:px-12">
-        <span className="text-[52px] font-black leading-none text-[var(--brand-teal)]/20">&ldquo;</span>
-        <p className="mt-2 flex-1 text-[17px] leading-[1.8] text-brand-text">
-          {t.quote}
-        </p>
-        <div className="mt-6 flex items-center gap-4 border-t border-brand-border pt-5">
-          <Avatar name={t.name} />
-          <div className="min-w-0">
-            <p className="text-[16px] font-bold text-brand-text">{t.name}</p>
-            <p className="text-[13px] text-brand-muted">{t.role}</p>
-          </div>
-          <span className="ml-auto shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal-text)]">
+        <div className="flex items-start justify-between gap-4">
+          <span className="text-[52px] font-black leading-none text-[var(--brand-teal)]/20">&ldquo;</span>
+          <span className="mt-2 shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal-text)]">
             {String(idx + 1).padStart(2, "0")}&nbsp;/&nbsp;{String(total).padStart(2, "0")}
           </span>
         </div>
+        <p className="mt-2 text-[17px] leading-[1.8] text-brand-text">{t.quote}</p>
       </div>
     </motion.div>
   );
@@ -81,24 +55,19 @@ function StaticPhilosophyCard({
   idx,
   total,
 }: {
-  t: { quote: string; name: string; role: string };
+  t: { quote: string };
   idx: number;
   total: number;
 }) {
   return (
     <div className="flex flex-col rounded-2xl bg-white p-5 shadow-lg sm:p-6">
-      <span className="text-[44px] font-black leading-none text-[var(--brand-teal)]/20">&ldquo;</span>
-      <p className="mt-1 text-[15px] leading-[1.75] text-brand-text">{t.quote}</p>
-      <div className="mt-5 flex items-center gap-3 border-t border-brand-border pt-4">
-        <Avatar name={t.name} />
-        <div className="min-w-0">
-          <p className="text-[15px] font-bold text-brand-text">{t.name}</p>
-          <p className="text-[13px] text-brand-muted">{t.role}</p>
-        </div>
-        <span className="ml-auto shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal-text)]">
+      <div className="flex items-start justify-between gap-4">
+        <span className="text-[44px] font-black leading-none text-[var(--brand-teal)]/20">&ldquo;</span>
+        <span className="mt-2 shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal-text)]">
           {String(idx + 1).padStart(2, "0")}&nbsp;/&nbsp;{String(total).padStart(2, "0")}
         </span>
       </div>
+      <p className="mt-1 text-[15px] leading-[1.75] text-brand-text">{t.quote}</p>
     </div>
   );
 }
@@ -135,7 +104,7 @@ function PhilosophySection() {
           <div className="mt-10 space-y-4">
             {FEATURED_TESTIMONIALS.map((t, idx) => (
               <StaticPhilosophyCard
-                key={t.name}
+                key={idx}
                 t={t}
                 idx={idx}
                 total={FEATURED_TESTIMONIALS.length}
@@ -168,10 +137,10 @@ function PinnedPhilosophySection() {
             <PhilosophyIntro />
 
             {/* Right: Testimonial cards sliding in from right */}
-            <div className="relative" style={{ height: "420px" }}>
+            <div className="grid">
               {FEATURED_TESTIMONIALS.map((t, idx) => (
                 <PhilosophyCard
-                  key={t.name}
+                  key={idx}
                   t={t}
                   idx={idx}
                   total={FEATURED_TESTIMONIALS.length}
@@ -246,7 +215,8 @@ export default function AcademyPage() {
               "linear-gradient(to top, rgba(13,8,6,0.94) 0%, rgba(13,8,6,0.62) 45%, rgba(13,8,6,0.15) 100%)",
           }}
         />
-        <Container className="relative z-10 pb-16 pt-36">
+        {/* Copy hugs the left edge of the screen rather than the centred content column */}
+        <Container className="relative z-10 max-w-none pb-16 pt-36 lg:px-16">
           <motion.div variants={staggerContainer} initial="hidden" animate="visible">
             <motion.span
               variants={staggerItem}

@@ -302,86 +302,50 @@ export const TESTIMONIALS = [
   {
     quote:
       "Joining Collaboration Global completely shifted how I think about business. I stopped competing and started building with people and everything changed. Having direct access to global peers who prioritize collective well-being over isolated wins has been an absolute game-changer for my growth trajectory.",
-    name: "Samantha Johnson",
-    role: "Entrepreneur & Coach",
-    avatar: "/avatars/samantha.png",
   },
   {
     quote:
       "The community here is unlike anything I've experienced. People genuinely want to see each other succeed it's rare and it's real. Every session provides deep tactical clarity alongside absolute authentic emotional safety, making it easy to share real challenges and find immediate support.",
-    name: "Isabella Rodriguez",
-    role: "Creative Director",
-    avatar: "/avatars/isabella.png",
   },
   {
     quote:
       "I came as a guest to one session and never left. Within three months I had two new collaborators and a project I'm genuinely proud of. The structured methodology frameworks provide reliable systems for launching joint initiatives that deliver sustained community value.",
-    name: "Gabrielle Williams",
-    role: "Social Impact Consultant",
-    avatar: "/avatars/gabrielle.png",
   },
   {
     quote:
       "Gill has created something truly special. The depth of connection in this community is extraordinary and it translates into real outcomes. We regularly exchange high-level strategic feedback that simply isn't accessible within conventional, overly transactional networking circles.",
-    name: "Victoria Thompson",
-    role: "Leadership Coach",
-    avatar: "/avatars/victoria.png",
   },
   {
     quote:
       "The accountability and support I get from Collaborator Pro has done more for my business than any course or mastermind I've paid for. Consistently checking in with dedicated pods keeps my executive execution sharp while providing continuous spaces for mutual celebration.",
-    name: "John Peter",
-    role: "Founder, Tech Startup",
-    avatar: "/avatars/john.png",
   },
   {
     quote:
       "Being part of a community that operates from abundance rather than scarcity has fundamentally changed how I show up in my work and life. Releasing persistent fear-based mental models has opened up massive avenues for continuous creative expression and authentic leadership.",
-    name: "Natalie Martinez",
-    role: "Author & Speaker",
-    avatar: "/avatars/natalie.png",
   },
   {
     quote:
       "I've been in business for 20 years and never found a community this honest, warm, and genuinely collaborative. It's the real deal. Surrounding yourself with visionary leaders who challenge you to lead from absolute integrity elevates everyday strategic decision-making.",
-    name: "Marcus Bennett",
-    role: "Business Strategist",
-    avatar: "/avatars/samantha.png",
   },
   {
     quote:
       "Within weeks of joining I had connected with people across five countries. The global reach of this community is extraordinary. Sharing interdisciplinary cross-border perspectives routinely challenges my local assumptions and uncovers rich, sustainable operational possibilities.",
-    name: "Priya Sharma",
-    role: "Global Project Manager",
-    avatar: "/avatars/isabella.png",
   },
   {
     quote:
       "The sessions are always energising and full of ideas. I leave every meeting with new perspectives and someone new to connect with. Facilitating space where complete strangers seamlessly transition into verified allies speaks volumes about the movement's foundation.",
-    name: "Daniel O'Brien",
-    role: "Community Builder",
-    avatar: "/avatars/gabrielle.png",
   },
   {
     quote:
       "Collaboration Global gave me the confidence to ask for support and the community actually showed up. That's priceless. Knowing you have an entire global family standing behind your mission provides foundational resilience during dynamic, high-stakes project launches.",
-    name: "Aisha Okonkwo",
-    role: "NGO Founder",
-    avatar: "/avatars/victoria.png",
   },
   {
     quote:
       "I joined for networking and stayed for the transformation. The mindset shift alone has been worth every penny. Cultivating daily practices rooted in collective empowerment transforms standard client engagements into deep, long-term transformational partnerships.",
-    name: "Tom Whitfield",
-    role: "Executive Coach",
-    avatar: "/avatars/john.png",
   },
   {
     quote:
       "There's an authenticity here that you don't find in most professional communities. People bring their whole selves and it makes all the difference. It provides the ultimate professional sanctuary where vulnerability is consistently rewarded with genuine mutual respect.",
-    name: "Léa Fontaine",
-    role: "Creative Entrepreneur",
-    avatar: "/avatars/natalie.png",
   },
 ] as const;
 
@@ -434,6 +398,5 @@ export const SOCIAL_LINKS = [
 
 export const FOOTER = {
   copyright: `© ${new Date().getFullYear()} Collaboration Global`,
-  designerCredit: "Designed by Kay Westrap & Linda Burns",
 } as const;
 
