@@ -221,8 +221,8 @@ export default function ProgramsPage() {
    </motion.h2>
    <motion.div variants={staggerContainer} className="mt-10 grid gap-4 sm:grid-cols-3">
     {[
-    { label: "28+", sub: "Countries represented" },
-    { label: "500+", sub: "Members worldwide" },
+    { label: "1000s", sub: "In our extended community" },
+    { label: "Global", sub: "Reaching every continent" },
     { label: "6+", sub: "Years of community" },
     ].map((stat) => (
     <motion.div

@@ -18,8 +18,8 @@ const HERO_MIC_IMAGE =
 const DISPLAY_PARTNERS = IMPACT_PARTNERS.slice(0, 3);
 
 const TICKER_ITEMS = [
-  { Icon: Globe2, text: "28+ Countries" },
-  { Icon: Users, text: "500+ Members" },
+  { Icon: Globe2, text: "Every Continent" },
+  { Icon: Users, text: "A Community of Thousands" },
   { Icon: Zap, text: "10k+ Impacts" },
   { Icon: CalendarDays, text: "6+ Years Active" },
 ];

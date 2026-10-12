@@ -64,21 +64,6 @@ export const HERO = {
   secondaryCTA: { label: "Our Story", href: "/about" },
 } as const;
 
-/** Hero stats strip same pattern as Reunion (“10+ Demos · 1,000+ Attendees · …”) */
-export const HERO_STATS_STRIP = [
-  { value: "28+", label: "Countries" },
-  { value: "500+", label: "Members" },
-  { value: "10k+", label: "Impacts" },
-  { value: "6+", label: "Years" },
-] as const;
-
-export const STATS = [
-  { value: 28, suffix: "+", label: "Countries" },
-  { value: 500, suffix: "+", label: "Members" },
-  { value: 10000, suffix: "+", label: "Impacts" },
-  { value: 6, suffix: "+", label: "Years" },
-] as const;
-
 export const PHILOSOPHY = {
   sectionLabel: "Philosophy",
   heading: "From scarcity & fear to abundance & love.",

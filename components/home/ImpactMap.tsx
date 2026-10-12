@@ -24,7 +24,7 @@ export function ImpactMap() {
    variants={fadeUp}
    className="mx-auto mt-4 max-w-[600px] text-[clamp(2.2rem,4.2vw,3.8rem)] font-bold leading-[1.06] tracking-[-0.03em] text-brand-text"
    >
-   28+ Countries.
+   Every Continent.
    <br />
    One Movement.
    </motion.h2>
@@ -32,8 +32,8 @@ export function ImpactMap() {
    variants={fadeUp}
    className="mx-auto mt-4 max-w-[480px] text-[15px] leading-relaxed text-brand-muted"
    >
-   Members across six continents collaborating, growing, and creating
-   real-world impact together.
+   An extended community of thousands collaborating, growing, and
+   creating real-world impact together.
    </motion.p>
   </motion.div>
 

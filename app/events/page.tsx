@@ -34,7 +34,7 @@ const HOW_IT_WORKS = [
  {
  Icon: Globe2,
  title: "Global & Online",
- body: "Members join from 28+ countries. No travel, no dress code just show up as you are from wherever you are.",
+ body: "Members join from every continent. No travel, no dress code just show up as you are from wherever you are.",
  },
  {
  Icon: Users,
