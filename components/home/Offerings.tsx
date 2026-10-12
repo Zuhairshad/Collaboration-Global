@@ -64,12 +64,12 @@ export function Offerings() {
     }`}
    >
     {offering.highlighted && (
-    <div className="absolute right-4 top-4 rounded-full bg-[var(--reunion-accent)] px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+    <div className="absolute right-4 top-4 rounded-full bg-[var(--reunion-accent)] px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-brand-text">
      Popular
     </div>
     )}
 
-    <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--reunion-accent)]">
+    <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
     {offering.tag}
     </p>
     <p className="mt-3 text-xl font-bold tracking-tight text-brand-text">
@@ -85,7 +85,7 @@ export function Offerings() {
     <ul className="mt-6 flex-1 space-y-3">
     {offering.features.map((f) => (
      <li key={f} className="flex items-start gap-3">
-     <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--reunion-accent)]" strokeWidth={2.5} />
+     <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand-teal-text)]" strokeWidth={2.5} />
      <span className="text-[14px] text-brand-muted">{f}</span>
      </li>
     ))}

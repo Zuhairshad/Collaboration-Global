@@ -11,6 +11,8 @@ export type ImageBlockProps = {
   className?: string;
   imageClassName?: string;
   showCaption?: boolean;
+  /** Extra classes for the caption, e.g. white text when the block sits on a dark/gradient section */
+  captionClassName?: string;
   /** Preload as the page's LCP image (Next 16 replacement for `priority`) */
   preload?: boolean;
   /** Override the default `sizes` hint when the block is narrower than the viewport */
@@ -23,6 +25,7 @@ export function ImageBlock({
   className,
   imageClassName,
   showCaption = true,
+  captionClassName,
   preload = false,
   sizes,
 }: ImageBlockProps) {
@@ -85,7 +88,7 @@ export function ImageBlock({
       </div>
 
       {showCaption && media.caption && variant !== "logo-strip" && (
-        <p className="text-left text-xs font-medium text-brand-muted px-2 border-l-2 border-brand-teal/40 ml-2 italic">
+        <p className={cn("text-left text-xs font-medium text-brand-muted px-2 border-l-2 border-brand-teal/40 ml-2 italic", captionClassName)}>
           {media.caption}
         </p>
       )}

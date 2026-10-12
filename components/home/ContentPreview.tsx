@@ -9,9 +9,9 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 
 const PROGRAM_META = [
- { time: "Free · Monthly", color: "text-[var(--reunion-accent)]" },
- { time: "£30 · Monthly", color: "text-[var(--reunion-accent)]" },
- { time: "£50 · Monthly", color: "text-[var(--reunion-accent)]" },
+ { time: "Free · Monthly", color: "text-[var(--brand-teal-text)]" },
+ { time: "£30 · Monthly", color: "text-[var(--brand-teal-text)]" },
+ { time: "£50 · Monthly", color: "text-[var(--brand-teal-text)]" },
 ] as const;
 
 export function ContentPreview() {
@@ -95,7 +95,7 @@ export function ContentPreview() {
 
     {/* Presenter row */}
     <div className="mt-5 flex items-center gap-3">
-     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-border bg-brand-card-hover text-[9px] font-bold uppercase text-brand-dim">
+     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-border bg-brand-card-hover text-[9px] font-bold uppercase text-brand-muted">
      GT
      </div>
      <p className="text-sm font-medium text-brand-muted">

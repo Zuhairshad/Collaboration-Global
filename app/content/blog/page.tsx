@@ -61,7 +61,7 @@ const VIDEOS = [
 
 function VideoCard({ video }: { video: typeof VIDEOS[number] }) {
   const [playing, setPlaying] = useState(false);
-  const thumbnail = `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`;
+  const thumbnail = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
 
   return (
     <div className="group overflow-hidden rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.18)]">
@@ -86,6 +86,7 @@ function VideoCard({ video }: { video: typeof VIDEOS[number] }) {
               src={thumbnail}
               alt={video.title}
               fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 450px"
               className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
             />
 
@@ -94,20 +95,24 @@ function VideoCard({ video }: { video: typeof VIDEOS[number] }) {
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(to top, rgba(74,67,150,0.92) 0%, rgba(49,207,195,0.3) 60%, rgba(0,0,0,0.15) 100%)",
+                  "linear-gradient(to top, rgba(74,67,150,0.92) 0%, rgba(29,128,121,0.55) 60%, rgba(0,0,0,0.25) 100%)",
               }}
             />
 
             {/* Duration badge */}
-            <div className="absolute right-3 top-3 rounded-md bg-black/60 px-2.5 py-1 text-[11px] font-bold tabular-nums text-white backdrop-blur-sm">
+            <div className="absolute right-3 top-3 rounded-md bg-black/60 px-2.5 py-1 text-[11px] font-bold tabular-nums text-white">
               {video.duration}
             </div>
 
             {/* Play button */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative">
-                <div className="absolute inset-0 scale-150 rounded-full bg-[var(--brand-teal)]/30 blur-xl" />
-                <div className="relative flex h-16 w-16 items-center justify-center rounded-full border-2 border-white/30 bg-white/10 backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:bg-white/20">
+                <div
+                  className="absolute inset-0 scale-150 rounded-full"
+                  style={{ background: "radial-gradient(circle, rgba(49,207,195,0.35) 0%, rgba(49,207,195,0.15) 45%, transparent 70%)" }}
+                  aria-hidden
+                />
+                <div className="relative flex h-16 w-16 items-center justify-center rounded-full border-2 border-white/30 bg-white/15 transition-[transform,background-color] duration-300 group-hover:scale-110 group-hover:bg-white/25">
                   <Play className="ml-1 h-6 w-6 text-white" fill="white" strokeWidth={0} />
                 </div>
               </div>
@@ -115,7 +120,7 @@ function VideoCard({ video }: { video: typeof VIDEOS[number] }) {
 
             {/* Bottom title overlay */}
             <div className="absolute bottom-0 left-0 right-0 px-5 pb-4">
-              <span className="inline-block rounded-full bg-[var(--brand-teal)]/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-[var(--brand-teal)]">
+              <span className="inline-block rounded-full bg-[var(--brand-teal)]/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-[var(--brand-teal-text)]">
                 Collaboration Global
               </span>
             </div>
@@ -138,12 +143,12 @@ export default function BlogPage() {
   return (
     <main>
       {/* ── BLOG HERO ── */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+      <section className="relative flex min-h-svh items-center justify-center overflow-hidden">
         <Image
           src="/media/blog-hero.jpg"
           alt="Blog hero"
           fill
-          priority
+          preload
           className="object-cover"
           sizes="100vw"
         />
@@ -158,13 +163,13 @@ export default function BlogPage() {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm"
+              className="inline-block rounded-full border border-white/20 bg-white/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-white/80"
             >
               Blog
             </motion.span>
             <motion.h1
               variants={fadeUp}
-              className="mt-6 text-[clamp(2.8rem,6vw,5rem)] font-bold leading-[1.05] tracking-tight text-white"
+              className="mt-6 text-[clamp(2.4rem,6vw,5rem)] font-bold leading-[1.05] tracking-tight text-white"
             >
               Ideas worth sharing.
             </motion.h1>
@@ -212,7 +217,7 @@ export default function BlogPage() {
                 className="flex w-full items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-[15px] font-semibold text-white transition-all duration-200 hover:border-[var(--brand-teal)]/40 hover:bg-white/10"
               >
                 <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--brand-teal)]/15">
-                  <Play className="ml-0.5 h-4 w-4 text-[var(--brand-teal)]" fill="currentColor" strokeWidth={0} />
+                  <Play className="ml-0.5 h-4 w-4 text-[var(--brand-teal-text)]" fill="currentColor" strokeWidth={0} />
                 </div>
                 View the full playlist on YouTube
                 <ExternalLink className="ml-auto h-4 w-4 text-white/40" />
@@ -238,7 +243,7 @@ export default function BlogPage() {
 
             <motion.div variants={fadeUp} className="mt-5">
               <Link href={`/content/blog/${featured.slug}`} className="group block">
-                <div className="rounded-2xl border border-brand-border bg-white p-8 shadow-sm transition-shadow duration-300 group-hover:shadow-md">
+                <div className="rounded-2xl border border-brand-border bg-white p-6 shadow-sm transition-shadow md:p-8 duration-300 group-hover:shadow-md">
                   <div className="flex flex-wrap items-center gap-3">
                     <span className="rounded-full bg-[var(--brand-purple)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-white">
                       {featured.category}
@@ -262,7 +267,7 @@ export default function BlogPage() {
               </Link>
             </motion.div>
 
-            <div className="mt-5 grid gap-4 sm:grid-cols-3">
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
               {rest.map((post) => (
                 <motion.div key={post.slug} variants={fadeUp}>
                   <Link href={`/content/blog/${post.slug}`} className="group flex h-full flex-col rounded-2xl border border-brand-border bg-white p-6 shadow-sm transition-shadow duration-300 hover:shadow-md">

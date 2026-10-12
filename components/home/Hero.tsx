@@ -52,11 +52,11 @@ function StatsTicker() {
           <span
             key={i}
             aria-hidden={i >= TICKER_ITEMS.length}
-            className="flex shrink-0 items-center gap-2 px-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white md:text-xs"
+            className="flex shrink-0 items-center gap-2 px-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-text md:text-xs"
           >
             <item.Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
             {item.text}
-            <span className="ml-4 text-white/40">·</span>
+            <span className="ml-4 text-brand-text/40">·</span>
           </span>
         ))}
       </div>

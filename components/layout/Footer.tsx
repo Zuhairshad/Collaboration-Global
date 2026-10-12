@@ -65,7 +65,7 @@ export function Footer() {
    </div>
    </div>
    <p className="mt-3 text-xs text-brand-dim">{FOOTER.copyright}</p>
-   <p className="mt-1 text-xs text-brand-dim/70">{FOOTER.designerCredit}</p>
+   <p className="mt-1 text-xs text-brand-dim">{FOOTER.designerCredit}</p>
   </div>
   </Container>
  </footer>

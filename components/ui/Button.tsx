@@ -10,7 +10,7 @@ const variants: Record<Variant, string> = {
  primary: "bg-white text-brand-text hover:bg-white/90",
  /** Reunion.framer.ai primary CTA hot pink on dark */
  accent:
- "bg-[var(--reunion-accent)] text-white hover:bg-[var(--reunion-accent-hover)]",
+ "bg-[var(--reunion-accent)] text-brand-text hover:bg-[var(--reunion-accent-hover)]",
  outline:
  "border border-gray-300 bg-transparent text-brand-text hover:border-gray-400 hover:bg-brand-card",
 };

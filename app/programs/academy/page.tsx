@@ -67,7 +67,7 @@ function PhilosophyCard({
             <p className="text-[16px] font-bold text-brand-text">{t.name}</p>
             <p className="text-[13px] text-brand-muted">{t.role}</p>
           </div>
-          <span className="ml-auto shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal)]">
+          <span className="ml-auto shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal-text)]">
             {String(idx + 1).padStart(2, "0")}&nbsp;/&nbsp;{String(total).padStart(2, "0")}
           </span>
         </div>
@@ -95,7 +95,7 @@ function StaticPhilosophyCard({
           <p className="text-[15px] font-bold text-brand-text">{t.name}</p>
           <p className="text-[13px] text-brand-muted">{t.role}</p>
         </div>
-        <span className="ml-auto shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal)]">
+        <span className="ml-auto shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal-text)]">
           {String(idx + 1).padStart(2, "0")}&nbsp;/&nbsp;{String(total).padStart(2, "0")}
         </span>
       </div>
@@ -250,7 +250,7 @@ export default function AcademyPage() {
           <motion.div variants={staggerContainer} initial="hidden" animate="visible">
             <motion.span
               variants={staggerItem}
-              className="inline-block rounded-full bg-[var(--brand-teal)]/20 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-teal)]"
+              className="inline-block rounded-full bg-[var(--brand-teal)]/20 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white"
             >
               Changemakers Unite
             </motion.span>
@@ -454,7 +454,7 @@ export default function AcademyPage() {
                 className="relative mt-10 overflow-hidden rounded-2xl border border-brand-border bg-white p-6 shadow-sm md:p-8"
               >
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
                   Collaborator Academy
                 </p>
                 <div className="mt-3 flex items-end gap-2">
@@ -476,7 +476,7 @@ export default function AcademyPage() {
                   ].map((f) => (
                     <li key={f} className="flex items-center gap-2.5">
                       <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[var(--brand-teal)]/15">
-                        <Check className="h-2.5 w-2.5 text-[var(--brand-teal)]" strokeWidth={2.5} />
+                        <Check className="h-2.5 w-2.5 text-[var(--brand-teal-text)]" strokeWidth={2.5} />
                       </span>
                       <span className="text-[13px] text-brand-muted">{f}</span>
                     </li>
@@ -497,7 +497,7 @@ export default function AcademyPage() {
                   Want the full experience?{" "}
                   <a
                     href="/programs/collaborator-pro"
-                    className="font-medium text-[var(--brand-teal)] hover:underline"
+                    className="font-medium text-[var(--brand-teal-text)] hover:underline"
                   >
                     Explore Collaborator Pro →
                   </a>

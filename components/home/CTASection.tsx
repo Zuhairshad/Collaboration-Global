@@ -10,7 +10,7 @@ import { fadeUp, slideInLeft, slideInRight, staggerContainer, staggerItem } from
 const BLOCKS = [
  {
  label: "Opportunities",
- labelColor: "text-pink-500",
+ labelColor: "text-pink-600",
  heading: "Learn, Build, and\nBe Inspired",
  bullets: [
   { Icon: Send, text: "New tools reshaping creative workflows." },
@@ -24,7 +24,7 @@ const BLOCKS = [
  },
  {
  label: "Impact",
- labelColor: "text-pink-500",
+ labelColor: "text-pink-600",
  heading: "Take Ideas From\nStage to Reality",
  bullets: [
   { Icon: Users2, text: "Walk away with practical frameworks." },

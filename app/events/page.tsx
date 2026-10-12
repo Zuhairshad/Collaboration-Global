@@ -131,7 +131,7 @@ export default function EventsPage() {
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
     <div className="pointer-events-none absolute -top-20 left-1/2 h-44 w-[272px] max-w-full -translate-x-1/2 [background:radial-gradient(closest-side,color-mix(in_srgb,var(--brand-purple)_8%,transparent),transparent)]" />
 
-    <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+    <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
      Monthly Community Meeting
     </p>
     <p className="relative mt-3 text-[2.6rem] font-black leading-none tracking-tight text-brand-text">
@@ -150,7 +150,7 @@ export default function EventsPage() {
      ].map((f) => (
      <div key={f} className="flex items-start gap-2.5">
       <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[var(--brand-teal)]/15">
-      <Zap className="h-2.5 w-2.5 text-[var(--brand-teal)]" strokeWidth={2.5} />
+      <Zap className="h-2.5 w-2.5 text-[var(--brand-teal-text)]" strokeWidth={2.5} />
       </span>
       <span className="text-[13.5px] leading-relaxed text-brand-muted">{f}</span>
      </div>
@@ -161,7 +161,7 @@ export default function EventsPage() {
      href={EVENTBRITE_URL}
      target="_blank"
      rel="noopener noreferrer"
-     className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-[var(--brand-teal)] px-6 py-3.5 text-xs font-medium uppercase tracking-wider text-white transition-colors hover:bg-[var(--brand-teal-hover)]"
+     className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-[var(--brand-teal)] px-6 py-3.5 text-xs font-medium uppercase tracking-wider text-brand-text transition-colors hover:bg-[var(--brand-teal-hover)]"
     >
      View on Eventbrite
      <ExternalLink className="h-3.5 w-3.5 shrink-0" strokeWidth={1.8} />
@@ -206,7 +206,7 @@ export default function EventsPage() {
      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--brand-teal)]/10">
      <item.Icon
-      className="h-5 w-5 text-[var(--brand-teal)]"
+      className="h-5 w-5 text-[var(--brand-teal-text)]"
       strokeWidth={1.8}
      />
      </div>
@@ -310,7 +310,7 @@ export default function EventsPage() {
    <RevealOnScroll delay={0.06}>
     <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/50 to-transparent" />
-    <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+    <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
      Learn &amp; Build
     </p>
     <p className="mt-3 text-xl font-bold tracking-tight text-brand-text">
@@ -337,13 +337,13 @@ export default function EventsPage() {
     <div className="group relative h-full overflow-hidden rounded-2xl border border-[var(--brand-teal)]/30 bg-white p-6 shadow-sm md:p-8">
     <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--brand-teal)] to-transparent" />
     <div className="pointer-events-none absolute -top-20 left-1/2 h-44 w-[272px] max-w-full -translate-x-1/2 [background:radial-gradient(closest-side,color-mix(in_srgb,var(--brand-teal)_8%,transparent),transparent)]" />
-    <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+    <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
      Full Membership
     </p>
     <p className="relative mt-3 text-xl font-bold tracking-tight text-brand-text">
      Collaborator Pro
     </p>
-    <p className="relative mt-1 text-2xl font-black tracking-tight text-[var(--brand-teal)]">
+    <p className="relative mt-1 text-2xl font-black tracking-tight text-[var(--brand-teal-text)]">
      £50 / month
     </p>
     <p className="relative mt-4 text-[13.5px] leading-[1.75] text-brand-muted">

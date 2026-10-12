@@ -7,7 +7,7 @@ export function SectionLabel({
  return (
  <p
   className={cn(
-  "text-[11px] font-semibold tracking-[0.22em] uppercase text-[var(--brand-teal)]",
+  "text-[11px] font-semibold tracking-[0.22em] uppercase text-[var(--brand-teal-text)]",
   className,
   )}
   {...props}

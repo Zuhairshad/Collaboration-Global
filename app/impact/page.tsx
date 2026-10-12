@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
- Play, ArrowRight, Sparkles, ChevronLeft, ChevronRight,
+ Play, Sparkles, ChevronLeft, ChevronRight,
  ExternalLink, CheckCircle2,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -18,10 +18,12 @@ function HeroMedia({
  item,
  playing,
  onPlay,
+ preload,
 }: {
  item: ImpactItem;
  playing: boolean;
  onPlay: () => void;
+ preload?: boolean;
 }) {
  const isVideo = item.type === "video" && item.youtubeId;
  const embedSrc = isVideo
@@ -29,7 +31,7 @@ function HeroMedia({
  : "";
 
  return (
- <div className="group relative aspect-[16/8] w-full overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
+ <div className="group relative aspect-[4/3] w-full sm:aspect-[16/8] overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
   {/* Video playing state */}
   {isVideo && playing ? (
   <iframe
@@ -51,7 +53,7 @@ function HeroMedia({
    src={item.image!}
    alt={item.title}
    fill
-   priority
+   preload={preload}
    sizes="(max-width: 768px) 100vw, 920px"
    className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
    />
@@ -68,10 +70,10 @@ function HeroMedia({
    {/* Type badge */}
    <div className="absolute left-5 top-5 md:left-6 md:top-6">
    <span
-    className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] backdrop-blur-md ${
+    className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] ${
     isVideo
-     ? "border-red-400/30 bg-red-500/15 text-red-300"
-     : "border-[var(--brand-teal)]/30 bg-[var(--brand-teal)]/10 text-[var(--brand-teal)]"
+     ? "border-red-400/30 bg-[rgba(60,10,14,0.55)] text-red-300"
+     : "border-[var(--brand-teal)]/30 bg-[rgba(6,30,30,0.55)] text-[var(--brand-teal-text)]"
     }`}
    >
     {isVideo ? "Video" : "Case Study"}
@@ -82,9 +84,13 @@ function HeroMedia({
    {isVideo && (
    <div className="absolute inset-0 flex items-center justify-center">
     <div className="relative">
-    <div className="absolute inset-0 scale-[2] rounded-full bg-white/5 blur-2xl transition-transform duration-500 group-hover:scale-[2.5]" />
-    <div className="relative flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 border-white/25 bg-white/10 backdrop-blur-lg transition-all duration-300 group-hover:scale-110 group-hover:border-white/40 group-hover:bg-white/20 md:h-20 md:w-20">
-     <Play className="ml-1 h-7 w-7 text-white" fill="white" strokeWidth={0} />
+    <div
+     className="absolute inset-0 scale-[2] rounded-full transition-transform duration-500 group-hover:scale-[2.5]"
+     style={{ background: "radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 45%, transparent 70%)" }}
+     aria-hidden
+    />
+    <div className="relative flex h-14 w-14 items-center justify-center rounded-full border-2 border-white/25 bg-white/15 transition-[transform,background-color,border-color] duration-300 group-hover:scale-110 group-hover:border-white/40 group-hover:bg-white/25 sm:h-[72px] sm:w-[72px] md:h-20 md:w-20">
+     <Play className="ml-1 h-6 w-6 text-white sm:h-7 sm:w-7" fill="white" strokeWidth={0} />
     </div>
     </div>
    </div>
@@ -92,7 +98,7 @@ function HeroMedia({
 
    {/* Bottom text overlay */}
    <div className="absolute bottom-0 left-0 right-0 p-5 md:p-7">
-   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/40">
+   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/60">
     {item.subtitle}
    </p>
    <h2 className="mt-1.5 text-xl font-bold tracking-tight text-white md:text-2xl lg:text-3xl">
@@ -156,7 +162,7 @@ function ContentPanel({ item }: { item: ImpactItem }) {
   )}
 
   {/* ── Main content card ── */}
-  <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-7 shadow-sm md:p-9">
+  <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-7 md:p-9">
   {/* Description */}
   <p className="text-[17px] leading-[1.85] text-brand-text md:text-lg">
    {item.description}
@@ -166,7 +172,7 @@ function ContentPanel({ item }: { item: ImpactItem }) {
   <div className="mt-7 border-t border-gray-100 pt-7">
    <div className="flex items-center gap-2">
    <div className="h-1 w-5 rounded-full bg-[var(--brand-teal)]" />
-   <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--brand-teal)]">
+   <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--brand-teal-text)]">
     Deep Dive
    </p>
    </div>
@@ -198,7 +204,7 @@ function ContentPanel({ item }: { item: ImpactItem }) {
      className="flex items-start gap-3"
     >
      <CheckCircle2
-     className="mt-0.5 h-[18px] w-[18px] shrink-0 text-[var(--brand-teal)]"
+     className="mt-0.5 h-[18px] w-[18px] shrink-0 text-[var(--brand-teal-text)]"
      strokeWidth={2}
      />
      <span className="text-[15px] leading-[1.75] text-brand-muted md:text-base">
@@ -217,7 +223,7 @@ function ContentPanel({ item }: { item: ImpactItem }) {
     href={item.url}
     target="_blank"
     rel="noopener noreferrer"
-    className="group/link inline-flex items-center gap-2 rounded-full border border-brand-border bg-slate-50 px-6 py-3 text-sm font-medium text-brand-muted transition-all duration-300 hover:border-[var(--brand-teal)] hover:bg-[var(--brand-teal)]/5 hover:text-[var(--brand-teal)]"
+    className="group/link inline-flex items-center gap-2 rounded-full border border-brand-border bg-slate-50 px-6 py-3 text-sm font-medium text-brand-muted transition-all duration-300 hover:border-[var(--brand-teal)] hover:bg-[var(--brand-teal)]/5 hover:text-[var(--brand-teal-text)]"
    >
     Learn more about {item.title.split(':')[0].trim()}
     <ExternalLink className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-0.5" strokeWidth={2} />
@@ -309,14 +315,14 @@ function NavTabs({
 
     <span
     className={`block whitespace-nowrap text-[13px] font-semibold tracking-tight transition-colors ${
-     isActive ? "text-brand-text" : "text-gray-400 group-hover:text-gray-600"
+     isActive ? "text-brand-text" : "text-gray-600 group-hover:text-gray-800"
     }`}
     >
     {item.title}
     </span>
     <span
     className={`mt-0.5 block whitespace-nowrap text-[11px] transition-colors ${
-     isActive ? "text-brand-muted" : "text-gray-300 group-hover:text-gray-400"
+     isActive ? "text-brand-muted" : "text-gray-500 group-hover:text-gray-600"
     }`}
     >
     {item.subtitle}
@@ -360,7 +366,7 @@ export default function ImpactPage() {
  );
 
  return (
- <main className="relative min-h-screen overflow-hidden bg-slate-50">
+ <main className="relative min-h-svh overflow-hidden bg-slate-50">
 
   {/* ── Page header ── */}
   <section className="relative z-10 pb-6 pt-28 text-center md:pt-36">
@@ -371,8 +377,8 @@ export default function ImpactPage() {
    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
    >
    <div className="mx-auto mb-5 flex items-center justify-center gap-2">
-    <Sparkles className="h-4 w-4 text-[var(--brand-teal)]" strokeWidth={2} />
-    <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+    <Sparkles className="h-4 w-4 text-[var(--brand-teal-text)]" strokeWidth={2} />
+    <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
     Global Impact
     </span>
    </div>
@@ -412,6 +418,7 @@ export default function ImpactPage() {
     >
     <HeroMedia
      item={active}
+     preload={active.id === GLOBAL_IMPACT_DATA[0].id}
      playing={playing}
      onPlay={() => setPlaying(true)}
     />
@@ -431,7 +438,7 @@ export default function ImpactPage() {
     <button
      key={item.id}
      onClick={() => handleSelect(item)}
-     className={`h-2 rounded-full transition-all duration-300 ${
+     className={`h-2 rounded-full transition-colors duration-300 ${
      item.id === active.id
       ? "w-7 bg-[var(--brand-teal)]"
       : "w-2 bg-gray-300 hover:bg-gray-400"

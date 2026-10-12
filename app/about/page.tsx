@@ -159,11 +159,11 @@ export default function AboutPage() {
   label="About"
   title="Built on the belief that collaboration changes everything."
   description="In a world filled with daunting challenges it's easy to lose hope. But amidst these challenges, there's a beacon of hope: collaboration."
-  className="[background:linear-gradient(135deg,#4a4396_0%,#655bb3_30%,#31cfc3_60%,#7be0d8_100%)]"
+  className="bg-brand-gradient"
   />
 
   {/* ── Origin Story ── gray-50 */}
-  <section id="story" className="bg-brand-card py-24 md:py-32">
+  <section id="story" className="bg-brand-card py-16 sm:py-24 md:py-32">
   <Container>
    <div className="grid items-start gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
 
@@ -217,10 +217,10 @@ export default function AboutPage() {
     className="flex flex-col gap-4 lg:pt-4"
    >
     {/* Quote card */}
-    <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+    <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
-    <div className="pointer-events-none absolute -top-10 left-1/2 h-24 w-40 -translate-x-1/2 rounded-full bg-[var(--brand-purple)]/8 blur-2xl" />
-    <p className="relative text-[28px] font-black leading-none text-[var(--brand-teal)] opacity-30">&ldquo;</p>
+    <div className="pointer-events-none absolute -top-14 left-1/2 h-32 w-56 -translate-x-1/2" style={{ background: "radial-gradient(ellipse at center, rgba(101,91,179,0.08) 0%, rgba(101,91,179,0.04) 40%, transparent 70%)" }} aria-hidden />
+    <p className="relative text-[28px] font-black leading-none text-[var(--brand-teal-text)] opacity-30">&ldquo;</p>
     <p className="relative mt-2 text-[15px] font-medium leading-[1.7] text-brand-text/90">
      {STORY_QUOTE.text}
     </p>
@@ -230,13 +230,13 @@ export default function AboutPage() {
     </div>
 
     {/* Buckminster Fuller callout */}
-    <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+    <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/40 to-transparent" />
-    <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+    <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
      Philosophical Root
     </p>
     <p className="mt-3 text-sm leading-relaxed text-brand-muted">
-     Inspired by <span className="font-semibold text-brand-text">Buckminster Fuller</span> Gill envisions a world where everyone's unique talents and resources are used to help each other, moving from scarcity and fear toward love and abundance for all.
+     Inspired by <span className="font-semibold text-brand-text">Buckminster Fuller</span>{" "}Gill envisions a world where everyone&apos;s unique talents and resources are used to help each other, moving from scarcity and fear toward love and abundance for all.
     </p>
     </div>
    </motion.div>
@@ -248,11 +248,7 @@ export default function AboutPage() {
   {/* ── Vision, Mission & Purpose ── dark bg */}
   <section
   id="vmp"
-  className="relative overflow-hidden py-24 md:py-32"
-  style={{
-   background:
-   "linear-gradient(135deg, #4a4396 0%, #655bb3 30%, #31cfc3 60%, #7be0d8 100%)",
-  }}
+  className="bg-brand-gradient relative overflow-hidden py-16 sm:py-24 md:py-32"
   >
   {/* Atmospheric glows */}
   <div
@@ -274,7 +270,7 @@ export default function AboutPage() {
    viewport={{ once: true, margin: "-60px" }}
    >
    <motion.div variants={fadeUp}>
-    <SectionLabel>Why We Exist</SectionLabel>
+    <SectionLabel className="text-white">Why We Exist</SectionLabel>
    </motion.div>
    <motion.h2
     variants={fadeUp}
@@ -286,24 +282,24 @@ export default function AboutPage() {
    </motion.h2>
    <motion.p
     variants={fadeUp}
-    className="mt-4 max-w-[600px] text-[15px] leading-relaxed text-white/60"
+    className="mt-4 max-w-[600px] text-[15px] leading-relaxed text-white"
    >
-    Our world faces challenges that can only be understood and solved by people coming together. Fortunately, collaboration is what we naturally do as human beings. It is humanity's superpower.
+    Our world faces challenges that can only be understood and solved by people coming together. Fortunately, collaboration is what we naturally do as human beings. It is humanity&apos;s superpower.
    </motion.p>
    </motion.div>
 
    <div className="mt-12 grid gap-4 lg:grid-cols-3">
    {VMPs.map((item, idx) => (
     <RevealOnScroll key={item.label} delay={0.06 + idx * 0.07}>
-    <div className="group relative h-full overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.04] p-8 backdrop-blur-sm transition-colors hover:border-white/[0.14] hover:bg-white/[0.07]">
+    <div className="group relative h-full overflow-hidden rounded-2xl border border-white/[0.12] bg-[rgba(15,10,40,0.18)] p-6 transition-colors hover:border-white/[0.18] hover:bg-[rgba(15,10,40,0.24)] md:p-8">
      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/50 to-transparent" />
-     <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+     <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#a5f0ea]">
      {item.label}
      </p>
      <p className="mt-3 text-lg font-bold tracking-tight text-white">
      {item.heading}
      </p>
-     <p className="mt-3 text-[13.5px] leading-[1.8] text-white/60">
+     <p className="mt-3 text-[13.5px] leading-[1.8] text-white">
      {item.body}
      </p>
     </div>
@@ -314,7 +310,7 @@ export default function AboutPage() {
   </section>
 
   {/* ── MLECA Methodology ── white */}
-  <section id="methodology" className="bg-white py-24 md:py-32">
+  <section id="methodology" className="bg-white py-16 sm:py-24 md:py-32">
   <Container>
    <motion.div
    variants={staggerContainer}
@@ -346,11 +342,11 @@ export default function AboutPage() {
     <RevealOnScroll key={item.word} delay={0.05 + idx * 0.05}>
     <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
-     <div className="pointer-events-none absolute -top-10 left-1/2 h-24 w-40 -translate-x-1/2 rounded-full bg-[var(--brand-purple)]/8 blur-2xl" />
-     <p className="pointer-events-none absolute -right-3 -top-4 select-none text-[88px] font-black leading-none text-gray-100">
+     <div className="pointer-events-none absolute -top-14 left-1/2 h-32 w-56 -translate-x-1/2" style={{ background: "radial-gradient(ellipse at center, rgba(101,91,179,0.08) 0%, rgba(101,91,179,0.04) 40%, transparent 70%)" }} aria-hidden />
+     <p className="pointer-events-none absolute -right-3 -top-4 select-none text-[72px] font-black sm:text-[88px] leading-none text-gray-100">
      0{idx + 1}
      </p>
-     <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+     <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
      0{idx + 1}
      </p>
      <p className="relative mt-3 text-[15px] font-bold tracking-tight text-brand-text">
@@ -367,7 +363,7 @@ export default function AboutPage() {
   </section>
 
   {/* ── Community Philosophy ── brand gradient */}
-  <section id="community" className="py-20 md:py-28" style={{ background: "linear-gradient(135deg, #4a4396 0%, #655bb3 30%, #31cfc3 60%, #7be0d8 100%)" }}>
+  <section id="community" className="bg-brand-gradient py-14 sm:py-20 md:py-28">
   <Container>
    <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
 
@@ -398,7 +394,7 @@ export default function AboutPage() {
     viewport={{ once: true, margin: "-60px" }}
    >
     <motion.div variants={fadeUp}>
-    <SectionLabel className="text-white/60">Human Being First</SectionLabel>
+    <SectionLabel className="text-white">Human Being First</SectionLabel>
     </motion.div>
     <motion.h2
     variants={fadeUp}
@@ -410,7 +406,7 @@ export default function AboutPage() {
     </motion.h2>
     <motion.p
     variants={fadeUp}
-    className="mt-5 text-[15px] leading-relaxed text-white/80"
+    className="mt-5 text-[15px] leading-relaxed text-white"
     >
     Collaboration Global is a place where people can be human with no pretence simply authentic people helping each other to be bigger and better than they can be alone.
     </motion.p>
@@ -423,12 +419,12 @@ export default function AboutPage() {
      <motion.div
      key={val.heading}
      variants={staggerItem}
-     className="rounded-xl bg-white/10 p-5"
+     className="rounded-xl bg-black/10 p-5"
      >
      <p className="text-sm font-bold text-white">
       {val.heading}
      </p>
-     <p className="mt-1.5 text-[13.5px] leading-relaxed text-white/70">
+     <p className="mt-1.5 text-[13.5px] leading-relaxed text-white">
       {val.body}
      </p>
      </motion.div>
@@ -441,7 +437,7 @@ export default function AboutPage() {
   </section>
 
   {/* ── Books by Gill ── gray-50 */}
-  <section id="books" className="bg-brand-card py-24 md:py-32">
+  <section id="books" className="bg-brand-card py-16 sm:py-24 md:py-32">
   <Container>
    <motion.div
    variants={staggerContainer}
@@ -464,20 +460,20 @@ export default function AboutPage() {
     variants={fadeUp}
     className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-brand-muted"
    >
-    Gill Tiney's books capture the thinking, frameworks, and stories behind the movement practical guides for anyone ready to build something of significance with others.
+    Gill Tiney&apos;s books capture the thinking, frameworks, and stories behind the movement practical guides for anyone ready to build something of significance with others.
    </motion.p>
    </motion.div>
 
    <div className="mt-12 grid gap-4 md:grid-cols-3">
    {BOOKS.map((book, idx) => (
     <RevealOnScroll key={book.title} delay={0.05 + idx * 0.06}>
-    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white p-7 shadow-sm">
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-7">
      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
 
      {/* Book icon */}
      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--brand-teal)]/10">
      <BookOpen
-      className="h-5 w-5 text-[var(--brand-teal)]"
+      className="h-5 w-5 text-[var(--brand-teal-text)]"
       strokeWidth={1.8}
      />
      </div>
@@ -493,7 +489,7 @@ export default function AboutPage() {
      href={book.amazonUrl}
      target="_blank"
      rel="noopener noreferrer"
-     className="mt-6 inline-flex items-center gap-1.5 text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--brand-teal)] hover:opacity-80"
+     className="mt-6 inline-flex items-center gap-1.5 text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--brand-teal-text)] hover:opacity-80"
      >
      View on Amazon
      <ExternalLink className="h-3 w-3" strokeWidth={2} />
@@ -506,7 +502,7 @@ export default function AboutPage() {
   </section>
 
   {/* ── Global Partnerships ── white */}
-  <section id="partners" className="bg-white py-24 md:py-32">
+  <section id="partners" className="bg-white py-16 sm:py-24 md:py-32">
   <Container>
    <motion.div
    variants={staggerContainer}
@@ -539,7 +535,7 @@ export default function AboutPage() {
     <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--brand-teal)]/10">
-     <span className="text-[13px] font-bold text-[var(--brand-teal)]">
+     <span className="text-[13px] font-bold text-[var(--brand-teal-text)]">
       {partner.name.charAt(0)}
      </span>
      </div>
@@ -554,7 +550,7 @@ export default function AboutPage() {
       href={partner.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="mt-4 inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--brand-teal)] hover:opacity-80"
+      className="mt-4 inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--brand-teal-text)] hover:opacity-80"
      >
       Learn more
       <ExternalLink className="h-2.5 w-2.5" strokeWidth={2} />
@@ -570,11 +566,7 @@ export default function AboutPage() {
   {/* ── Final CTA ── dark */}
   <section
   id="cta"
-  className="relative overflow-hidden py-24 md:py-32"
-  style={{
-   background:
-   "linear-gradient(135deg, #4a4396 0%, #655bb3 30%, #31cfc3 60%, #7be0d8 100%)",
-  }}
+  className="bg-brand-gradient relative overflow-hidden py-16 sm:py-24 md:py-32"
   >
   <div
    className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30"
@@ -591,7 +583,7 @@ export default function AboutPage() {
    className="relative text-center"
    >
    <motion.div variants={fadeUp} className="flex justify-center">
-    <SectionLabel>Get Involved</SectionLabel>
+    <SectionLabel className="text-white">Get Involved</SectionLabel>
    </motion.div>
    <motion.h2
     variants={fadeUp}
@@ -603,7 +595,7 @@ export default function AboutPage() {
    </motion.h2>
    <motion.p
     variants={fadeUp}
-    className="mx-auto mt-5 max-w-[500px] text-[15px] leading-relaxed text-white/55"
+    className="mx-auto mt-5 max-w-[500px] text-[15px] leading-relaxed text-white"
    >
     Once a month we create a space for people to come together, connect with like-hearted and like-minded people, and start turning shared ideas into real impact.
    </motion.p>

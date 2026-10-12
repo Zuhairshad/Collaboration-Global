@@ -284,27 +284,27 @@ export default async function BlogPostPage({
   return (
     <main>
       {/* Hero */}
-      <section className="pt-40 pb-16 md:pt-48 md:pb-20 [background:linear-gradient(135deg,#4a4396_0%,#655bb3_30%,#31cfc3_60%,#7be0d8_100%)]">
+      <section className="bg-brand-gradient pt-32 pb-12 sm:pt-40 sm:pb-16 md:pt-48 md:pb-20">
         <Container>
           <div className="mx-auto max-w-[780px]">
             <Link
               href="/content/blog"
-              className="mb-8 inline-flex items-center gap-2 text-[13px] font-semibold text-white/60 transition-colors hover:text-white"
+              className="mb-6 inline-flex items-center gap-2 sm:mb-8 text-[13px] font-semibold text-white transition-colors hover:text-white"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               Back to Blog
             </Link>
 
             <div className="flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-black/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-white">
                 <Tag className="h-3 w-3" />
                 {post.category}
               </span>
-              <span className="flex items-center gap-1.5 text-[12px] text-white/50">
+              <span className="flex items-center gap-1.5 text-[12px] text-white">
                 <Calendar className="h-3.5 w-3.5" />
                 {post.date}
               </span>
-              <span className="flex items-center gap-1.5 text-[12px] text-white/50">
+              <span className="flex items-center gap-1.5 text-[12px] text-white">
                 <Clock className="h-3.5 w-3.5" />
                 {post.readTime}
               </span>
@@ -313,7 +313,7 @@ export default async function BlogPostPage({
             <h1 className="mt-5 text-[clamp(1.8rem,4vw,3rem)] font-bold leading-[1.1] tracking-tight text-white">
               {post.title}
             </h1>
-            <p className="mt-4 text-[15px] leading-[1.8] text-white/65 md:text-[17px]">
+            <p className="mt-4 text-[15px] leading-[1.8] text-white md:text-[17px]">
               {post.excerpt}
             </p>
 
@@ -324,7 +324,7 @@ export default async function BlogPostPage({
               </div>
               <div>
                 <p className="text-sm font-semibold text-white">Gill Tiney</p>
-                <p className="text-[12px] text-white/50">Founder &amp; Collaboration Catalyst</p>
+                <p className="text-[12px] text-white">Founder &amp; Collaboration Catalyst</p>
               </div>
             </div>
           </div>
@@ -332,10 +332,10 @@ export default async function BlogPostPage({
       </section>
 
       {/* Article body */}
-      <section className="bg-brand-card py-16 md:py-24">
+      <section className="bg-brand-card py-10 sm:py-16 md:py-24">
         <Container>
           <div className="mx-auto max-w-[780px]">
-            <article className="rounded-2xl border border-brand-border bg-white px-8 py-12 shadow-sm md:px-14 md:py-16 [&_h2]:mb-4 [&_h2]:mt-10 [&_h2]:text-[1.2rem] [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:text-brand-text [&_blockquote]:my-8 [&_blockquote]:border-l-4 [&_blockquote]:border-[var(--brand-purple)] [&_blockquote]:pl-6 [&_blockquote]:italic [&_blockquote]:text-brand-muted [&_p]:mb-5 [&_p]:text-[15px] [&_p]:leading-[1.85] [&_p]:text-brand-muted first:[&_p]:text-[17px] first:[&_p]:font-medium first:[&_p]:text-brand-text/90">
+            <article className="rounded-2xl border border-brand-border bg-white px-5 py-8 shadow-sm sm:px-8 sm:py-12 md:px-14 md:py-16 [&_h2]:mb-4 [&_h2]:mt-10 [&_h2]:text-[1.2rem] [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:text-brand-text [&_blockquote]:my-8 [&_blockquote]:border-l-4 [&_blockquote]:border-[var(--brand-purple)] [&_blockquote]:pl-4 sm:[&_blockquote]:pl-6 [&_blockquote]:italic [&_blockquote]:text-brand-muted [&_p]:mb-5 [&_p]:text-[16px] md:[&_p]:text-[15px] [&_p]:leading-[1.8] md:[&_p]:leading-[1.85] [&_p]:text-brand-muted first:[&_p]:text-[17px] first:[&_p]:font-medium first:[&_p]:text-brand-text/90">
               {post.body}
             </article>
 

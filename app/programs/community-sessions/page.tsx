@@ -114,7 +114,7 @@ export default function CommunitySessionsPage() {
     <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
     <div className="pointer-events-none absolute -top-20 left-1/2 h-44 w-[272px] max-w-full -translate-x-1/2 [background:radial-gradient(closest-side,color-mix(in_srgb,var(--brand-purple)_8%,transparent),transparent)]" />
-    <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+    <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
      Community Sessions
     </p>
     <p className="relative mt-3 text-[3.2rem] font-black leading-none tracking-tight text-brand-text">
@@ -183,7 +183,7 @@ export default function CommunitySessionsPage() {
      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--brand-teal)]/10">
      <item.Icon
-      className="h-5 w-5 text-[var(--brand-teal)]"
+      className="h-5 w-5 text-[var(--brand-teal-text)]"
       strokeWidth={1.8}
      />
      </div>

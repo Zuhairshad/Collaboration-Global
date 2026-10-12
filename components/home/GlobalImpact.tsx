@@ -36,8 +36,8 @@ type CardStyle = {
 // Tighter arc below md so neighbour cards only peek in from the edges
 const getMobileCardStyles = (offset: number): CardStyle => {
     if (offset === 0) return { x: "0%", y: 0, rotate: 0, scale: 1, opacity: 1, zIndex: 40 };
-    if (offset === 1) return { x: "88%", y: 16, rotate: 6, scale: 0.9, opacity: 0.9, zIndex: 30 };
-    if (offset === -1) return { x: "-88%", y: 16, rotate: -6, scale: 0.9, opacity: 0.9, zIndex: 30 };
+    if (offset === 1) return { x: "88%", y: 16, rotate: 6, scale: 0.9, opacity: 0.45, zIndex: 30 };
+    if (offset === -1) return { x: "-88%", y: 16, rotate: -6, scale: 0.9, opacity: 0.45, zIndex: 30 };
     if (offset > 1) return { x: "176%", y: 32, rotate: 12, scale: 0.8, opacity: 0, zIndex: 10 };
     return { x: "-176%", y: 32, rotate: -12, scale: 0.8, opacity: 0, zIndex: 10 };
 };
@@ -244,7 +244,7 @@ export function GlobalImpact() {
                                     </div>
 
                                     {/* Description Text */}
-                                    <p className="text-[14px] sm:text-[15.5px] leading-relaxed mt-2 font-normal flex-1 text-gray-600 line-clamp-[8] sm:line-clamp-[9] md:line-clamp-none">
+                                    <p className="text-[14px] sm:text-[15.5px] leading-relaxed mt-2 font-normal md:flex-1 text-gray-600 line-clamp-[8] sm:line-clamp-[9] md:line-clamp-none">
                                         {partner.description}
                                     </p>
                                 </div>

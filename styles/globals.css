@@ -8,12 +8,14 @@
   --color-brand-card-hover: #edeae3;
   --color-brand-border: #e0dbd3;
   --color-brand-text: #2a2520;
-  --color-brand-muted: #78716a;
-  --color-brand-dim: #a39e95;
+  --color-brand-muted: #6f6862;
+  --color-brand-dim: #746d67;
   --color-brand-purple: #655bb3;
   --color-brand-purple-hover: #5a50a8;
   --color-brand-teal: #31cfc3;
   --color-brand-teal-hover: #28bdb1;
+  /* Teal for text on light backgrounds (bright teal is 1.9:1 on white) */
+  --color-brand-teal-text: #17736d;
 }
 
 :root {
@@ -23,14 +25,15 @@
   --brand-card-hover: #edeae3;
   --brand-border: #e0dbd3;
   --brand-text: #2a2520;
-  --brand-muted: #78716a;
-  --brand-dim: #a39e95;
+  --brand-muted: #6f6862;
+  --brand-dim: #746d67;
 
   /* ── Brand accent: official palette ── */
   --brand-purple: #655bb3;
   --brand-purple-hover: #5a50a8;
   --brand-teal: #31cfc3;
   --brand-teal-hover: #28bdb1;
+  --brand-teal-text: #17736d;
   --reunion-accent: var(--brand-teal);
   --reunion-accent-hover: var(--brand-teal-hover);
 

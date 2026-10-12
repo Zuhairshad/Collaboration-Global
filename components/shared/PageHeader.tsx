@@ -38,7 +38,7 @@ export function PageHeader({
   <div className="mx-auto max-w-[900px] text-center">
    {label ? (
    <RevealOnScroll>
-    <SectionLabel>{label}</SectionLabel>
+    <SectionLabel className={isDark ? "text-white" : undefined}>{label}</SectionLabel>
    </RevealOnScroll>
    ) : null}
 
@@ -58,7 +58,7 @@ export function PageHeader({
     <p
     className={cn(
      "mx-auto mt-5 max-w-[720px] text-base leading-relaxed md:mt-6 md:text-lg md:leading-[1.8]",
-     isDark ? "text-white/70" : "text-brand-muted",
+     isDark ? "text-white" : "text-brand-muted",
     )}
     >
     {description}

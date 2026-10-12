@@ -201,17 +201,17 @@ export function Philosophy() {
    transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
    className="text-center"
   >
-   <SectionLabel className="text-white/70">Philosophy</SectionLabel>
+   <SectionLabel className="text-white">Philosophy</SectionLabel>
    <h2 className="mx-auto mt-4 max-w-[680px] text-[clamp(2rem,4vw,3.4rem)] font-bold leading-[1.1] tracking-[-0.03em] text-white">
    From scarcity and fear<br />to abundance and love.
    </h2>
-   <p className="mx-auto mt-5 max-w-[520px] text-[15px] leading-relaxed text-white/70">
+   <p className="mx-auto mt-5 max-w-[520px] text-[15px] leading-relaxed text-white">
    See how we think about collaboration, community, and what it means to build something that truly matters.
    </p>
 
    {/* Mobile enhancement layer block */}
    <div className="mt-8 mb-2">
-    <ImageBlock id="story-moment-3" variant="landscape" className="mx-auto" />
+    <ImageBlock id="story-moment-3" variant="landscape" className="mx-auto" captionClassName="text-white border-white/50" />
    </div>
   </motion.div>
 
@@ -259,7 +259,7 @@ export function Philosophy() {
     {/* Date separator */}
     <div className="flex items-center gap-3 py-1">
     <div className="h-px flex-1 bg-white/[0.06]" />
-    <span className="text-[10px] font-medium text-white/25 uppercase tracking-widest">Today</span>
+    <span className="text-[10px] font-medium text-white/60 uppercase tracking-widest">Today</span>
     <div className="h-px flex-1 bg-white/[0.06]" />
     </div>
 
@@ -276,7 +276,7 @@ export function Philosophy() {
    >
     <div className="flex flex-1 items-center gap-2 rounded-full bg-white/[0.07] px-4 py-2.5 border border-white/[0.08]">
     <Smile className="h-4 w-4 shrink-0 text-white/25" />
-    <span className="flex-1 text-[13px] text-white/20 select-none">Message...</span>
+    <span className="flex-1 text-[13px] text-white/55 select-none">Message...</span>
     </div>
     <button
     className="bg-brand-gradient-soft flex h-9 w-9 shrink-0 items-center justify-center rounded-full"

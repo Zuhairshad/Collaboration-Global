@@ -116,7 +116,7 @@ export default function ProgramsPage() {
      {/* Glow bloom */}
      <div className="pointer-events-none absolute -top-20 left-1/2 h-44 w-[272px] max-w-full -translate-x-1/2 [background:radial-gradient(closest-side,color-mix(in_srgb,var(--brand-purple)_8%,transparent),transparent)]" />
 
-     <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+     <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
      {p.tag}
      </p>
 
@@ -126,7 +126,7 @@ export default function ProgramsPage() {
 
      <p
      className={`relative mt-1 text-[1.6rem] font-black leading-none tracking-tight ${
-      p.accent ? "text-[var(--brand-teal)]" : "text-brand-muted"
+      p.accent ? "text-[var(--brand-teal-text)]" : "text-brand-muted"
      }`}
      >
      {p.price}
@@ -141,7 +141,7 @@ export default function ProgramsPage() {
       <li key={f} className="flex items-center gap-2.5">
       <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[var(--brand-teal)]/15">
        <Check
-       className="h-2.5 w-2.5 text-[var(--brand-teal)]"
+       className="h-2.5 w-2.5 text-[var(--brand-teal-text)]"
        strokeWidth={2.5}
        />
       </span>

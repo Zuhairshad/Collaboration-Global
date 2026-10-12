@@ -62,7 +62,7 @@ function ProTestimonialCard({
             <p className="text-[16px] font-bold text-brand-text">{t.name}</p>
             <p className="text-[13px] text-brand-muted">{t.role}</p>
           </div>
-          <span className="ml-auto shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal)]">
+          <span className="ml-auto shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal-text)]">
             {String(idx + 1).padStart(2, "0")}&nbsp;/&nbsp;{String(total).padStart(2, "0")}
           </span>
         </div>
@@ -90,7 +90,7 @@ function StaticProTestimonialCard({
           <p className="text-[15px] font-bold text-brand-text">{t.name}</p>
           <p className="text-[13px] text-brand-muted">{t.role}</p>
         </div>
-        <span className="ml-auto shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal)]">
+        <span className="ml-auto shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal-text)]">
           {String(idx + 1).padStart(2, "0")}&nbsp;/&nbsp;{String(total).padStart(2, "0")}
         </span>
       </div>
@@ -261,7 +261,7 @@ export default function CollaboratorProPage() {
           <motion.div variants={staggerContainer} initial="hidden" animate="visible">
             <motion.span
               variants={staggerItem}
-              className="inline-block rounded-full bg-[var(--brand-teal)]/20 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-teal)]"
+              className="inline-block rounded-full bg-[var(--brand-teal)]/20 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white"
             >
               Full Membership
             </motion.span>
@@ -330,7 +330,7 @@ export default function CollaboratorProPage() {
                 <div className="relative h-full overflow-hidden rounded-2xl border border-brand-border bg-white p-6 shadow-sm">
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/50 to-transparent" />
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--brand-teal)]/10">
-                    <p.icon className="h-5 w-5 text-[var(--brand-teal)]" strokeWidth={1.8} />
+                    <p.icon className="h-5 w-5 text-[var(--brand-teal-text)]" strokeWidth={1.8} />
                   </div>
                   <p className="text-[15px] font-bold tracking-tight text-brand-text">{p.title}</p>
                   <p className="mt-2 text-[13px] leading-[1.75] text-brand-muted">{p.body}</p>
@@ -495,7 +495,7 @@ export default function CollaboratorProPage() {
                 className="relative mt-10 overflow-hidden rounded-2xl border border-brand-border bg-brand-card p-6 shadow-sm md:p-8"
               >
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
                   Monthly Membership
                 </p>
                 <div className="mt-3 flex items-end gap-2">
@@ -510,7 +510,7 @@ export default function CollaboratorProPage() {
                   {["Full Academy access included", "Coaching support", "Profile & visibility boost", "Orientation + book included", "Member event discounts", "Private platform groups"].map((f) => (
                     <li key={f} className="flex items-center gap-2.5">
                       <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[var(--brand-teal)]/15">
-                        <Check className="h-2.5 w-2.5 text-[var(--brand-teal)]" strokeWidth={2.5} />
+                        <Check className="h-2.5 w-2.5 text-[var(--brand-teal-text)]" strokeWidth={2.5} />
                       </span>
                       <span className="text-[13px] text-brand-muted">{f}</span>
                     </li>
@@ -528,7 +528,7 @@ export default function CollaboratorProPage() {
                   Not sure yet?{" "}
                   <a
                     href="/programs/community-sessions"
-                    className="font-medium text-[var(--brand-teal)] hover:underline"
+                    className="font-medium text-[var(--brand-teal-text)] hover:underline"
                   >
                     Try a free session first →
                   </a>

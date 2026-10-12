@@ -11,10 +11,15 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
-/** Routes that render on a light background from the top — navbar should default to dark-on-light styling instead of white text */
+/** Routes whose top section is dark (photo or brand gradient), so white nav text is readable over it */
+const DARK_HERO_ROUTES = ["/", "/about", "/programs", "/events", "/impact", "/contact", "/content/blog"];
+
+/** Every other route (partner stories, content pages, 404s) starts on a light background — use dark-on-light nav styling */
 function hasLightHero(pathname: string | null): boolean {
  if (!pathname) return false;
- return pathname.startsWith("/impact/");
+ if (pathname.startsWith("/impact/")) return true;
+ if (pathname.startsWith("/programs/") || pathname.startsWith("/content/blog/")) return false;
+ return !DARK_HERO_ROUTES.includes(pathname);
 }
 
 /** Filter out Home (logo handles it) and Contact (CTA button handles it) */

@@ -36,7 +36,7 @@ function AudienceCard({
   </p>
 
   {/* Content */}
-  <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+  <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
   0{index + 1}
   </p>
   <p className="relative mt-3 text-[15px] font-semibold tracking-tight text-brand-text">
