@@ -16,7 +16,7 @@ const CONVERSATION: Msg[] = [
  { id: 3, from: "user", text: "What is the philosophy behind it?" },
  { id: 4, from: "bot", text: "Shifting the world from scarcity and fear to abundance and love. When people unite with shared values, extraordinary outcomes follow." },
  { id: 5, from: "user", text: "How many members are there?" },
- { id: 6, from: "bot", text: "Over 500 members across 28 countries and growing every week. Each person brings something unique that makes the whole stronger." },
+ { id: 6, from: "bot", text: "An extended community of thousands across every continent, and growing every week. Each person brings something unique that makes the whole stronger." },
  { id: 7, from: "user", text: "What makes it different from networking?" },
  { id: 8, from: "bot", text: "We do not do surface-level networking. This is about deep trust, real collaboration, and building things that genuinely matter." },
  { id: 9, from: "user", text: "How does it work in practice?" },

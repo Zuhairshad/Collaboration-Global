@@ -40,7 +40,7 @@ export const NAV_LINKS = [
     ],
   },
   { label: "Blog", href: "/content/blog" },
-  { label: "Events", href: "https://www.eventbrite.co.uk/e/collaboration-global-guest-session-online-tickets-192260726007?keep_tld=true" },
+  { label: "Events", href: "https://www.eventbrite.co.uk/cc/collaboration-global-guest-sessions-3736159" },
   { label: "Contact", href: "/contact" },
 ] as const satisfies NavLink[];
 
