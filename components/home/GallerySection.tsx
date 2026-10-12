@@ -6,20 +6,20 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ExpandableGallery } from "@/components/ui/gallery-animation";
 import { fadeUp, staggerContainer } from "@/lib/animations";
+import gillPortrait from "@/public/media/gill-portrait.jpeg";
+import communityColorfulDuo from "@/public/media/community-colorful-duo.jpg";
+import communityCafe from "@/public/media/community-cafe.jpg";
+import memberHaroldAzmann from "@/public/media/member-harold-azmann.jpeg";
+import communityManor from "@/public/media/community-manor.jpeg";
+import ctaGillLaptop from "@/public/media/cta-gill-laptop.jpg";
+import ctaCommunityTrio from "@/public/media/cta-community-trio.jpeg";
+import memberAnneScottlin from "@/public/media/member-anne-scottlin.jpg";
+import galleryLondonLunch from "@/public/media/gallery-london-lunch.jpeg";
+import galleryZoomSession from "@/public/media/gallery-zoom-session.jpg";
 
-const TOP_IMAGES = [
-  "/media/gill-portrait.jpeg",
-  "/media/community-colorful-duo.jpg",
-  "/media/community-cafe.jpg",
-  "/media/member-harold-azmann.jpeg",
-];
+const TOP_IMAGES = [gillPortrait, communityColorfulDuo, communityCafe, memberHaroldAzmann];
 
-const BOTTOM_IMAGES = [
-  "/media/community-manor.jpeg",
-  "/media/cta-gill-laptop.jpg",
-  "/media/cta-community-trio.jpeg",
-  "/media/member-anne-scottlin.jpg",
-];
+const BOTTOM_IMAGES = [communityManor, ctaGillLaptop, ctaCommunityTrio, memberAnneScottlin];
 
 export function GallerySection() {
   return (
@@ -50,18 +50,20 @@ export function GallerySection() {
         <div className="my-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
           <div className="relative aspect-[16/9] overflow-hidden rounded-2xl shadow-sm">
             <Image
-              src="/media/gallery-london-lunch.jpeg"
+              src={galleryLondonLunch}
               alt="Collaboration Global London lunch"
               fill
+              placeholder="blur"
               sizes="(max-width: 639px) 100vw, 50vw"
               className="object-cover"
             />
           </div>
           <div className="relative aspect-[16/9] overflow-hidden rounded-2xl shadow-sm">
             <Image
-              src="/media/gallery-zoom-session.jpg"
+              src={galleryZoomSession}
               alt="Collaboration Global online session"
               fill
+              placeholder="blur"
               sizes="(max-width: 639px) 100vw, 50vw"
               className="object-cover"
             />

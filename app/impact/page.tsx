@@ -54,6 +54,7 @@ function HeroMedia({
    alt={item.title}
    fill
    preload={preload}
+   placeholder="blur"
    sizes="(max-width: 768px) 100vw, 920px"
    className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
    />
@@ -408,7 +409,8 @@ export default function ImpactPage() {
   <section className="relative z-10 pb-24">
   <Container>
    <div className="mx-auto max-w-[920px]">
-   <AnimatePresence mode="wait">
+   {/* initial={false}: the first image renders visible (no fade-in on page load) */}
+   <AnimatePresence mode="wait" initial={false}>
     <motion.div
     key={active.id}
     initial={{ opacity: 0, scale: 0.98 }}

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import gillPortrait from "@/public/media/gill-portrait.jpeg";
 
 type Post = {
   slug: string;
@@ -320,7 +321,7 @@ export default async function BlogPostPage({
             {/* Author */}
             <div className="mt-8 flex items-center gap-3 border-t border-white/10 pt-6">
               <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                <Image src="/media/gill-portrait.jpeg" alt="Gill Tiney" fill className="object-cover" sizes="40px" />
+                <Image src={gillPortrait} alt="Gill Tiney" fill className="object-cover" sizes="40px" />
               </div>
               <div>
                 <p className="text-sm font-semibold text-white">Gill Tiney</p>

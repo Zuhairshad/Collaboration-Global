@@ -10,11 +10,11 @@ import { Button } from "@/components/ui/Button";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import {
  fadeUp,
- slideInLeft,
  slideInRight,
  staggerContainer,
  staggerItem,
 } from "@/lib/animations";
+import communityImg from "@/public/media/stock/unsplash-1521737711867-e3b97375f902.jpg";
 
 /* ─── Page-local data (from production site) ─── */
 
@@ -145,8 +145,6 @@ const PARTNERS = [
  },
 ] as const;
 
-const COMMUNITY_IMG =
- "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=900&q=80&fit=crop";
 
 /* ─── Page ─── */
 
@@ -367,24 +365,19 @@ export default function AboutPage() {
   <Container>
    <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
 
-   {/* LEFT image */}
-   <motion.div
-    variants={slideInLeft}
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-60px" }}
-    className="overflow-hidden rounded-2xl"
-   >
+   {/* LEFT image (no reveal so the photo shows immediately) */}
+   <div className="overflow-hidden rounded-2xl">
     <div className="relative aspect-[4/3] w-full">
     <Image
-     src={COMMUNITY_IMG}
+     src={communityImg}
      alt="Collaboration Global community connecting"
      fill
+     placeholder="blur"
      sizes="(max-width: 1024px) 100vw, 50vw"
      className="object-cover"
     />
     </div>
-   </motion.div>
+   </div>
 
    {/* RIGHT values */}
    <motion.div

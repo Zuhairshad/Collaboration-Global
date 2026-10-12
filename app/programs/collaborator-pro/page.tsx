@@ -12,6 +12,8 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { ImageBlock } from "@/components/media/ImageBlock";
 import { TESTIMONIALS } from "@/lib/constants";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/animations";
+import storyMainEvent from "@/public/media/story-main-event.jpg";
+import storyCollaboration from "@/public/media/story-collaboration.jpg";
 
 function ProTestimonialCard({
   t,
@@ -213,10 +215,11 @@ export default function CollaboratorProPage() {
       {/* ── HERO ── */}
       <section className="relative flex min-h-svh flex-col justify-end overflow-hidden">
         <Image
-          src="/media/story-main-event.jpg"
+          src={storyMainEvent}
           alt="Collaboration Global community gathering"
           fill
           preload
+          placeholder="blur"
           sizes="100vw"
           className="object-cover"
           style={{ objectPosition: "center 30%" }}
@@ -318,18 +321,17 @@ export default function CollaboratorProPage() {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
             {/* Image, desktop */}
-            <RevealOnScroll className="hidden md:block">
+            <div className="hidden md:block">
               <div className="overflow-hidden rounded-2xl shadow-sm">
                 <Image
-                  src="/media/story-collaboration.jpg"
+                  src={storyCollaboration}
                   alt="Collaboration in action"
-                  width={1536}
-                  height={2048}
+                  placeholder="blur"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="h-auto w-full object-cover"
                 />
               </div>
-            </RevealOnScroll>
+            </div>
 
             {/* Copy */}
             <motion.div
@@ -362,9 +364,9 @@ export default function CollaboratorProPage() {
               </motion.p>
 
               {/* Mobile image */}
-              <motion.div variants={fadeUp}>
+              <div>
                 <ImageBlock id="story-collaboration" variant="landscape" showCaption={false} />
-              </motion.div>
+              </div>
 
               <motion.div variants={fadeUp} className="mt-6">
                 <Button

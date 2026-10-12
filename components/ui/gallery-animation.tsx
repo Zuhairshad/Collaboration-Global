@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ExpandableGalleryProps {
-  images: string[];
+  images: StaticImageData[];
   className?: string;
 }
 
@@ -90,6 +90,7 @@ export const ExpandableGallery: React.FC<ExpandableGalleryProps> = ({ images, cl
               src={image}
               alt={`Gallery image ${index + 1}`}
               fill
+              placeholder="blur"
               sizes="(max-width: 767px) 50vw, 25vw"
               className="object-cover md:object-contain"
             />
@@ -152,6 +153,7 @@ export const ExpandableGallery: React.FC<ExpandableGalleryProps> = ({ images, cl
                 src={images[selectedIndex]}
                 alt={`Gallery image ${selectedIndex + 1}`}
                 fill
+                placeholder="blur"
                 sizes="(max-width: 1024px) 100vw, 1024px"
                 className="object-contain rounded-md"
               />

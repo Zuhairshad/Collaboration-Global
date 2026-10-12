@@ -6,6 +6,8 @@ import { Send, BookOpen, Gem, Users2, Sparkles, TrendingUp, ArrowRight } from "l
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { fadeUp, slideInLeft, slideInRight, staggerContainer, staggerItem } from "@/lib/animations";
+import ctaCommunityTrio from "@/public/media/cta-community-trio.jpeg";
+import ctaGillLaptop from "@/public/media/cta-gill-laptop.jpg";
 
 const BLOCKS = [
  {
@@ -18,7 +20,7 @@ const BLOCKS = [
   { Icon: Gem, text: "Find opportunities to experiment and evolve." },
  ],
  cta: { label: "Reserve Your Seat", href: "#cta" },
- image: "/media/cta-community-trio.jpeg",
+ image: ctaCommunityTrio,
  imageAlt: "Collaboration Global members laughing together",
  imageFirst: true,
  },
@@ -32,24 +34,20 @@ const BLOCKS = [
   { Icon: TrendingUp, text: "Leave inspired, informed, and ready to create." },
  ],
  cta: { label: "View Agenda", href: "/events" },
- image: "/media/cta-gill-laptop.jpg",
+ image: ctaGillLaptop,
  imageAlt: "Gill Tiney working outdoors with laptop",
  imageFirst: false,
  },
 ] as const;
 
 function CTABlock({ block }: { block: typeof BLOCKS[number] }) {
- const imageVariant = block.imageFirst ? slideInLeft : slideInRight;
  const textVariant = block.imageFirst ? slideInRight : slideInLeft;
 
  const isPortrait = block.imageFirst === false;
 
+ // No reveal on the photo so it is visible as soon as it scrolls into view
  const imageCol = (
- <motion.div
-  variants={imageVariant}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, margin: "-60px" }}
+ <div
   className="group overflow-hidden rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.10)] md:shadow-[0_20px_60px_rgba(0,0,0,0.12)]"
  >
   <div
@@ -60,11 +58,12 @@ function CTABlock({ block }: { block: typeof BLOCKS[number] }) {
    src={block.image}
    alt={block.imageAlt}
    fill
+   placeholder="blur"
    sizes="(max-width: 1023px) 100vw, 45vw"
    className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
   />
   </div>
- </motion.div>
+ </div>
  );
 
  const textCol = (

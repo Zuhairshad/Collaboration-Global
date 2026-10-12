@@ -1,3 +1,8 @@
+import type { StaticImageData } from "next/image";
+import storyCollaboration from "@/public/media/story-collaboration.jpg";
+import storyCommunity2 from "@/public/media/story-community-2.jpg";
+import storyMoment3 from "@/public/media/story-moment-3.jpg";
+
 export type MediaCategory =
   | "collaborators"
   | "founder"
@@ -7,7 +12,8 @@ export type MediaCategory =
 
 export type MediaItem = {
   id: string;
-  src: string;
+  /** Static imports get an automatic blur placeholder and immutable caching; rendered entries use them. */
+  src: string | StaticImageData;
   category: MediaCategory;
   title: string;
   caption?: string;
@@ -165,7 +171,7 @@ export const MEDIA_REGISTRY: readonly MediaItem[] = [
   },
   {
     id: "story-collaboration",
-    src: "/media/story-collaboration.jpg",
+    src: storyCollaboration,
     category: "lifestyle",
     title: "Shared Purpose Session",
     caption: "Active brainstorming shifting workflows from isolated tasks to unified movement.",
@@ -179,7 +185,7 @@ export const MEDIA_REGISTRY: readonly MediaItem[] = [
   },
   {
     id: "story-community-2",
-    src: "/media/story-community-2.jpg",
+    src: storyCommunity2,
     category: "lifestyle",
     title: "Collaborative Workshop Focus",
     caption: "Authentic accountability support groups keeping members focused and growing.",
@@ -200,7 +206,7 @@ export const MEDIA_REGISTRY: readonly MediaItem[] = [
   },
   {
     id: "story-moment-3",
-    src: "/media/story-moment-3.jpg",
+    src: storyMoment3,
     category: "lifestyle",
     title: "Coalescing Ideas",
     caption: "A collective mindset shifting from traditional fear-based models to abundance.",

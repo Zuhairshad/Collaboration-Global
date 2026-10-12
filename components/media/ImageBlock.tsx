@@ -79,6 +79,7 @@ export function ImageBlock({
               : "(max-width: 768px) 100vw, 0px")
           }
           preload={preload}
+          placeholder={typeof media.src === "string" ? "empty" : "blur"}
           className={cn(
             // Photos fill their frame; logos keep their full shape
             variant === "logo-strip" ? "object-contain p-2" : "object-cover",

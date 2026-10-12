@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FOOTER, NAV_LINKS, SITE_META, SOCIAL_LINKS } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
+import logo from "@/public/logo.jpg";
 
 export function Footer() {
  return (
@@ -11,7 +12,7 @@ export function Footer() {
   <div className="flex flex-col items-center text-center">
    <div className="rounded-2xl bg-white px-8 py-5 shadow-lg">
    <Image
-    src="/logo.jpg"
+    src={logo}
     alt={SITE_META.name}
     width={318}
     height={90}
@@ -56,7 +57,7 @@ export function Footer() {
    <div className="flex items-center justify-center">
    <div className="rounded-md bg-white px-2.5 py-1.5">
     <Image
-    src="/logo.jpg"
+    src={logo}
     alt={SITE_META.name}
     width={92}
     height={26}

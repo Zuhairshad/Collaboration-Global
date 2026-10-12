@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useSyncExternalStore, type ReactNode, type RefObject } from "react";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Play, Check } from "lucide-react";
@@ -14,7 +14,7 @@ function VideoBlock({
  youtubeId,
  alt,
 }: {
- thumb: string;
+ thumb: StaticImageData;
  youtubeId?: string;
  alt: string;
 }) {
@@ -45,6 +45,7 @@ function VideoBlock({
   src={thumb}
   alt={alt}
   fill
+  placeholder="blur"
   sizes="(max-width: 768px) 100vw, 600px"
   className="object-cover transition-transform duration-700 group-hover:scale-105"
   />
@@ -106,7 +107,7 @@ function ParallaxImageBlock({
  sizes,
  intensity = 60,
 }: {
- src: string;
+ src: StaticImageData;
  alt: string;
  className?: string;
  preload?: boolean;
@@ -124,6 +125,7 @@ function ParallaxImageBlock({
   alt={alt}
   fill
   preload={preload}
+  placeholder="blur"
   sizes={sizes}
   className="object-cover"
  />
@@ -190,10 +192,8 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
      </div>
     </motion.div>
 
-    <motion.div
-     initial={{ opacity: 0, scale: 0.97, y: 16 }}
-     animate={{ opacity: 1, scale: 1, y: 0 }}
-     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+    {/* No entrance fade on the photo so it is visible on first paint */}
+    <div
      className="relative mx-auto w-full overflow-hidden ring-1 ring-black/5"
      style={{
       maxWidth: story.bannerMaxWidth,
@@ -218,7 +218,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
       {story.partnerName}
      </div>
      </div>
-    </motion.div>
+    </div>
     </div>
    ) : (
    <div className="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-center md:gap-20">
@@ -270,12 +270,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
     </div>
    </motion.div>
 
-   <motion.div
-    initial={{ opacity: 0, scale: 0.96 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-    className="relative mx-auto w-full max-w-[620px]"
-   >
+   <div className="relative mx-auto w-full max-w-[620px]">
     <ParallaxImageBlock
     src={story.portraitImage}
     alt={story.partnerName}
@@ -284,7 +279,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
     sizes="(max-width: 768px) 100vw, 620px"
     intensity={40}
     />
-   </motion.div>
+   </div>
    </div>
    )}
   </Container>
@@ -314,18 +309,13 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
     </div>
    </motion.div>
 
-   <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-80px" }}
-    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-   >
+   <div>
     <VideoBlock
     thumb={story.videoBlock1.thumb}
     youtubeId={story.videoBlock1.youtubeId}
     alt={story.videoBlock1.alt}
     />
-   </motion.div>
+   </div>
    </div>
   </Container>
   </section>
@@ -350,18 +340,13 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
     </div>
    </motion.div>
 
-   <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-80px" }}
-    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-   >
+   <div>
     <VideoBlock
     thumb={story.videoBlock2.thumb}
     youtubeId={story.videoBlock2.youtubeId}
     alt={story.videoBlock2.alt}
     />
-   </motion.div>
+   </div>
    </div>
   </Container>
   </section>
@@ -449,13 +434,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
     </div>
    </motion.div>
 
-   <motion.div
-    initial={{ opacity: 0, scale: 0.96 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true, margin: "-80px" }}
-    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-    className="grid grid-cols-2 gap-3"
-   >
+   <div className="grid grid-cols-2 gap-3">
     {story.collageImages.slice(0, 3).map((src, i) => (
     <ParallaxImageBlock
      key={i}
@@ -477,7 +456,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
      {story.collageTagline}
     </p>
     </div>
-   </motion.div>
+   </div>
    </div>
   </Container>
   </section>

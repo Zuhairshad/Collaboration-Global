@@ -8,10 +8,11 @@ import { ArrowRight, Check } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
-import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { ImageBlock } from "@/components/media/ImageBlock";
 import { TESTIMONIALS } from "@/lib/constants";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/animations";
+import academyHero from "@/public/images/academy-hero.jpg";
+import storyCommunity2 from "@/public/media/story-community-2.jpg";
 
 function PhilosophyCard({
   t,
@@ -200,10 +201,11 @@ export default function AcademyPage() {
       {/* ── HERO ── */}
       <section className="relative flex min-h-svh flex-col justify-end overflow-hidden">
         <Image
-          src="/images/academy-hero.jpg"
+          src={academyHero}
           alt="All together different, Collaborator Academy"
           fill
           preload
+          placeholder="blur"
           sizes="100vw"
           className="object-cover"
           style={{ objectPosition: "center 30%" }}
@@ -301,9 +303,9 @@ export default function AcademyPage() {
               </motion.p>
 
               {/* Mobile image */}
-              <motion.div variants={fadeUp}>
+              <div>
                 <ImageBlock id="story-community-2" variant="landscape" showCaption={false} />
-              </motion.div>
+              </div>
 
               <motion.div variants={fadeUp} className="mt-6">
                 <Button
@@ -318,18 +320,17 @@ export default function AcademyPage() {
             </motion.div>
 
             {/* Image, desktop */}
-            <RevealOnScroll className="hidden md:block">
+            <div className="hidden md:block">
               <div className="overflow-hidden rounded-2xl shadow-sm">
                 <Image
-                  src="/media/story-community-2.jpg"
+                  src={storyCommunity2}
                   alt="Community session in progress"
-                  width={1066}
-                  height={1600}
+                  placeholder="blur"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="h-auto w-full object-cover"
                 />
               </div>
-            </RevealOnScroll>
+            </div>
 
           </div>
         </Container>

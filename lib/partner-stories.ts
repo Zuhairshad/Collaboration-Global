@@ -3,6 +3,28 @@
  * Layout/template lives in components/sections/PartnerStory.tsx.
  */
 
+import type { StaticImageData } from "next/image";
+import gillTedx from "@/public/gill-tedx.jpg";
+import acnEvent from "@/public/media/acn-event.jpg";
+import acnLandscape1 from "@/public/media/acn-landscape-1.jpg";
+import acnLandscape2 from "@/public/media/acn-landscape-2.jpg";
+import acnTestimonial from "@/public/media/acn-testimonial.jpeg";
+import b1g1Banner from "@/public/media/b1g1-banner.jpg";
+import b1g1Cycling from "@/public/media/b1g1-cycling.jpg";
+import b1g1Meeting from "@/public/media/b1g1-meeting.jpg";
+import orbFounders from "@/public/media/orb-founders.jpg";
+import orbMembers from "@/public/media/orb-members.jpg";
+import pinksocksHeart from "@/public/media/pinksocks-heart.jpg";
+import pinksocksMeetup from "@/public/media/pinksocks-meetup.jpg";
+import unsplash1469571486292 from "@/public/media/stock/unsplash-1469571486292-0ba58a3f068b.jpg";
+import unsplash1521737604893 from "@/public/media/stock/unsplash-1521737604893-d14cc237f11d.jpg";
+import unsplash1529156069898 from "@/public/media/stock/unsplash-1529156069898-49953e39b3ac.jpg";
+import unsplash1559027615 from "@/public/media/stock/unsplash-1559027615-cd4628902d4a.jpg";
+import wmhfCollage from "@/public/media/wmhf-collage.jpg";
+import wmhfEvent1 from "@/public/media/wmhf-event-1.jpg";
+import wmhfFounder from "@/public/media/wmhf-founder.jpeg";
+import wmhfHero from "@/public/media/wmhf-hero.jpg";
+
 export type PartnerStory = {
  slug: string;
  partnerName: string;
@@ -13,8 +35,8 @@ export type PartnerStory = {
  heroHeadline: { lead: string; accent: string; tail?: string };
  heroParagraphs: string[];
  heroItalicLine: string;
- portraitImage: string;
- bannerImage?: string;
+ portraitImage: StaticImageData;
+ bannerImage?: StaticImageData;
  bannerAlt?: string;
  bannerAspect?: string; // CSS aspect-ratio value, e.g. "666/510" or "2/3"
  bannerMaxWidth?: string; // CSS max-width on the banner column, e.g. "420px"
@@ -25,12 +47,12 @@ export type PartnerStory = {
  questionIntro: string;
  question: { lead: string; accent: string };
  questionParagraphs: string[];
- videoBlock1: { thumb: string; youtubeId?: string; alt: string };
+ videoBlock1: { thumb: StaticImageData; youtubeId?: string; alt: string };
 
  // Section 3, how it works
  howTitle: string;
  howParagraphs: string[];
- videoBlock2: { thumb: string; youtubeId?: string; alt: string };
+ videoBlock2: { thumb: StaticImageData; youtubeId?: string; alt: string };
 
  // Section 4, tinted callout
  calloutHeadline: string;
@@ -44,7 +66,7 @@ export type PartnerStory = {
  deeperChecks: string[];
  deeperClosing: string;
  deeperCta: { label: string; href: string };
- collageImages: string[];
+ collageImages: StaticImageData[];
  collageTagline: string;
 
  // Section 6, closing
@@ -56,10 +78,10 @@ export type PartnerStory = {
 const B1G1_VIDEO = "1ByzCR7jDrQ";
 
 const SHARED_COLLAGE = [
- "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80&fit=crop",
- "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&q=80&fit=crop",
- "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80&fit=crop",
- "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&q=80&fit=crop",
+ unsplash1559027615,
+ unsplash1469571486292,
+ unsplash1529156069898,
+ unsplash1521737604893,
 ];
 
 export const PARTNER_STORIES: PartnerStory[] = [
@@ -81,8 +103,8 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "Alongside 600+ Impact Partners worldwide, the community has helped create over 395 million giving impacts across 40+ countries, aligned to the UN Sustainable Development Goals.",
  ],
  heroItalicLine: "Turn everyday business into everyday impact.",
- portraitImage: "/gill-tedx.jpg",
- bannerImage: "/media/b1g1-banner.jpg",
+ portraitImage: gillTedx,
+ bannerImage: b1g1Banner,
  bannerAlt: "Collaboration Global × B1G1",
  bannerAspect: "1066/1600",
  bannerMaxWidth: "420px",
@@ -103,7 +125,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "The answer isn’t to do more, it’s to embed purpose into what you’re already doing. Every sale, every new member, every milestone becomes a moment of contribution.",
  ],
  videoBlock1: {
-  thumb: "/media/b1g1-meeting.jpg",
+  thumb: b1g1Meeting,
   youtubeId: B1G1_VIDEO,
   alt: "B1G1 Business For Good meeting",
  },
@@ -115,7 +137,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "The result is a quiet, continuous flywheel: small contributions that compound into something far greater than any one-off gesture could be.",
  ],
  videoBlock2: {
-  thumb: "/media/b1g1-cycling.avif",
+  thumb: b1g1Cycling,
   youtubeId: B1G1_VIDEO,
   alt: "B1G1 community giving campaign",
  },
@@ -175,8 +197,8 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "Members work through the Responsible Business Standard, sign the ORB Pledge, and join a community where kindness and integrity are the default culture.",
  ],
  heroItalicLine: "Let’s change the world, one small business at a time.",
- portraitImage: "/media/orb-founders.jpg",
- bannerImage: "/media/orb-members.jpg",
+ portraitImage: orbFounders,
+ bannerImage: orbMembers,
  bannerAlt: "ORB member community",
  bannerAspect: "2000/1600",
  primaryCta: { label: "Explore the ORB Standard", href: "https://www.orbuk.org.uk" },
@@ -193,7 +215,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "It’s the difference between performing values and operating from them, and you can feel the gap a mile off.",
  ],
  videoBlock1: {
-  thumb: "/media/orb-members.jpg",
+  thumb: orbMembers,
   alt: "ORB community of responsible business owners",
  },
 
@@ -204,7 +226,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "From there, the work is peer-led. Members support each other, share what’s working, and create an environment where ethical shortcuts have nowhere to hide.",
  ],
  videoBlock2: {
-  thumb: "/media/orb-founders.jpg",
+  thumb: orbFounders,
   alt: "ORB founders Jill Poet and Mike Wilson",
  },
 
@@ -263,7 +285,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "The work is quietly radical: educational programmes, community partnerships, and frameworks that turn love from an abstract value into an everyday practice.",
  ],
  heroItalicLine: "Begin within. Everything else follows.",
- portraitImage: "/gill-tedx.jpg",
+ portraitImage: gillTedx,
  primaryCta: {
   label: "Discover Global Love Day",
   href: "https://thelovefoundation.com",
@@ -281,8 +303,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "Collaboration Global partnered with The Love Foundation because the work of building real collaboration begins exactly here.",
  ],
  videoBlock1: {
-  thumb:
-  "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1200&q=80&fit=crop",
+  thumb: unsplash1469571486292,
   alt: "Global Love Day gathering",
  },
 
@@ -293,8 +314,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "Global Love Day is the heartbeat, a worldwide moment of synchronised intent, but the operating model is the daily, quieter work that happens 365 days a year.",
  ],
  videoBlock2: {
-  thumb:
-  "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80&fit=crop",
+  thumb: unsplash1521737604893,
   alt: "Community connection",
  },
 
@@ -351,8 +371,8 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "Their work centres on listening with the intent to be there, on presence rather than problem-solving, and on the peer connection that catches people before crisis.",
  ],
  heroItalicLine: "Caught early, almost everything is more solvable.",
- portraitImage: "/media/wmhf-founder.jpeg",
- bannerImage: "/media/wmhf-hero.jpg",
+ portraitImage: wmhfFounder,
+ bannerImage: wmhfHero,
  bannerAlt: "World Mental Health Forum 2024 — It’s Not Your Fault",
  bannerAspect: "16/9",
  primaryCta: { label: "Visit the Forum", href: "https://www.worldmentalhealthforum.com" },
@@ -369,7 +389,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "Collaboration Global partnered with the Forum because the connective fabric we work to build is precisely what protects people.",
  ],
  videoBlock1: {
-  thumb: "/media/wmhf-event-1.jpg",
+  thumb: wmhfEvent1,
   alt: "World Mental Health Forum gathering",
  },
 
@@ -380,7 +400,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "Peer connection: a volunteer-led network that multiplies touchpoints far beyond what professional services could ever scale to alone.",
  ],
  videoBlock2: {
-  thumb: "/media/wmhf-collage.jpg",
+  thumb: wmhfCollage,
   alt: "World Mental Health Forum community",
  },
 
@@ -437,8 +457,8 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "The Network’s answer is structural: Speed Introductions, member matchmaking sessions, a members-only directory, and an active community where cross-disciplinary collaboration is the default.",
  ],
  heroItalicLine: "Build a creative career you can actually live on.",
- portraitImage: "/media/acn-testimonial.jpeg",
- bannerImage: "/media/acn-event.jpg",
+ portraitImage: acnTestimonial,
+ bannerImage: acnEvent,
  bannerAlt: "Arts & Culture Network event at The RSA, London",
  bannerAspect: "988/985",
  primaryCta: { label: "Explore Membership", href: "https://www.artsandculturenetwork.com" },
@@ -455,7 +475,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "Collaboration Global partnered with the Network because the principle is identical: connection is leverage. Gill Tiney is featured on the Network’s own team page, the partnership runs in both directions.",
  ],
  videoBlock1: {
-  thumb: "/media/acn-landscape-1.jpg",
+  thumb: acnLandscape1,
   alt: "Arts & Culture Network community",
  },
 
@@ -466,7 +486,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "Face-to-face events in London at the Royal Society of Arts, plus a members-only directory, Museletter, and feature opportunities in ART Magazine.",
  ],
  videoBlock2: {
-  thumb: "/media/acn-landscape-2.jpg",
+  thumb: acnLandscape2,
   alt: "Arts & Culture Network event moment",
  },
 
@@ -525,8 +545,8 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "Today PinkSocks Life is a registered 501(c)(3) nonprofit with 300,000+ smiley people across the world, schools in nine US states, and a community built on heart speak, hugs, and gifting.",
  ],
  heroItalicLine: "The world is full of good.",
- portraitImage: "/media/pinksocks-heart.jpg",
- bannerImage: "/media/pinksocks-meetup.jpg",
+ portraitImage: pinksocksHeart,
+ bannerImage: pinksocksMeetup,
  bannerAlt: "PinkSocks Life meetup",
  bannerAspect: "1179/660",
  primaryCta: { label: "Get The Story", href: "https://pinksocks.life" },
@@ -543,7 +563,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "Collaboration Global believes the same thing about connection, that most of it is gated by social friction, not by lack of intent.",
  ],
  videoBlock1: {
-  thumb: "/media/pinksocks-meetup.jpg",
+  thumb: pinksocksMeetup,
   alt: "PinkSocks community gathering",
  },
 
@@ -554,7 +574,7 @@ export const PARTNER_STORIES: PartnerStory[] = [
   "From there, the work is everyone else’s. The pillars are simple: heart speak, hugs, and gifting. The socks don’t do the connecting; they just make it possible.",
  ],
  videoBlock2: {
-  thumb: "/media/pinksocks-heart.jpg",
+  thumb: pinksocksHeart,
   alt: "PinkSocks heart and gifting",
  },
 

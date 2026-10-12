@@ -34,14 +34,14 @@ export function Offerings() {
    <motion.p variants={fadeUp} className="mx-auto mt-4 max-w-[500px] text-[15px] leading-relaxed text-brand-muted">
     Explore whether you are suited to a learning space in The Academy or a proactive space as a Collaborator Pro.
    </motion.p>
-   <motion.div variants={fadeUp}>
+   <div>
     <ImageBlock
      id="story-community-2"
      variant="landscape"
      className="mt-6 mx-auto max-w-[480px]"
      sizes="(max-width: 767px) min(100vw, 480px), 1px"
     />
-   </motion.div>
+   </div>
   </motion.div>
 
   <motion.div

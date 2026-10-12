@@ -8,6 +8,7 @@ import { ArrowRight, Calendar, Play, ExternalLink } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { fadeUp, staggerContainer } from "@/lib/animations";
+import blogHero from "@/public/media/blog-hero.jpg";
 
 const POSTS = [
   {
@@ -145,10 +146,11 @@ export default function BlogPage() {
       {/* ── BLOG HERO ── */}
       <section className="relative flex min-h-svh items-center justify-center overflow-hidden">
         <Image
-          src="/media/blog-hero.jpg"
+          src={blogHero}
           alt="Blog hero"
           fill
           preload
+          placeholder="blur"
           className="object-cover"
           sizes="100vw"
         />
@@ -202,11 +204,12 @@ export default function BlogPage() {
               </div>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="mt-8 grid gap-5 sm:grid-cols-2">
+            {/* No reveal on the video cards so the thumbnails show immediately */}
+            <div className="mt-8 grid gap-5 sm:grid-cols-2">
               {VIDEOS.map((v) => (
                 <VideoCard key={v.id} video={v} />
               ))}
-            </motion.div>
+            </div>
 
             {/* Prominent playlist CTA */}
             <motion.div variants={fadeUp} className="mt-8">

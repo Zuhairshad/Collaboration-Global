@@ -11,9 +11,7 @@ import { HERO, IMPACT_PARTNERS } from "@/lib/constants";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-
-const HERO_MIC_IMAGE =
-  "https://framerusercontent.com/images/HgpsqWbGTb99lYVn0mHuH1oGdI.jpg";
+import heroMicImage from "@/public/media/hero-mic.jpg";
 
 const DISPLAY_PARTNERS = IMPACT_PARTNERS.slice(0, 3);
 
@@ -71,10 +69,11 @@ export function Hero({ className }: { className?: string }) {
     >
       {/* ── LAYER 1: Full-bleed background image (covers entire section) ── */}
       <Image
-        src={HERO_MIC_IMAGE}
+        src={heroMicImage}
         alt="Microphone with atmospheric stage lighting"
         fill
         preload
+        placeholder="blur"
         sizes="100vw"
         className="object-cover"
         style={{ objectPosition: "70% center" }}

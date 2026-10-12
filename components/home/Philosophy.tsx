@@ -7,6 +7,7 @@ import { Send, Smile } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ImageBlock } from "@/components/media/ImageBlock";
+import cgIcon from "@/public/icon.jpg";
 
 type Msg = { id: number; from: "bot" | "user"; text: string };
 
@@ -79,7 +80,7 @@ function TypingBubble() {
   className="flex items-end gap-2.5"
  >
   <div className="h-7 w-7 shrink-0 overflow-hidden rounded-full ring-2 ring-white/10">
-  <Image src="/icon.png" alt="CG" width={28} height={28} className="h-full w-full object-cover" />
+  <Image src={cgIcon} alt="CG" width={28} height={28} className="h-full w-full object-cover" />
   </div>
   <div className="flex items-center gap-1.5 rounded-2xl rounded-bl-md bg-[#2a2420] px-4 py-3.5">
   {[0, 0.18, 0.36].map((delay, i) => (
@@ -105,7 +106,7 @@ function Bubble({ msg }: { msg: Msg }) {
  >
   {isBot && (
   <div className="h-7 w-7 shrink-0 overflow-hidden rounded-full ring-2 ring-white/10">
-   <Image src="/icon.png" alt="CG" width={28} height={28} className="h-full w-full object-cover" />
+   <Image src={cgIcon} alt="CG" width={28} height={28} className="h-full w-full object-cover" />
   </div>
   )}
   <div
@@ -208,12 +209,12 @@ export function Philosophy() {
    <p className="mx-auto mt-5 max-w-[520px] text-[15px] leading-relaxed text-white">
    See how we think about collaboration, community, and what it means to build something that truly matters.
    </p>
-
-   {/* Mobile enhancement layer block */}
-   <div className="mt-8 mb-2">
-    <ImageBlock id="story-moment-3" variant="landscape" className="mx-auto" captionClassName="text-white border-white/50" />
-   </div>
   </motion.div>
+
+  {/* Mobile enhancement layer block (outside the heading reveal so the photo shows immediately) */}
+  <div className="mt-8 mb-2">
+   <ImageBlock id="story-moment-3" variant="landscape" className="mx-auto" captionClassName="text-white border-white/50" />
+  </div>
 
   {/* Chat widget */}
   <motion.div
@@ -239,7 +240,7 @@ export function Philosophy() {
     <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
     </div>
     <div className="h-9 w-9 overflow-hidden rounded-full ring-2 ring-white/20 shadow-lg">
-    <Image src="/icon.png" alt="Collaboration Global" width={36} height={36} className="h-full w-full object-cover" />
+    <Image src={cgIcon} alt="Collaboration Global" width={36} height={36} className="h-full w-full object-cover" />
     </div>
     <div className="flex-1 min-w-0">
     <p className="text-[13.5px] font-semibold leading-none text-white">Collaboration Global</p>

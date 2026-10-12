@@ -1,3 +1,11 @@
+import type { StaticImageData } from "next/image";
+import unsplash1559027615 from "@/public/media/stock/unsplash-1559027615-cd4628902d4a.jpg";
+import unsplash1552664730 from "@/public/media/stock/unsplash-1552664730-d307ca884978.jpg";
+import unsplash1469571486292 from "@/public/media/stock/unsplash-1469571486292-0ba58a3f068b.jpg";
+import unsplash1544027993 from "@/public/media/stock/unsplash-1544027993-37dbfe43562a.jpg";
+import unsplash1513364776144 from "@/public/media/stock/unsplash-1513364776144-60967b0f800f.jpg";
+import unsplash1529156069898 from "@/public/media/stock/unsplash-1529156069898-49953e39b3ac.jpg";
+
 export type ImpactItem = {
  id: string;
  title: string;
@@ -5,8 +13,8 @@ export type ImpactItem = {
  type: "video" | "case-study";
  /** YouTube embed ID (only for type === "video") */
  youtubeId?: string;
- /** Unsplash / static image URL (for case-study banners) */
- image?: string;
+ /** Static image import (for case-study banners) — gives an automatic blur placeholder */
+ image?: StaticImageData;
  description: string;
  details: string;
  /** Key stats to display in the content panel */
@@ -25,7 +33,7 @@ export const GLOBAL_IMPACT_DATA: ImpactItem[] = [
  type: "video",
  youtubeId: "1ByzCR7jDrQ",
  image:
-  "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1200&q=80&fit=crop",
+  unsplash1559027615,
  description:
   "B1G1 enables businesses to embed giving into daily operations, creating measurable impact across essential human needs. Rather than writing one cheque a year, B1G1 turns every sale, every meeting, every milestone into a moment of giving, connecting business activity directly to real-world outcomes.",
  details:
@@ -51,7 +59,7 @@ export const GLOBAL_IMPACT_DATA: ImpactItem[] = [
  subtitle: "Building ethical and sustainable businesses",
  type: "case-study",
  image:
-  "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80&fit=crop",
+  unsplash1552664730,
  description:
   "ORB supports businesses in aligning profit with responsibility through ethical practices, structured accountability, and a community of like-minded leaders. In a world saturated with performative 'purpose marketing,' ORB provides the framework for genuine, verifiable ethical business practice.",
  details:
@@ -77,7 +85,7 @@ export const GLOBAL_IMPACT_DATA: ImpactItem[] = [
  subtitle: "Promoting unconditional love as a global force",
  type: "case-study",
  image:
-  "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1200&q=80&fit=crop",
+  unsplash1469571486292,
  description:
   "A global initiative focused on expanding awareness, compassion, and human connection. The Love Foundation operates on the belief that love, not as a sentiment, but as a daily practice, is the most powerful catalyst for individual and collective transformation.",
  details:
@@ -103,7 +111,7 @@ export const GLOBAL_IMPACT_DATA: ImpactItem[] = [
  subtitle: "Shifting from awareness to proactive wellbeing",
  type: "case-study",
  image:
-  "https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=1200&q=80&fit=crop",
+  unsplash1544027993,
  description:
   "A global platform focused on mental health resilience and early intervention. The World Mental Health Forum goes beyond awareness campaigns to build practical infrastructure for mental wellbeing, creating spaces where people can be genuinely heard before crisis hits.",
  details:
@@ -128,7 +136,7 @@ export const GLOBAL_IMPACT_DATA: ImpactItem[] = [
  subtitle: "Empowering creativity through collaboration",
  type: "case-study",
  image:
-  "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&q=80&fit=crop",
+  unsplash1513364776144,
  description:
   "A global network connecting artists, cultural professionals, and creative practitioners to create opportunities, cross-pollinate ideas, and build sustainable creative careers through collaborative practice rather than competitive isolation.",
  details:
@@ -154,7 +162,7 @@ export const GLOBAL_IMPACT_DATA: ImpactItem[] = [
  subtitle: "Creating human connection through simple gestures",
  type: "case-study",
  image:
-  "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80&fit=crop",
+  unsplash1529156069898,
  description:
   "A global movement encouraging meaningful conversations and kindness through the simple, disarming power of a pair of pink socks. What started as one person's choice to wear something different became a worldwide symbol of openness, vulnerability, and the courage to connect.",
  details:

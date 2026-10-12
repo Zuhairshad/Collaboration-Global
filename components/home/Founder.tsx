@@ -10,8 +10,10 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 
+import founderPoster from "@/public/media/founder-poster.jpg";
+import gillPortrait from "@/public/media/gill-portrait.jpeg";
+
 const VIDEO_SRC = "/media/founder-video.mp4";
-const VIDEO_POSTER = "/media/founder-poster.jpg";
 
 export function Founder() {
   const [playing, setPlaying] = useState(false);
@@ -54,9 +56,8 @@ export function Founder() {
             and how small and medium businesses are positioned to drive the most meaningful change.
           </motion.p>
 
-          {/* ── BIG VIDEO PLAYER ── */}
-          <motion.div
-            variants={fadeUp}
+          {/* ── BIG VIDEO PLAYER ── (no reveal animation so the thumbnail shows immediately) */}
+          <div
             className="relative mt-8 w-full max-w-[1100px] overflow-hidden rounded-2xl ring-1 ring-white/5 md:mt-12"
             style={{ boxShadow: "0 20px 50px rgba(0,0,0,0.22)" }}
           >
@@ -65,7 +66,7 @@ export function Founder() {
                 <video
                   ref={videoRef}
                   src={VIDEO_SRC}
-                  poster={VIDEO_POSTER}
+                  poster={founderPoster.src}
                   controls
                   playsInline
                   preload="none"
@@ -79,9 +80,10 @@ export function Founder() {
                 >
                   {/* Thumbnail */}
                   <Image
-                    src={VIDEO_POSTER}
+                    src={founderPoster}
                     alt={`${FOUNDER.name} — founder of Collaboration Global`}
                     fill
+                    placeholder="blur"
                     sizes="(max-width: 1100px) 100vw, 1100px"
                     className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
                   />
@@ -112,7 +114,7 @@ export function Founder() {
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent px-4 pb-4 pt-10 md:px-6 md:pb-6 md:pt-20">
                     <div className="flex items-center gap-3">
                       <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full ring-2 ring-white/25">
-                        <Image src="/media/gill-portrait.jpeg" alt="Gill Tiney" fill className="object-cover" sizes="36px" />
+                        <Image src={gillPortrait} alt="Gill Tiney" fill className="object-cover" sizes="36px" />
                       </div>
                       <div className="flex flex-col text-left leading-tight">
                         <span className="text-[14px] font-semibold text-white">{FOUNDER.name}</span>
@@ -123,7 +125,7 @@ export function Founder() {
                 </button>
               )}
             </div>
-          </motion.div>
+          </div>
 
           {/* Credentials row */}
           <motion.div

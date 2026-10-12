@@ -10,6 +10,7 @@ import { NAV_LINKS, SITE_META, type NavLink } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import logo from "@/public/logo.jpg";
 
 /** Routes whose top section is dark (photo or brand gradient), so white nav text is readable over it */
 const DARK_HERO_ROUTES = ["/", "/about", "/programs", "/events", "/impact", "/contact", "/content/blog"];
@@ -28,7 +29,7 @@ const DESKTOP_NAV = NAV_LINKS.filter(
 );
 
 /**
- * logo.jpg has a white background (1921x544). On the solid white header it sits
+ * logo.jpg has a white background. On the solid white header it sits
  * seamlessly; the white "pill" is only drawn when the header is transparent over
  * the dark hero (desktop, top of page). Padding stays constant so nothing shifts.
  */
@@ -36,10 +37,11 @@ function LogoMark({ pill = false }: { pill?: boolean }) {
  return (
  <div className={cn("rounded-lg px-2.5 py-1.5", pill && "md:bg-white")}>
   <Image
-  src="/logo.jpg"
+  src={logo}
   alt={SITE_META.name}
   width={141}
   height={40}
+  loading="eager"
   className="h-[30px] w-auto"
   />
  </div>
