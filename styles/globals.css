@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+/* Brand colour utilities (text-brand-*, bg-brand-*, border-brand-*).
+   Tailwind v4 does not read tailwind.config.ts, so the palette lives here. */
+@theme {
+  --color-brand-bg: #faf8f5;
+  --color-brand-card: #f5f2ed;
+  --color-brand-card-hover: #edeae3;
+  --color-brand-border: #e0dbd3;
+  --color-brand-text: #2a2520;
+  --color-brand-muted: #6f6862;
+  --color-brand-dim: #746d67;
+  --color-brand-purple: #655bb3;
+  --color-brand-purple-hover: #5a50a8;
+  --color-brand-teal: #31cfc3;
+  --color-brand-teal-hover: #28bdb1;
+  /* Teal for text on light backgrounds (bright teal is 1.9:1 on white) */
+  --color-brand-teal-text: #17736d;
+}
+
 :root {
   /* ── Warm neutral foundations ── */
   --brand-bg: #faf8f5;
@@ -7,14 +25,15 @@
   --brand-card-hover: #edeae3;
   --brand-border: #e0dbd3;
   --brand-text: #2a2520;
-  --brand-muted: #78716a;
-  --brand-dim: #a39e95;
+  --brand-muted: #6f6862;
+  --brand-dim: #746d67;
 
   /* ── Brand accent: official palette ── */
   --brand-purple: #655bb3;
   --brand-purple-hover: #5a50a8;
   --brand-teal: #31cfc3;
   --brand-teal-hover: #28bdb1;
+  --brand-teal-text: #17736d;
   --reunion-accent: var(--brand-teal);
   --reunion-accent-hover: var(--brand-teal-hover);
 
@@ -27,6 +46,23 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Stops entrance animations (slide-in x offsets) from making the page pan sideways on touch devices */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Logo gradient for sections with white text. Same hues as the logo, with the
+   teal end deepened so every stop keeps >= 4.5:1 contrast against white. */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #4a4396 0%, #655bb3 30%, #1d8079 65%, #17736d 100%);
+}
+
+/* Two-stop version for small chips and chat bubbles */
+.bg-brand-gradient-soft {
+  background: linear-gradient(135deg, #655bb3 0%, #1d8079 100%);
 }
 
 body {
@@ -83,44 +119,10 @@ body {
   animation: marquee-down 28s linear infinite;
 }
 
-/* ── Horizontal testimonial marquees ── */
-@keyframes marquee-left {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes marquee-right {
-  0% {
-    transform: translateX(-50%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.animate-marquee-left {
-  animation: marquee-left 40s linear infinite;
-  will-change: transform;
-  backface-visibility: hidden;
-}
-
-.animate-marquee-left:hover {
-  animation-play-state: paused;
-}
-
-.animate-marquee-right {
-  animation: marquee-right 52s linear infinite;
-  will-change: transform;
-  backface-visibility: hidden;
-}
-
-.animate-marquee-right:hover {
+/* Marquees stop when their section is off-screen (set data-paused on an ancestor) */
+[data-paused="true"] .animate-hero-marquee,
+[data-paused="true"] .animate-marquee-up,
+[data-paused="true"] .animate-marquee-down {
   animation-play-state: paused;
 }
 
@@ -128,10 +130,12 @@ body {
 
   .animate-hero-marquee,
   .animate-marquee-up,
-  .animate-marquee-down,
-  .animate-marquee-left,
-  .animate-marquee-right {
+  .animate-marquee-down {
     animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }
 

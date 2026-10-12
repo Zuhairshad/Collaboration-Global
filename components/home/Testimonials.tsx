@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import { TESTIMONIALS } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
-import { ImageBlock } from "@/components/media/ImageBlock";
 
 type Testimonial = (typeof TESTIMONIALS)[number];
 
@@ -28,9 +27,15 @@ function QuoteIcon() {
     );
 }
 
-function TestimonialCard({ t }: { t: Testimonial }) {
+function TestimonialCard({ t, mobile = false }: { t: Testimonial; mobile?: boolean }) {
     return (
-        <div className="w-[340px] sm:w-[440px] md:w-[500px] h-[340px] sm:h-[380px] md:h-[420px] shrink-0 rounded-[32px] border border-gray-100 bg-white p-8 sm:p-10 shadow-sm flex flex-col justify-between select-none hover:shadow-md transition-shadow">
+        <div
+            className={
+                mobile
+                    ? "w-[85vw] max-w-[340px] min-h-[320px] shrink-0 snap-center rounded-[32px] border border-gray-100 bg-white p-6 shadow-sm flex flex-col justify-between"
+                    : "w-[340px] sm:w-[440px] md:w-[500px] h-[340px] sm:h-[380px] md:h-[420px] shrink-0 rounded-[32px] border border-gray-100 bg-white p-8 sm:p-10 shadow-sm flex flex-col justify-between select-none hover:shadow-md transition-shadow"
+            }
+        >
             <div className="flex-1 flex flex-col justify-between">
                 <div>
                     <div className="flex items-center justify-between mb-4">
@@ -41,8 +46,8 @@ function TestimonialCard({ t }: { t: Testimonial }) {
                             ))}
                         </div>
                     </div>
-                    <p className="text-[15px] sm:text-[16px] md:text-[16.5px] leading-relaxed text-brand-muted italic line-clamp-7">
-                        "{t.quote}"
+                    <p className={`text-[15px] sm:text-[16px] md:text-[16.5px] leading-relaxed text-brand-muted italic${mobile ? "" : " line-clamp-7"}`}>
+                        {"\""}{t.quote}{"\""}
                     </p>
                 </div>
 
@@ -54,7 +59,6 @@ function TestimonialCard({ t }: { t: Testimonial }) {
                             fill
                             className="object-cover"
                             sizes="48px"
-                            onError={() => {}}
                         />
                     </div>
                     <div>
@@ -71,8 +75,27 @@ function TestimonialCard({ t }: { t: Testimonial }) {
     );
 }
 
+function TestimonialsHeader() {
+    return (
+        <Container>
+            <div className="mb-8 md:mb-12">
+                <div>
+                    <div className="inline-flex items-center gap-2 rounded-full bg-[#655bb3]/10 border border-[#655bb3]/20 px-4 py-2 text-[#655bb3] font-bold text-xs sm:text-sm shadow-sm">
+                        <Star className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />
+                        <span>Loved by our global community</span>
+                    </div>
+                    <h2 className="mt-4 text-[32px] sm:text-[44px] md:text-[56px] lg:text-[64px] font-extrabold leading-tight tracking-tight text-brand-text">
+                        What our members are saying.
+                    </h2>
+                </div>
+            </div>
+        </Container>
+    );
+}
+
 export function Testimonials() {
     const targetRef = useRef<HTMLDivElement>(null);
+    // Only the md+ pinned block is tracked; below md it is display:none so this stays idle
     const { scrollYProgress } = useScroll({
         target: targetRef,
     });
@@ -82,54 +105,49 @@ export function Testimonials() {
     const x = useTransform(scrollYProgress, [0, 1], ["0%", "-82%"]);
 
     return (
-        <section id="testimonials" ref={targetRef} className="relative h-[400vh] bg-brand-bg">
-            {/* Sticky screen container pinning the panels layout row precisely like Horiscroll pinned view */}
-            <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center py-12">
-                
-                {/* Header Block exactly mapping premium visual standards */}
-                <Container>
-                    <div className="mb-8 md:mb-12">
-                        <div>
-                            <div className="inline-flex items-center gap-2 rounded-full bg-[#655bb3]/10 border border-[#655bb3]/20 px-4 py-2 text-[#655bb3] font-bold text-xs sm:text-sm shadow-sm">
-                                <Star className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />
-                                <span>Loved by our global community</span>
+        <section id="testimonials" className="bg-brand-bg">
+            {/* Phones/tablets: native horizontal swipe row (no scroll-jacking) */}
+            <div className="py-16 md:hidden">
+                <TestimonialsHeader />
+                <div className="flex overflow-x-auto snap-x snap-mandatory scroll-px-5 gap-4 px-5 pb-4 scrollbar-hide">
+                    {TESTIMONIALS.map((t, idx) => (
+                        <TestimonialCard key={`${t.name}-${idx}`} t={t} mobile />
+                    ))}
+                </div>
+            </div>
+
+            {/* md+: pinned horizontal scrub */}
+            <div ref={targetRef} className="relative hidden h-[400svh] md:block">
+                {/* Sticky screen container pinning the panels layout row precisely like Horiscroll pinned view */}
+                <div className="sticky top-0 h-svh w-full overflow-hidden flex flex-col justify-center py-12">
+
+                    <TestimonialsHeader />
+
+                    {/* Horizontally scrolling container mapping directly to ScrollTrigger scrub model */}
+                    <div className="w-full pl-4 sm:pl-8 md:pl-16 lg:pl-24">
+                        <motion.div
+                            style={{ x }}
+                            className="flex gap-5 sm:gap-6 flex-nowrap w-max will-change-transform pr-[30vw]"
+                        >
+                            {TESTIMONIALS.map((t, idx) => (
+                                <TestimonialCard key={`${t.name}-${idx}`} t={t} />
+                            ))}
+                        </motion.div>
+                    </div>
+
+                    {/* Framer Scroll Progress Indicator Strip */}
+                    <Container>
+                        <div className="mt-10 max-w-xs mx-auto">
+                            <div className="h-1 w-full bg-gray-200 rounded-full overflow-hidden relative">
+                                <motion.div
+                                    className="absolute inset-0 origin-left bg-[var(--reunion-accent)] rounded-full"
+                                    style={{ scaleX: scrollYProgress }}
+                                />
                             </div>
-                            <h2 className="mt-4 text-[32px] sm:text-[44px] md:text-[56px] lg:text-[64px] font-extrabold leading-tight tracking-tight text-brand-text">
-                                What our members are saying.
-                            </h2>
                         </div>
-                    </div>
-                </Container>
+                    </Container>
 
-                {/* Horizontally scrolling container mapping directly to ScrollTrigger scrub model */}
-                <div className="w-full pl-4 sm:pl-8 md:pl-16 lg:pl-24">
-                    <motion.div
-                        style={{ x }}
-                        className="flex gap-5 sm:gap-6 flex-nowrap w-max will-change-transform pr-[30vw]"
-                    >
-                        {TESTIMONIALS.map((t, idx) => (
-                            <TestimonialCard key={`${t.name}-${idx}`} t={t} />
-                        ))}
-                    </motion.div>
                 </div>
-
-                {/* Framer Scroll Progress Indicator Strip */}
-                <Container>
-                    <div className="mt-10 max-w-xs mx-auto">
-                        <div className="h-1 w-full bg-gray-200 rounded-full overflow-hidden relative">
-                            <motion.div
-                                className="absolute top-0 left-0 bottom-0 bg-[var(--reunion-accent)] rounded-full"
-                                style={{ width: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) }}
-                            />
-                        </div>
-                    </div>
-                </Container>
-
-                {/* Preserved ambient storytelling image injection for mobile/hybrid visual completeness */}
-                <div className="hidden">
-                    <ImageBlock id="story-crowd" variant="landscape" />
-                </div>
-
             </div>
         </section>
     );

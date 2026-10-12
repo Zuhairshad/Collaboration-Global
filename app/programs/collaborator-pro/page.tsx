@@ -14,8 +14,8 @@ import { TESTIMONIALS } from "@/lib/constants";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/animations";
 
 const AVATAR_GRADIENTS = [
-  "linear-gradient(135deg,#655bb3 0%,#31cfc3 100%)",
-  "linear-gradient(135deg,#31cfc3 0%,#7be0d8 100%)",
+  "linear-gradient(135deg,#655bb3 0%,#1d8079 100%)",
+  "linear-gradient(135deg,#1d8079 0%,#17736d 100%)",
   "linear-gradient(135deg,#4a4396 0%,#655bb3 100%)",
 ];
 
@@ -53,7 +53,7 @@ function ProTestimonialCard({
 
   return (
     <motion.div style={{ x, scale, zIndex: idx + 1 }} className="absolute inset-0">
-      <div className="flex h-full flex-col rounded-2xl bg-white px-8 py-9 shadow-2xl md:px-12">
+      <div className="flex h-full flex-col rounded-2xl bg-white px-8 py-9 shadow-xl md:px-12">
         <span className="text-[52px] font-black leading-none text-[var(--brand-teal)]/20">&ldquo;</span>
         <p className="mt-2 flex-1 text-[17px] leading-[1.8] text-brand-text">{t.quote}</p>
         <div className="mt-6 flex items-center gap-4 border-t border-brand-border pt-5">
@@ -62,7 +62,7 @@ function ProTestimonialCard({
             <p className="text-[16px] font-bold text-brand-text">{t.name}</p>
             <p className="text-[13px] text-brand-muted">{t.role}</p>
           </div>
-          <span className="ml-auto shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal)]">
+          <span className="ml-auto shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal-text)]">
             {String(idx + 1).padStart(2, "0")}&nbsp;/&nbsp;{String(total).padStart(2, "0")}
           </span>
         </div>
@@ -71,7 +71,66 @@ function ProTestimonialCard({
   );
 }
 
+function StaticProTestimonialCard({
+  t,
+  idx,
+  total,
+}: {
+  t: { quote: string; name: string; role: string };
+  idx: number;
+  total: number;
+}) {
+  return (
+    <div className="flex flex-col rounded-2xl bg-white p-5 shadow-lg sm:p-6">
+      <span className="text-[44px] font-black leading-none text-[var(--brand-teal)]/20">&ldquo;</span>
+      <p className="mt-1 text-[15px] leading-[1.75] text-brand-text">{t.quote}</p>
+      <div className="mt-5 flex items-center gap-3 border-t border-brand-border pt-4">
+        <Avatar name={t.name} />
+        <div className="min-w-0">
+          <p className="text-[15px] font-bold text-brand-text">{t.name}</p>
+          <p className="text-[13px] text-brand-muted">{t.role}</p>
+        </div>
+        <span className="ml-auto shrink-0 text-[11px] font-bold tracking-[0.2em] text-[var(--brand-teal-text)]">
+          {String(idx + 1).padStart(2, "0")}&nbsp;/&nbsp;{String(total).padStart(2, "0")}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function ProTestimonialsHeading() {
+  return (
+    <div className="mb-10 text-center">
+      <SectionLabel className="text-white">Community</SectionLabel>
+      <h2 className="mx-auto mt-4 max-w-[560px] text-[clamp(1.9rem,3.5vw,3rem)] font-bold leading-[1.1] tracking-[-0.03em] text-white">
+        What Pro members say.
+      </h2>
+    </div>
+  );
+}
+
 function ProTestimonialsSection({ testimonials }: { testimonials: typeof FEATURED_TESTIMONIALS }) {
+  return (
+    <>
+      {/* Mobile: plain stacked list in normal flow */}
+      <section className="bg-brand-gradient py-20 md:hidden">
+        <Container>
+          <ProTestimonialsHeading />
+          <div className="space-y-4">
+            {testimonials.map((t, idx) => (
+              <StaticProTestimonialCard key={t.name} t={t} idx={idx} total={testimonials.length} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* md+: pinned scroll-driven card stack */}
+      <PinnedProTestimonials testimonials={testimonials} />
+    </>
+  );
+}
+
+function PinnedProTestimonials({ testimonials }: { testimonials: typeof FEATURED_TESTIMONIALS }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -79,17 +138,9 @@ function ProTestimonialsSection({ testimonials }: { testimonials: typeof FEATURE
   });
 
   return (
-    <div ref={containerRef} style={{ height: "300vh" }}>
-      <div
-        className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden px-4"
-        style={{ background: "linear-gradient(135deg,#4a4396 0%,#31cfc3 60%,#7be0d8 100%)" }}
-      >
-        <div className="mb-10 text-center">
-          <SectionLabel className="text-white/60">Community</SectionLabel>
-          <h2 className="mx-auto mt-4 max-w-[560px] text-[clamp(1.9rem,3.5vw,3rem)] font-bold leading-[1.1] tracking-[-0.03em] text-white">
-            What Pro members say.
-          </h2>
-        </div>
+    <div ref={containerRef} className="hidden md:block" style={{ height: "300svh" }}>
+      <div className="bg-brand-gradient sticky top-0 flex h-svh flex-col items-center justify-center overflow-hidden px-4">
+        <ProTestimonialsHeading />
         <Container>
           <div className="relative mx-auto max-w-[720px]" style={{ height: "420px" }}>
             {testimonials.map((t, idx) => (
@@ -189,12 +240,13 @@ export default function CollaboratorProPage() {
     <main>
 
       {/* ── HERO ── */}
-      <section className="relative flex min-h-screen flex-col justify-end overflow-hidden">
+      <section className="relative flex min-h-svh flex-col justify-end overflow-hidden">
         <Image
           src="/media/story-main-event.jpg"
           alt="Collaboration Global community gathering"
           fill
-          priority
+          preload
+          sizes="100vw"
           className="object-cover"
           style={{ objectPosition: "center 30%" }}
         />
@@ -209,7 +261,7 @@ export default function CollaboratorProPage() {
           <motion.div variants={staggerContainer} initial="hidden" animate="visible">
             <motion.span
               variants={staggerItem}
-              className="inline-block rounded-full bg-[var(--brand-teal)]/20 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-teal)]"
+              className="inline-block rounded-full bg-[var(--brand-teal)]/20 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white"
             >
               Full Membership
             </motion.span>
@@ -278,7 +330,7 @@ export default function CollaboratorProPage() {
                 <div className="relative h-full overflow-hidden rounded-2xl border border-brand-border bg-white p-6 shadow-sm">
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/50 to-transparent" />
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--brand-teal)]/10">
-                    <p.icon className="h-5 w-5 text-[var(--brand-teal)]" strokeWidth={1.8} />
+                    <p.icon className="h-5 w-5 text-[var(--brand-teal-text)]" strokeWidth={1.8} />
                   </div>
                   <p className="text-[15px] font-bold tracking-tight text-brand-text">{p.title}</p>
                   <p className="mt-2 text-[13px] leading-[1.75] text-brand-muted">{p.body}</p>
@@ -300,9 +352,10 @@ export default function CollaboratorProPage() {
                 <Image
                   src="/media/story-collaboration.jpg"
                   alt="Collaboration in action"
-                  width={640}
-                  height={500}
-                  className="w-full object-cover"
+                  width={1536}
+                  height={2048}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="h-auto w-full object-cover"
                 />
               </div>
             </RevealOnScroll>
@@ -334,7 +387,7 @@ export default function CollaboratorProPage() {
                 variants={fadeUp}
                 className="mt-4 text-[15px] leading-[1.85] text-brand-muted"
               >
-                Being able to ask for support from a community who know your story, your needs, and who genuinely want to see you succeed, that's beyond measure. You become part of a growing community operating within a new paradigm of Love, Connection, and Abundance.
+                Being able to ask for support from a community who know your story, your needs, and who genuinely want to see you succeed, that&apos;s beyond measure. You become part of a growing community operating within a new paradigm of Love, Connection, and Abundance.
               </motion.p>
 
               {/* Mobile image */}
@@ -397,8 +450,8 @@ export default function CollaboratorProPage() {
                   marginBottom: idx < INCLUDED.length - 1 ? "180px" : "60px",
                 }}
               >
-                <div className="rounded-2xl border border-brand-border bg-white px-8 py-10 shadow-[0_4px_28px_rgba(0,0,0,0.08)]">
-                  <div className="flex items-start gap-6">
+                <div className="rounded-2xl border border-brand-border bg-white px-5 py-7 shadow-[0_4px_28px_rgba(0,0,0,0.08)] sm:px-8 md:py-10">
+                  <div className="flex items-start gap-4 sm:gap-6">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--brand-purple)]/10">
                       <span className="text-[13px] font-black tracking-tight text-[var(--brand-purple)]">
                         {String(idx + 1).padStart(2, "0")}
@@ -439,10 +492,10 @@ export default function CollaboratorProPage() {
 
               <motion.div
                 variants={fadeUp}
-                className="relative mt-10 overflow-hidden rounded-2xl border border-brand-border bg-brand-card p-8 shadow-sm"
+                className="relative mt-10 overflow-hidden rounded-2xl border border-brand-border bg-brand-card p-6 shadow-sm md:p-8"
               >
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
                   Monthly Membership
                 </p>
                 <div className="mt-3 flex items-end gap-2">
@@ -457,7 +510,7 @@ export default function CollaboratorProPage() {
                   {["Full Academy access included", "Coaching support", "Profile & visibility boost", "Orientation + book included", "Member event discounts", "Private platform groups"].map((f) => (
                     <li key={f} className="flex items-center gap-2.5">
                       <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[var(--brand-teal)]/15">
-                        <Check className="h-2.5 w-2.5 text-[var(--brand-teal)]" strokeWidth={2.5} />
+                        <Check className="h-2.5 w-2.5 text-[var(--brand-teal-text)]" strokeWidth={2.5} />
                       </span>
                       <span className="text-[13px] text-brand-muted">{f}</span>
                     </li>
@@ -475,7 +528,7 @@ export default function CollaboratorProPage() {
                   Not sure yet?{" "}
                   <a
                     href="/programs/community-sessions"
-                    className="font-medium text-[var(--brand-teal)] hover:underline"
+                    className="font-medium text-[var(--brand-teal-text)] hover:underline"
                   >
                     Try a free session first →
                   </a>

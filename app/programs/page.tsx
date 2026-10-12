@@ -69,7 +69,7 @@ export default function ProgramsPage() {
   label="Programs"
   title="A simple path: free → learning → full membership."
   description="Start with a Community Session, step into the Academy for structured growth, or join Pro for full support and real collaboration opportunities."
-  className="[background:linear-gradient(135deg,#4a4396_0%,#655bb3_30%,#31cfc3_60%,#7be0d8_100%)]"
+  className="bg-brand-gradient"
   />
 
   {/* ── Program cards ── white */}
@@ -99,7 +99,7 @@ export default function ProgramsPage() {
    {PROGRAMS.map((p, idx) => (
     <RevealOnScroll key={p.title} delay={0.05 + idx * 0.06}>
     <div
-     className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border p-8 shadow-sm transition-shadow hover:shadow-md ${
+     className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border p-6 shadow-sm md:p-8 transition-shadow hover:shadow-md ${
      p.accent
       ? "border-[var(--brand-teal)]/40 bg-white"
       : "border-gray-100 bg-white"
@@ -114,9 +114,9 @@ export default function ProgramsPage() {
      }`}
      />
      {/* Glow bloom */}
-     <div className="pointer-events-none absolute -top-10 left-1/2 h-24 w-48 -translate-x-1/2 rounded-full bg-[var(--brand-purple)]/8 blur-2xl" />
+     <div className="pointer-events-none absolute -top-20 left-1/2 h-44 w-[272px] max-w-full -translate-x-1/2 [background:radial-gradient(closest-side,color-mix(in_srgb,var(--brand-purple)_8%,transparent),transparent)]" />
 
-     <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+     <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
      {p.tag}
      </p>
 
@@ -126,7 +126,7 @@ export default function ProgramsPage() {
 
      <p
      className={`relative mt-1 text-[1.6rem] font-black leading-none tracking-tight ${
-      p.accent ? "text-[var(--brand-teal)]" : "text-brand-muted"
+      p.accent ? "text-[var(--brand-teal-text)]" : "text-brand-muted"
      }`}
      >
      {p.price}
@@ -141,7 +141,7 @@ export default function ProgramsPage() {
       <li key={f} className="flex items-center gap-2.5">
       <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[var(--brand-teal)]/15">
        <Check
-       className="h-2.5 w-2.5 text-[var(--brand-teal)]"
+       className="h-2.5 w-2.5 text-[var(--brand-teal-text)]"
        strokeWidth={2.5}
        />
       </span>
@@ -167,7 +167,7 @@ export default function ProgramsPage() {
 
    {/* Not sure strip */}
    <RevealOnScroll delay={0.1}>
-   <div className="mt-8 overflow-hidden rounded-2xl border border-gray-100 bg-brand-card p-7 shadow-sm">
+   <div className="mt-8 overflow-hidden rounded-2xl border border-gray-100 bg-brand-card p-6 shadow-sm md:p-7">
     <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
     <div>
      <p className="text-[15px] font-semibold text-brand-text">
@@ -177,7 +177,7 @@ export default function ProgramsPage() {
      Attend a free Community Session and meet the community first no commitment needed.
      </p>
     </div>
-    <div className="flex shrink-0 gap-3">
+    <div className="flex shrink-0 flex-wrap gap-3">
      <Button
      href="/events"
      variant="accent"
@@ -211,7 +211,7 @@ export default function ProgramsPage() {
    className="mx-auto max-w-[860px] text-center"
    >
    <motion.div variants={fadeUp} className="flex justify-center">
-    <SectionLabel className="text-brand-text/60">Our Belief</SectionLabel>
+    <SectionLabel className="text-brand-text/80">Our Belief</SectionLabel>
    </motion.div>
    <motion.h2
     variants={fadeUp}
@@ -231,7 +231,7 @@ export default function ProgramsPage() {
      className="rounded-2xl bg-black/10 p-6"
     >
      <p className="text-3xl font-black text-brand-text">{stat.label}</p>
-     <p className="mt-1 text-[13px] text-brand-text/65">{stat.sub}</p>
+     <p className="mt-1 text-[13px] text-brand-text/80">{stat.sub}</p>
     </motion.div>
     ))}
    </motion.div>

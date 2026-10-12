@@ -19,15 +19,17 @@ export default function PodcastPage() {
    <div className="mx-auto max-w-[900px]">
    <RevealOnScroll>
     <Card className="p-6 md:p-10">
-    <p className="text-sm font-semibold tracking-tight text-white">
+    <p className="text-sm font-semibold tracking-tight text-brand-text">
      Listen now
     </p>
-    <p className="mt-4 text-sm leading-relaxed text-white/70 md:text-[15px] md:leading-[1.8]">
+    <p className="mt-4 text-sm leading-relaxed text-brand-muted md:text-[15px] md:leading-[1.8]">
      Explore conversations on what it means to build in a human way 
      depth, purpose, and collaboration in practice.
     </p>
     <div className="mt-8">
-     <Button href={CONTENT_HUB.podcast.url}>Open on Spotify</Button>
+     <Button href={CONTENT_HUB.podcast.url} variant="accent">
+     Open on Spotify
+     </Button>
     </div>
     </Card>
    </RevealOnScroll>

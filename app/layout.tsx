@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
 import "@/styles/globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-
-const primaryFont = Space_Grotesk({
- variable: "--font-primary",
- subsets: ["latin"],
- weight: ["300", "400", "500", "600", "700"],
-});
+import { MotionProvider } from "@/components/providers/MotionProvider";
 
 export const metadata: Metadata = {
  title: "Collaboration Global",
@@ -21,11 +15,13 @@ export default function RootLayout({
  children: React.ReactNode;
 }>) {
  return (
- <html lang="en" className={`${primaryFont.variable} h-full antialiased`} suppressHydrationWarning>
+ <html lang="en" className="h-full antialiased" suppressHydrationWarning>
   <body className="min-h-full flex flex-col font-sans">
-  <Navbar />
-  <div className="flex-1">{children}</div>
-  <Footer />
+  <MotionProvider>
+   <Navbar />
+   <div className="flex-1">{children}</div>
+   <Footer />
+  </MotionProvider>
   </body>
  </html>
  );

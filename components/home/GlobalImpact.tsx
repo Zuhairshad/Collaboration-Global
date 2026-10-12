@@ -1,14 +1,50 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useSyncExternalStore } from "react";
+import { motion, type PanInfo } from "framer-motion";
 import { Globe2, Heart, Users, Lightbulb, Palette, Shield } from "lucide-react";
 import { IMPACT_PARTNERS } from "@/lib/constants";
 
 const PARTNER_ICONS = [Globe2, Heart, Users, Lightbulb, Palette, Shield] as const;
 
+const DESKTOP_QUERY = "(min-width: 768px)";
+
+function subscribeDesktop(callback: () => void) {
+    const mql = window.matchMedia(DESKTOP_QUERY);
+    mql.addEventListener("change", callback);
+    return () => mql.removeEventListener("change", callback);
+}
+
+/** md+ viewport. Server/hydration snapshot is desktop; switches after mount on phones. */
+function useIsDesktop() {
+    return useSyncExternalStore(
+        subscribeDesktop,
+        () => window.matchMedia(DESKTOP_QUERY).matches,
+        () => true,
+    );
+}
+
+type CardStyle = {
+    x: string;
+    y: number;
+    rotate: number;
+    scale: number;
+    opacity: number;
+    zIndex: number;
+};
+
+// Tighter arc below md so neighbour cards only peek in from the edges
+const getMobileCardStyles = (offset: number): CardStyle => {
+    if (offset === 0) return { x: "0%", y: 0, rotate: 0, scale: 1, opacity: 1, zIndex: 40 };
+    if (offset === 1) return { x: "88%", y: 16, rotate: 6, scale: 0.9, opacity: 0.45, zIndex: 30 };
+    if (offset === -1) return { x: "-88%", y: 16, rotate: -6, scale: 0.9, opacity: 0.45, zIndex: 30 };
+    if (offset > 1) return { x: "176%", y: 32, rotate: 12, scale: 0.8, opacity: 0, zIndex: 10 };
+    return { x: "-176%", y: 32, rotate: -12, scale: 0.8, opacity: 0, zIndex: 10 };
+};
+
 export function GlobalImpact() {
     const [activeIndex, setActiveIndex] = useState(0);
+    const isDesktop = useIsDesktop();
     const lastActionTimeRef = React.useRef<number>(0);
 
     // Mental model: "swipe right we move to reight cards we swipe left we move to left cards"
@@ -28,7 +64,7 @@ export function GlobalImpact() {
     };
 
     // Helper to calculate arc style transformation offsets declaratively exactly like Framer cards
-    const getCardStyles = (offset: number) => {
+    const getCardStyles = (offset: number): CardStyle => {
         if (offset === 0) {
             return {
                 x: "0%",
@@ -101,13 +137,12 @@ export function GlobalImpact() {
     };
 
     // Drag release handler for swipe animation logic attached directly to each physical card block
-    const handleDragEnd = (e: any, { offset }: any) => {
+    // Natural touch behaviour: swipe left -> next card, swipe right -> previous card
+    const handleDragEnd = (_e: MouseEvent | TouchEvent | PointerEvent, { offset }: PanInfo) => {
         const threshold = 30;
-        if (offset.x > threshold) {
-            // swiped right -> move to right cards
+        if (offset.x < -threshold) {
             handleNext();
-        } else if (offset.x < -threshold) {
-            // swiped left -> move to left cards
+        } else if (offset.x > threshold) {
             handlePrev();
         }
     };
@@ -123,6 +158,19 @@ export function GlobalImpact() {
             }
         }
     };
+
+    const dots = IMPACT_PARTNERS.map((_, i) => (
+        <button
+            key={i}
+            onClick={() => setActiveIndex(i)}
+            className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                i === activeIndex
+                    ? "w-4 sm:w-5 bg-[var(--brand-purple)]"
+                    : "w-1.5 bg-slate-300 hover:bg-slate-400"
+            }`}
+            aria-label={`Select partner ${i + 1}`}
+        />
+    ));
 
     return (
         <section
@@ -145,7 +193,7 @@ export function GlobalImpact() {
                         if (offset > total / 2) offset -= total;
                         if (offset < -total / 2) offset += total;
 
-                        const styles = getCardStyles(offset);
+                        const styles = isDesktop ? getCardStyles(offset) : getMobileCardStyles(offset);
                         const isActive = offset === 0;
                         const borderColor = idx % 2 === 0 ? "#655bb3" : "#31cfc3";
 
@@ -162,6 +210,8 @@ export function GlobalImpact() {
                                     y: styles.y,
                                     rotate: styles.rotate,
                                     scale: styles.scale,
+                                    // Desktop never faded cards; keep that, fade only on the mobile arc
+                                    opacity: isDesktop ? 1 : styles.opacity,
                                 }}
                                 transition={{
                                     type: "spring",
@@ -169,15 +219,20 @@ export function GlobalImpact() {
                                     damping: 38,
                                     mass: 1,
                                 }}
-                                style={{ zIndex: styles.zIndex, borderColor, borderWidth: 4 }}
-                                className={`absolute top-0 w-[300px] h-[380px] sm:w-[340px] sm:h-[420px] md:w-[380px] md:h-[480px] overflow-hidden border-solid transition-all duration-300 select-none text-left flex flex-col justify-between touch-pan-y cursor-grab active:cursor-grabbing text-gray-900 ${
+                                style={{
+                                    zIndex: styles.zIndex,
+                                    borderColor,
+                                    borderWidth: 4,
+                                    pointerEvents: !isDesktop && styles.opacity === 0 ? "none" : undefined,
+                                }}
+                                className={`absolute top-0 w-[min(300px,80vw)] h-[380px] sm:w-[340px] sm:h-[420px] md:w-[380px] md:h-[480px] overflow-hidden border-solid transition-colors duration-300 select-none text-left flex flex-col justify-between touch-pan-y cursor-grab active:cursor-grabbing text-gray-900 ${
                                     isActive
                                         ? "bg-white shadow-2xl"
                                         : "bg-white/95 shadow-md"
                                 }`}
                             >
                                 {/* Card Internal Layout Base */}
-                                <div className="p-6 sm:p-7 relative z-10 flex-1 flex flex-col pointer-events-none">
+                                <div className="p-5 sm:p-7 relative z-10 flex-1 flex flex-col pointer-events-none">
                                     {/* Top Icon Strip */}
                                     <div className="flex items-center gap-3.5 mb-4">
                                         <div className="p-3 rounded-2xl shrink-0 bg-[#655bb3]/10 text-[#655bb3]">
@@ -189,7 +244,7 @@ export function GlobalImpact() {
                                     </div>
 
                                     {/* Description Text */}
-                                    <p className="text-[14px] sm:text-[15.5px] leading-relaxed mt-2 font-normal flex-1 text-gray-600">
+                                    <p className="text-[14px] sm:text-[15.5px] leading-relaxed mt-2 font-normal md:flex-1 text-gray-600 line-clamp-[8] sm:line-clamp-[9] md:line-clamp-none">
                                         {partner.description}
                                     </p>
                                 </div>
@@ -201,7 +256,7 @@ export function GlobalImpact() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={(e) => e.stopPropagation()}
-                                        className="px-6 sm:px-7 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[12px] font-bold text-[#655bb3] tracking-wide uppercase hover:bg-slate-100 transition-colors"
+                                        className="px-5 sm:px-7 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[12px] font-bold text-[#655bb3] tracking-wide uppercase hover:bg-slate-100 transition-colors"
                                     >
                                         <span>Visit website</span>
                                         <span>→</span>
@@ -224,7 +279,7 @@ export function GlobalImpact() {
                     <div className="flex items-center justify-center gap-2 sm:gap-6">
                         <button
                             onClick={handlePrev}
-                            className="p-2 sm:p-3 text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
+                            className="hidden sm:inline-block p-2 sm:p-3 text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
                             aria-label="Swipe left / previous partner"
                         >
                             <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -232,25 +287,39 @@ export function GlobalImpact() {
                             </svg>
                         </button>
 
-                        <AnimatePresence mode="wait">
-                            <motion.h2
-                                key={activeIndex}
-                                initial={{ opacity: 0, y: 4 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -4 }}
-                                transition={{ duration: 0.15 }}
-                                className="text-[clamp(1.5rem,2.8vw,2.4rem)] font-bold leading-tight tracking-tight text-brand-text px-1"
-                            >
-                                Where Changemakers Connect.
-                            </motion.h2>
-                        </AnimatePresence>
+                        <h2 className="text-[clamp(1.5rem,2.8vw,2.4rem)] font-bold leading-tight tracking-tight text-brand-text px-1">
+                            Where Changemakers Connect.
+                        </h2>
 
                         <button
                             onClick={handleNext}
-                            className="p-2 sm:p-3 text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
+                            className="hidden sm:inline-block p-2 sm:p-3 text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
                             aria-label="Swipe right / next partner"
                         >
                             <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 18l6-6-6-6" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    {/* Phones: controls in their own row below the heading (prev / dots / next) */}
+                    <div className="mt-3 flex items-center justify-center gap-4 sm:hidden">
+                        <button
+                            onClick={handlePrev}
+                            className="p-2 text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
+                            aria-label="Previous partner"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 18l-6-6 6-6" />
+                            </svg>
+                        </button>
+                        <div className="flex items-center gap-1.5">{dots}</div>
+                        <button
+                            onClick={handleNext}
+                            className="p-2 text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
+                            aria-label="Next partner"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 18l6-6-6-6" />
                             </svg>
                         </button>
@@ -271,20 +340,9 @@ export function GlobalImpact() {
                         </a>
                     </div>
 
-                    {/* Indicator Dot Strip at the absolute bottom */}
-                    <div className="mt-5 sm:mt-6 flex items-center justify-center gap-1.5">
-                        {IMPACT_PARTNERS.map((_, i) => (
-                            <button
-                                key={i}
-                                onClick={() => setActiveIndex(i)}
-                                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                                    i === activeIndex
-                                        ? "w-4 sm:w-5 bg-[var(--brand-purple)]"
-                                        : "w-1.5 bg-slate-300 hover:bg-slate-400"
-                                }`}
-                                aria-label={`Select partner ${i + 1}`}
-                            />
-                        ))}
+                    {/* Indicator Dot Strip at the absolute bottom (sm+; phones get it in the controls row) */}
+                    <div className="mt-5 sm:mt-6 hidden sm:flex items-center justify-center gap-1.5">
+                        {dots}
                     </div>
 
                 </div>

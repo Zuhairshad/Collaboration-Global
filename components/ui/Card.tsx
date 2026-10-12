@@ -1,5 +1,9 @@
 import { cn } from "@/lib/utils";
 
+/**
+ * Surface card for the light (cream) page background.
+ * Children should use `text-brand-text` / `text-brand-muted` for copy.
+ */
 export function Card({
  className,
  highlighted,
@@ -8,12 +12,11 @@ export function Card({
  return (
  <div
   className={cn(
-  "rounded-xl border border-brand-border bg-brand-card p-8 transition-colors hover:border-white/15",
-  highlighted && "border-l-2 border-l-white",
+  "rounded-xl border border-brand-border bg-brand-card p-6 text-brand-text transition-colors hover:border-brand-dim md:p-8",
+  highlighted && "border-l-2 border-l-[var(--brand-teal)]",
   className,
   )}
   {...props}
  />
  );
 }
-

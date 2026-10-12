@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
@@ -9,7 +10,6 @@ import {
 import { HERO, IMPACT_PARTNERS } from "@/lib/constants";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 import { Button } from "@/components/ui/Button";
-import { ImageBlock } from "@/components/media/ImageBlock";
 import { cn } from "@/lib/utils";
 
 const HERO_MIC_IMAGE =
@@ -24,20 +24,39 @@ const TICKER_ITEMS = [
   { Icon: CalendarDays, text: "6+ Years Active" },
 ];
 
+/** Toggles data-paused on the element while it is off-screen (no re-renders). */
+function usePauseOffscreen<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(([entry]) => {
+      el.dataset.paused = entry.isIntersecting ? "false" : "true";
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return ref;
+}
+
 function StatsTicker() {
   const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
+  const ref = usePauseOffscreen<HTMLDivElement>();
   return (
-    <div className="relative w-full overflow-hidden bg-[var(--brand-teal)] py-3.5 md:py-4">
+    <div
+      ref={ref}
+      className="relative w-full overflow-hidden bg-[var(--brand-teal)] py-3.5 md:py-4"
+    >
       <div className="flex w-max animate-hero-marquee items-center">
         {items.map((item, i) => (
           <span
             key={i}
             aria-hidden={i >= TICKER_ITEMS.length}
-            className="flex shrink-0 items-center gap-2 px-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white md:text-xs"
+            className="flex shrink-0 items-center gap-2 px-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-text md:text-xs"
           >
             <item.Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
             {item.text}
-            <span className="ml-4 text-white/40">·</span>
+            <span className="ml-4 text-brand-text/40">·</span>
           </span>
         ))}
       </div>
@@ -48,14 +67,14 @@ function StatsTicker() {
 export function Hero({ className }: { className?: string }) {
   return (
     <section
-      className={cn("relative flex min-h-screen flex-col overflow-hidden", className)}
+      className={cn("relative flex min-h-svh flex-col overflow-hidden", className)}
     >
       {/* ── LAYER 1: Full-bleed background image (covers entire section) ── */}
       <Image
         src={HERO_MIC_IMAGE}
         alt="Microphone with atmospheric stage lighting"
         fill
-        priority
+        preload
         sizes="100vw"
         className="object-cover"
         style={{ objectPosition: "70% center" }}
@@ -115,8 +134,10 @@ export function Hero({ className }: { className?: string }) {
           </motion.div>
 
           {/* Headline */}
+          {/* Rendered visible from the first paint (no JS-gated fade) so it never delays LCP */}
           <motion.h1
             variants={staggerItem}
+            initial={false}
             className="mt-6 max-w-[640px] text-[clamp(2.6rem,5.6vw,5.6rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-white"
           >
             <span className="block">{HERO.headingLine1}</span>
@@ -126,12 +147,12 @@ export function Hero({ className }: { className?: string }) {
           {/* CTAs */}
           <motion.div
             variants={staggerItem}
-            className="mt-9 flex flex-wrap items-center gap-3.5"
+            className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3.5"
           >
             <Button
               href={HERO.primaryCTA.href}
               variant="accent"
-              className="gap-2 text-sm normal-case tracking-normal"
+              className="w-full gap-2 px-5 py-3 text-sm normal-case tracking-normal sm:w-auto sm:px-7 sm:py-3.5"
             >
               {HERO.primaryCTA.label}
               <Ticket className="h-4 w-4 shrink-0" strokeWidth={1.8} />
@@ -139,17 +160,13 @@ export function Hero({ className }: { className?: string }) {
             <Button
               href={HERO.secondaryCTA.href}
               variant="outline"
-              className="gap-2 text-sm normal-case tracking-normal border-white/20 text-white hover:border-white/40 hover:bg-white/[0.06]"
+              className="w-full gap-2 px-5 py-3 text-sm normal-case tracking-normal border-white/20 text-white hover:border-white/40 hover:bg-white/[0.06] sm:w-auto sm:px-7 sm:py-3.5"
             >
               {HERO.secondaryCTA.label}
               <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={1.8} />
             </Button>
           </motion.div>
 
-          {/* Mobile-only enhancement layer block */}
-          <motion.div variants={staggerItem}>
-            <ImageBlock id="story-hero" variant="landscape" priority className="mt-8 mb-2" />
-          </motion.div>
         </motion.div>
 
         {/* Bottom row: partners left · description right */}
@@ -157,21 +174,21 @@ export function Hero({ className }: { className?: string }) {
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="flex flex-wrap items-end justify-between gap-8 pb-6"
+          className="flex flex-wrap items-end justify-between gap-6 pb-5 pt-8 sm:gap-8 sm:pb-6 sm:pt-0"
         >
           <motion.div variants={staggerItem}>
-            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/35">
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/35 sm:text-[11px]">
               {HERO.sponsorLabel}
             </p>
-            <div className="mt-4 flex flex-wrap items-center gap-6 md:gap-8">
+            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 sm:mt-4 sm:gap-6 md:gap-8">
               {DISPLAY_PARTNERS.map((partner) => (
-                <div key={partner.name} className="flex items-center gap-2.5">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.06]">
+                <div key={partner.name} className="flex items-center gap-2 sm:gap-2.5">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] sm:h-7 sm:w-7">
                     <span className="text-[10px] font-bold text-[var(--brand-teal)]">
                       {partner.name.charAt(0)}
                     </span>
                   </div>
-                  <span className="text-sm font-medium text-white/45">
+                  <span className="text-xs font-medium text-white/45 sm:text-sm">
                     {partner.name}
                   </span>
                 </div>

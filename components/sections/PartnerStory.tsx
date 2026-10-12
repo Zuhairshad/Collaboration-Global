@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useSyncExternalStore, type ReactNode, type RefObject } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Play, Check } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import type { PartnerStory } from "@/lib/partner-stories";
@@ -60,41 +60,84 @@ function VideoBlock({
  );
 }
 
+/* ────────── md+ media query (false on the server / first paint) ────────── */
+const MD_QUERY = "(min-width: 768px)";
+function subscribeMd(cb: () => void) {
+ const mql = window.matchMedia(MD_QUERY);
+ mql.addEventListener("change", cb);
+ return () => mql.removeEventListener("change", cb);
+}
+function useIsMdUp() {
+ return useSyncExternalStore(
+ subscribeMd,
+ () => window.matchMedia(MD_QUERY).matches,
+ () => false,
+ );
+}
+
+/* Parallax layer, only mounted on md+ with motion allowed */
+function ParallaxLayer({
+ targetRef,
+ intensity,
+ children,
+}: {
+ targetRef: RefObject<HTMLDivElement | null>;
+ intensity: number;
+ children: ReactNode;
+}) {
+ const { scrollYProgress } = useScroll({
+ target: targetRef,
+ offset: ["start end", "end start"],
+ });
+ const y = useTransform(scrollYProgress, [0, 1], [intensity, -intensity]);
+ return (
+ <motion.div style={{ y }} className="absolute inset-0 md:inset-x-0 md:-inset-y-12">
+  {children}
+ </motion.div>
+ );
+}
+
 /* ────────── Parallax wrapper for an image ────────── */
 function ParallaxImageBlock({
  src,
  alt,
  className,
- priority,
+ preload,
  sizes,
  intensity = 60,
 }: {
  src: string;
  alt: string;
  className?: string;
- priority?: boolean;
+ preload?: boolean;
  sizes?: string;
  intensity?: number;
 }) {
  const ref = useRef<HTMLDivElement>(null);
- const { scrollYProgress } = useScroll({
- target: ref,
- offset: ["start end", "end start"],
- });
- const y = useTransform(scrollYProgress, [0, 1], [intensity, -intensity]);
+ const isMdUp = useIsMdUp();
+ const reduceMotion = useReducedMotion();
+ const parallax = isMdUp && !reduceMotion;
+
+ const image = (
+ <Image
+  src={src}
+  alt={alt}
+  fill
+  preload={preload}
+  sizes={sizes}
+  className="object-cover"
+ />
+ );
 
  return (
  <div ref={ref} className={`relative overflow-hidden ${className ?? ""}`}>
-  <motion.div style={{ y }} className="absolute inset-x-0 -inset-y-12">
-  <Image
-   src={src}
-   alt={alt}
-   fill
-   priority={priority}
-   sizes={sizes}
-   className="object-cover"
-  />
-  </motion.div>
+  {parallax ? (
+  <ParallaxLayer targetRef={ref} intensity={intensity}>
+   {image}
+  </ParallaxLayer>
+  ) : (
+  <div className="absolute inset-0 md:inset-x-0 md:-inset-y-12">{image}</div>
+  )}
  </div>
  );
 }
@@ -104,7 +147,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
  return (
  <main className="relative bg-slate-100">
   {/* ─── SECTION 1, Hero ─── */}
-  <section className="sticky top-0 z-10 min-h-[80vh] bg-white pb-12 pt-24 md:pb-16 md:pt-28">
+  <section className="relative z-10 bg-white md:sticky md:top-0 md:min-h-[80svh] pb-12 pt-24 md:pb-16 md:pt-28">
   <Container>
    {story.bannerImage ? (
     <div className="grid gap-8 md:grid-cols-[1fr_1.1fr] md:items-center md:gap-14">
@@ -113,12 +156,12 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
      animate={{ opacity: 1, y: 0 }}
      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
     >
-     <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+     <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
      Collaboration Global × {story.partnerName}
      </p>
      <h1 className="text-[clamp(1.6rem,3vw,2.4rem)] font-bold leading-[1.1] tracking-[-0.02em] text-brand-text">
      {story.heroHeadline.lead}{" "}
-     <span className="text-[var(--brand-teal)]">{story.heroHeadline.accent}</span>
+     <span className="text-[var(--brand-teal-text)]">{story.heroHeadline.accent}</span>
      {story.heroHeadline.tail ? <> {story.heroHeadline.tail}</> : null}
      </h1>
      <div className="mt-4 space-y-3 text-[14px] leading-[1.65] text-brand-muted md:text-[15px]">
@@ -126,7 +169,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
       <p key={i}>{p}</p>
      ))}
      </div>
-     <p className="mt-4 text-[14px] font-semibold italic text-[var(--brand-teal)] md:text-[15px]">
+     <p className="mt-4 text-[14px] font-semibold italic text-[var(--brand-teal-text)] md:text-[15px]">
      {story.heroItalicLine}
      </p>
      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -134,13 +177,13 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
       href={story.primaryCta.href}
       target={story.primaryCta.href.startsWith("http") ? "_blank" : undefined}
       rel={story.primaryCta.href.startsWith("http") ? "noopener noreferrer" : undefined}
-      className="inline-flex items-center justify-center rounded-full bg-[var(--brand-teal)] px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-300 hover:bg-[var(--brand-teal-hover)] hover:shadow-md"
+      className="inline-flex items-center justify-center rounded-full bg-[var(--brand-teal)] px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-brand-text shadow-sm transition-all duration-300 hover:bg-[var(--brand-teal-hover)] hover:shadow-md"
      >
       {story.primaryCta.label}
      </a>
      <Link
       href={story.secondaryCta.href}
-      className="inline-flex items-center justify-center rounded-full border-2 border-[var(--brand-teal)] bg-white px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--brand-teal)] transition-all duration-300 hover:bg-[var(--brand-teal)]/5"
+      className="inline-flex items-center justify-center rounded-full border-2 border-[var(--brand-teal)] bg-white px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--brand-teal-text)] transition-all duration-300 hover:bg-[var(--brand-teal)]/5"
      >
       {story.secondaryCta.label}
      </Link>
@@ -165,12 +208,12 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
       src={story.bannerImage}
       alt={story.bannerAlt ?? story.partnerName}
       fill
-      priority
+      preload
       sizes="(max-width: 768px) 100vw, 600px"
       className="object-cover"
      />
      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/15 via-transparent to-[rgba(49,207,195,0.10)]" />
-     <div className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white shadow-[0_4px_20px_rgba(0,0,0,0.25)] ring-1 ring-white/20 backdrop-blur-md">
+     <div className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white shadow-[0_4px_20px_rgba(0,0,0,0.25)] ring-1 ring-white/20 bg-black/35">
       <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-teal)]" />
       {story.partnerName}
      </div>
@@ -184,12 +227,12 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
    >
-    <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+    <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
     Collaboration Global × {story.partnerName}
     </p>
     <h1 className="text-[clamp(1.8rem,3.4vw,2.8rem)] font-bold leading-[1.1] tracking-[-0.02em] text-brand-text">
     {story.heroHeadline.lead}{" "}
-    <span className="text-[var(--brand-teal)]">
+    <span className="text-[var(--brand-teal-text)]">
     {story.heroHeadline.accent}
     </span>
     {story.heroHeadline.tail ? <> {story.heroHeadline.tail}</> : null}
@@ -201,7 +244,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
     ))}
     </div>
 
-    <p className="mt-6 text-[16px] font-semibold italic text-[var(--brand-teal)] md:text-[17px]">
+    <p className="mt-6 text-[16px] font-semibold italic text-[var(--brand-teal-text)] md:text-[17px]">
     {story.heroItalicLine}
     </p>
 
@@ -214,13 +257,13 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
       ? "noopener noreferrer"
       : undefined
      }
-     className="inline-flex items-center justify-center rounded-full bg-[var(--brand-teal)] px-7 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-300 hover:bg-[var(--brand-teal-hover)] hover:shadow-md"
+     className="inline-flex items-center justify-center rounded-full bg-[var(--brand-teal)] px-7 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-brand-text shadow-sm transition-all duration-300 hover:bg-[var(--brand-teal-hover)] hover:shadow-md"
     >
      {story.primaryCta.label}
     </a>
     <Link
      href={story.secondaryCta.href}
-     className="inline-flex items-center justify-center rounded-full border-2 border-[var(--brand-teal)] bg-white px-7 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--brand-teal)] transition-all duration-300 hover:bg-[var(--brand-teal)]/5"
+     className="inline-flex items-center justify-center rounded-full border-2 border-[var(--brand-teal)] bg-white px-7 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--brand-teal-text)] transition-all duration-300 hover:bg-[var(--brand-teal)]/5"
     >
      {story.secondaryCta.label}
     </Link>
@@ -237,7 +280,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
     src={story.portraitImage}
     alt={story.partnerName}
     className="aspect-[4/5] w-full shadow-xl"
-    priority
+    preload
     sizes="(max-width: 768px) 100vw, 620px"
     intensity={40}
     />
@@ -248,7 +291,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
   </section>
 
   {/* ─── SECTION 2, Question + video ─── */}
-  <section className="sticky top-0 z-20 min-h-[80vh] rounded-t-[2.5rem] bg-slate-50 py-20 shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.15)] md:rounded-t-[3rem] md:py-28">
+  <section className="relative z-20 rounded-t-[2.5rem] bg-slate-50 py-14 sm:py-20 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.12)] md:sticky md:top-0 md:min-h-[80svh] md:shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.15)] md:rounded-t-[3rem] md:py-28">
   <Container>
    <div className="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
    <motion.div
@@ -262,7 +305,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
     </p>
     <h2 className="mt-4 text-[clamp(1.6rem,3.2vw,2.6rem)] font-bold leading-[1.18] tracking-[-0.02em] text-brand-text">
     “{story.question.lead}{" "}
-    <span className="text-[var(--brand-teal)]">{story.question.accent}”</span>
+    <span className="text-[var(--brand-teal-text)]">{story.question.accent}”</span>
     </h2>
     <div className="mt-4 space-y-3 text-[15px] leading-[1.7] text-brand-muted md:text-base">
     {story.questionParagraphs.map((p, i) => (
@@ -288,7 +331,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
   </section>
 
   {/* ─── SECTION 3, How it works + video ─── */}
-  <section className="sticky top-0 z-30 min-h-[80vh] rounded-t-[2.5rem] bg-white py-20 shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.15)] md:rounded-t-[3rem] md:py-28">
+  <section className="relative z-30 rounded-t-[2.5rem] bg-white py-14 sm:py-20 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.12)] md:sticky md:top-0 md:min-h-[80svh] md:shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.15)] md:rounded-t-[3rem] md:py-28">
   <Container>
    <div className="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
    <motion.div
@@ -297,7 +340,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
     viewport={{ once: true, margin: "-80px" }}
     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
    >
-    <h2 className="text-[clamp(2.2rem,4.4vw,3.4rem)] font-bold leading-[1.1] tracking-[-0.025em] text-[var(--brand-teal)]">
+    <h2 className="text-[clamp(2.2rem,4.4vw,3.4rem)] font-bold leading-[1.1] tracking-[-0.025em] text-[var(--brand-teal-text)]">
     {story.howTitle}
     </h2>
     <div className="mt-4 space-y-3 text-[15px] leading-[1.7] text-brand-muted md:text-base">
@@ -324,14 +367,14 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
   </section>
 
   {/* ─── SECTION 4, Tinted callout, left-aligned ─── */}
-  <section className="sticky top-0 z-40 min-h-[80vh] rounded-t-[2.5rem] bg-[#eef9f7] py-20 shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.15)] md:rounded-t-[3rem] md:py-28">
+  <section className="relative z-40 rounded-t-[2.5rem] bg-[#eef9f7] py-14 sm:py-20 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.12)] md:sticky md:top-0 md:min-h-[80svh] md:shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.15)] md:rounded-t-[3rem] md:py-28">
   <Container>
    <motion.div
    initial={{ opacity: 0, y: 20 }}
    whileInView={{ opacity: 1, y: 0 }}
    viewport={{ once: true, margin: "-60px" }}
    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-   className="mx-auto max-w-3xl bg-[var(--brand-purple)] p-8 shadow-[0_30px_80px_-30px_rgba(101,91,179,0.6)] md:p-14"
+   className="mx-auto max-w-3xl bg-[var(--brand-purple)] p-6 sm:p-8 shadow-[0_30px_80px_-30px_rgba(101,91,179,0.6)] md:p-14"
    >
    <h2 className="text-[clamp(1.4rem,2.6vw,2rem)] font-bold leading-[1.25] tracking-[-0.01em] text-white">
     {story.calloutHeadline}
@@ -360,7 +403,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
   </section>
 
   {/* ─── SECTION 5, Dive deeper + parallax collage ─── */}
-  <section className="sticky top-0 z-50 min-h-[80vh] rounded-t-[2.5rem] bg-white py-16 shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.15)] md:rounded-t-[3rem] md:py-20">
+  <section className="relative z-50 rounded-t-[2.5rem] bg-white py-12 sm:py-16 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.12)] md:sticky md:top-0 md:min-h-[80svh] md:shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.15)] md:rounded-t-[3rem] md:py-20">
   <Container>
    <div className="grid gap-10 md:grid-cols-2 md:items-center md:gap-14">
    <motion.div
@@ -369,7 +412,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
     viewport={{ once: true, margin: "-80px" }}
     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
    >
-    <h2 className="text-[clamp(1.8rem,3.6vw,2.6rem)] font-bold leading-[1.12] tracking-[-0.025em] text-[var(--brand-teal)]">
+    <h2 className="text-[clamp(1.8rem,3.6vw,2.6rem)] font-bold leading-[1.12] tracking-[-0.025em] text-[var(--brand-teal-text)]">
     {story.deeperTitle}
     </h2>
     <p className="mt-4 text-[15px] font-semibold text-brand-text md:text-base">
@@ -384,7 +427,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
     {story.deeperChecks.map((line, i) => (
      <li key={i} className="flex items-start gap-3">
      <Check
-      className="mt-1 h-4 w-4 shrink-0 text-[var(--brand-teal)]"
+      className="mt-1 h-4 w-4 shrink-0 text-[var(--brand-teal-text)]"
       strokeWidth={3}
      />
      <span className="text-[14px] text-brand-text md:text-[15px]">
@@ -399,7 +442,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
     <div className="mt-6">
     <Link
      href={story.deeperCta.href}
-     className="inline-flex items-center justify-center rounded-full bg-[var(--brand-teal)] px-7 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-300 hover:bg-[var(--brand-teal-hover)] hover:shadow-md"
+     className="inline-flex items-center justify-center rounded-full bg-[var(--brand-teal)] px-7 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-brand-text shadow-sm transition-all duration-300 hover:bg-[var(--brand-teal-hover)] hover:shadow-md"
     >
      {story.deeperCta.label}
     </Link>
@@ -427,10 +470,10 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
      className="relative flex aspect-square items-center justify-center overflow-hidden shadow-sm"
      style={{
      background:
-      "linear-gradient(135deg, rgba(49,207,195,1) 0%, rgba(101,91,179,1) 100%)",
+      "linear-gradient(135deg, #1d8079 0%, #655bb3 100%)",
      }}
     >
-    <p className="px-4 text-center text-base font-bold uppercase tracking-[0.18em] leading-tight text-white drop-shadow-md md:text-lg">
+    <p className="px-4 text-center text-base font-bold uppercase tracking-[0.18em] leading-tight text-white md:text-lg">
      {story.collageTagline}
     </p>
     </div>
@@ -440,7 +483,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
   </section>
 
   {/* ─── SECTION 6, Closing CTA, left-aligned ─── */}
-  <section className="relative z-[60] min-h-[80vh] rounded-t-[2.5rem] bg-slate-900 py-24 shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.25)] md:rounded-t-[3rem] md:py-32">
+  <section className="relative z-[60] rounded-t-[2.5rem] bg-slate-900 py-16 sm:py-24 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.2)] md:min-h-[80svh] md:shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.25)] md:rounded-t-[3rem] md:py-32">
   <Container>
    <motion.div
    initial={{ opacity: 0, y: 20 }}
@@ -467,7 +510,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
      ? "noopener noreferrer"
      : undefined
     }
-    className="inline-flex items-center justify-center rounded-full bg-[var(--brand-teal)] px-10 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-300 hover:bg-[var(--brand-teal-hover)] hover:shadow-md"
+    className="inline-flex items-center justify-center rounded-full bg-[var(--brand-teal)] px-10 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-brand-text shadow-sm transition-all duration-300 hover:bg-[var(--brand-teal-hover)] hover:shadow-md"
     >
     {story.closingCta.label}
     </a>
@@ -475,7 +518,7 @@ export function PartnerStoryPage({ story }: { story: PartnerStory }) {
    </motion.div>
 
    <div className="mx-auto mt-12 flex max-w-3xl flex-col gap-2 border-t border-white/10 pt-10 md:flex-row md:items-center md:justify-between">
-   <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50">
+   <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/60">
     Collaboration Global × {story.partnerName}
     {story.partnerSince ? `, Partner Since ${story.partnerSince}` : ""}
    </p>

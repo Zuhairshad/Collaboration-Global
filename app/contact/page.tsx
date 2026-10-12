@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useTransition } from "react";
+import { useState, useSyncExternalStore, useTransition } from "react";
 import { Mail, Phone, Send, CheckCircle, AlertCircle } from "lucide-react";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Container } from "@/components/ui/Container";
@@ -18,21 +18,29 @@ const SOCIAL_SVGS: Record<string, React.ReactNode> = {
   LinkedIn: <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>,
 };
 
+/* Math captcha numbers: generated once on the client (null during SSR / hydration) */
+let cachedCaptcha: { a: number; b: number } | null = null;
+function getCaptcha() {
+  if (!cachedCaptcha) {
+    cachedCaptcha = {
+      a: Math.floor(Math.random() * 10) + 1,
+      b: Math.floor(Math.random() * 10) + 1,
+    };
+  }
+  return cachedCaptcha;
+}
+const getServerCaptcha = () => null;
+const noopSubscribe = () => () => {};
+
 const inputCls =
-  "w-full rounded-xl border border-brand-border bg-white px-4 text-sm text-brand-text placeholder:text-brand-dim focus:border-brand-purple focus:outline-none focus:ring-2 focus:ring-brand-purple/20 transition-colors";
+  "w-full rounded-xl border border-brand-border bg-white px-4 text-base text-brand-text md:text-sm placeholder:text-brand-dim focus:border-brand-purple focus:outline-none focus:ring-2 focus:ring-brand-purple/20 transition-colors";
 
 export default function ContactPage() {
   const [isPending, startTransition] = useTransition();
   const [result, setResult] = useState<ContactResult | null>(null);
 
   /* ── Math captcha, initialized client-side only to avoid SSR mismatch ── */
-  const [captcha, setCaptcha] = useState<{ a: number; b: number } | null>(null);
-  useEffect(() => {
-    setCaptcha({
-      a: Math.floor(Math.random() * 10) + 1,
-      b: Math.floor(Math.random() * 10) + 1,
-    });
-  }, []);
+  const captcha = useSyncExternalStore(noopSubscribe, getCaptcha, getServerCaptcha);
   const [captchaInput, setCaptchaInput] = useState("");
   const [captchaError, setCaptchaError] = useState(false);
 
@@ -60,10 +68,10 @@ export default function ContactPage() {
         label="Contact"
         title="Let's connect."
         description="Ask a question, explore membership, or share an idea for collaboration."
-        className="[background:linear-gradient(135deg,#4a4396_0%,#655bb3_30%,#31cfc3_60%,#7be0d8_100%)]"
+        className="bg-brand-gradient"
       />
 
-      <section className="bg-brand-card py-16 md:py-20">
+      <section className="bg-brand-card py-12 sm:py-16 md:py-20">
         <Container>
           <div className="mx-auto max-w-[1100px] grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
 
@@ -74,9 +82,9 @@ export default function ContactPage() {
 
                 {result?.success ? (
                   <div className="mt-8 flex flex-col items-center gap-3 py-12 text-center">
-                    <CheckCircle className="h-10 w-10 text-brand-teal" />
+                    <CheckCircle className="h-10 w-10 text-brand-teal-text" />
                     <p className="font-medium text-brand-text">Message sent!</p>
-                    <p className="text-sm text-brand-muted">We'll be in touch shortly.</p>
+                    <p className="text-sm text-brand-muted">We&apos;ll be in touch shortly.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleContactSubmit} className="mt-6 grid gap-3">
@@ -173,7 +181,7 @@ export default function ContactPage() {
                       href={`mailto:${SITE_META.email}`}
                       className="flex items-start gap-3 group"
                     >
-                      <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-teal/10 text-brand-teal transition-colors group-hover:bg-brand-teal/20">
+                      <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-teal/10 text-brand-teal-text transition-colors group-hover:bg-brand-teal/20">
                         <Mail className="h-4 w-4" />
                       </div>
                       <div>
@@ -190,7 +198,7 @@ export default function ContactPage() {
               {/* Social links */}
               <RevealOnScroll delay={0.1}>
                 <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
-                  <p className="text-sm font-semibold tracking-tight text-brand-text">Let's Get Social</p>
+                  <p className="text-sm font-semibold tracking-tight text-brand-text">Let&apos;s Get Social</p>
                   <div className="mt-5 flex flex-wrap gap-3">
                     {SOCIAL_LINKS.map((s) => (
                       <a
@@ -218,8 +226,8 @@ export default function ContactPage() {
                     Stay in the loop on upcoming events and community sessions.
                   </p>
                   {newsletterDone ? (
-                    <p className="mt-4 flex items-center gap-2 text-sm text-brand-teal">
-                      <CheckCircle className="h-4 w-4" /> You're subscribed!
+                    <p className="mt-4 flex items-center gap-2 text-sm text-brand-teal-text">
+                      <CheckCircle className="h-4 w-4" /> You&apos;re subscribed!
                     </p>
                   ) : (
                     <form
@@ -230,7 +238,7 @@ export default function ContactPage() {
                       }}
                     >
                       <input
-                        className={cn(inputCls, "h-11 flex-1")}
+                        className={cn(inputCls, "h-11 min-w-0 flex-1")}
                         placeholder="Your email"
                         type="email"
                         value={newsletterEmail}

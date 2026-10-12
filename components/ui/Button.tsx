@@ -4,13 +4,13 @@ import { cn } from "@/lib/utils";
 type Variant = "primary" | "outline" | "accent";
 
 const base =
- "inline-flex items-center justify-center whitespace-nowrap rounded-full px-7 py-3.5 text-xs font-medium uppercase tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 disabled:pointer-events-none disabled:opacity-50";
+ "inline-flex items-center justify-center whitespace-nowrap rounded-full px-7 py-3.5 text-xs font-medium uppercase tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-purple)]/60 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
  primary: "bg-white text-brand-text hover:bg-white/90",
  /** Reunion.framer.ai primary CTA hot pink on dark */
  accent:
- "bg-[var(--reunion-accent)] text-white hover:bg-[var(--reunion-accent-hover)]",
+ "bg-[var(--reunion-accent)] text-brand-text hover:bg-[var(--reunion-accent-hover)]",
  outline:
  "border border-gray-300 bg-transparent text-brand-text hover:border-gray-400 hover:bg-brand-card",
 };

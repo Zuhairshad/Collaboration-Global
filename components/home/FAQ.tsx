@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import { FAQ_ITEMS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
@@ -13,7 +13,7 @@ export function FAQ() {
  const [openIdx, setOpenIdx] = useState<number | null>(null);
 
  return (
- <section id="faq" className="py-24 md:py-32">
+ <section id="faq" className="py-20 md:py-32">
   <Container>
   <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
    {/* LEFT heading + CTA */}
@@ -70,9 +70,11 @@ export function FAQ() {
     >
      <button
      type="button"
-     className="flex w-full items-center justify-between gap-6 p-6 text-left"
+     className="flex w-full items-center justify-between gap-4 p-5 text-left md:gap-6 md:p-6"
      onClick={() => setOpenIdx(open ? null : idx)}
      aria-expanded={open}
+     aria-controls={`faq-panel-${idx}`}
+     id={`faq-trigger-${idx}`}
      >
      <span className="text-sm font-medium tracking-tight text-brand-text md:text-[15px]">
       {item.question}
@@ -86,21 +88,22 @@ export function FAQ() {
      </span>
      </button>
 
-     <AnimatePresence initial={false}>
-     {open && (
-      <motion.div
-      initial={{ height: 0, opacity: 0 }}
-      animate={{ height: "auto", opacity: 1 }}
-      exit={{ height: 0, opacity: 0 }}
-      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-      className="overflow-hidden"
-      >
-      <div className="px-6 pb-6 text-[14px] leading-relaxed text-brand-muted md:text-[15px]">
+     {/* CSS grid-rows trick: animates 0fr -> 1fr without per-frame height animation in JS */}
+     <div
+      id={`faq-panel-${idx}`}
+      role="region"
+      aria-labelledby={`faq-trigger-${idx}`}
+      inert={!open}
+      className={`grid transition-[grid-template-rows,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none ${
+      open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+      }`}
+     >
+      <div className="overflow-hidden">
+      <div className="px-5 pb-5 text-[14px] leading-relaxed text-brand-muted md:px-6 md:pb-6 md:text-[15px]">
        {item.answer}
       </div>
-      </motion.div>
-     )}
-     </AnimatePresence>
+      </div>
+     </div>
     </motion.div>
     );
    })}

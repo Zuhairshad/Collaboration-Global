@@ -1,5 +1,3 @@
-"use strict";
-
 import React from "react";
 import Image from "next/image";
 import { getMediaById, type MediaItem } from "@/lib/media/registry";
@@ -13,7 +11,12 @@ export type ImageBlockProps = {
   className?: string;
   imageClassName?: string;
   showCaption?: boolean;
-  priority?: boolean;
+  /** Extra classes for the caption, e.g. white text when the block sits on a dark/gradient section */
+  captionClassName?: string;
+  /** Preload as the page's LCP image (Next 16 replacement for `priority`) */
+  preload?: boolean;
+  /** Override the default `sizes` hint when the block is narrower than the viewport */
+  sizes?: string;
 };
 
 export function ImageBlock({
@@ -22,7 +25,9 @@ export function ImageBlock({
   className,
   imageClassName,
   showCaption = true,
-  priority = false,
+  captionClassName,
+  preload = false,
+  sizes,
 }: ImageBlockProps) {
   const media: MediaItem | undefined = getMediaById(id);
 
@@ -66,24 +71,24 @@ export function ImageBlock({
           alt={media.title}
           fill
           sizes={
-            variant === "logo-strip"
+            sizes ??
+            (variant === "logo-strip"
               ? "160px"
               : variant === "portrait"
               ? "320px"
-              : "(max-width: 768px) 100vw, 0px"
+              : "(max-width: 768px) 100vw, 0px")
           }
-          priority={priority}
-          loading={priority ? undefined : "lazy"}
+          preload={preload}
           className={cn(
-            "transition-all duration-500 object-contain",
-            variant === "logo-strip" ? "p-2" : "p-1.5",
+            // Photos fill their frame; logos keep their full shape
+            variant === "logo-strip" ? "object-contain p-2" : "object-cover",
             imageClassName
           )}
         />
       </div>
 
       {showCaption && media.caption && variant !== "logo-strip" && (
-        <p className="text-center text-xs font-medium text-brand-muted px-2 border-l-2 border-brand-teal/40 ml-2 text-left italic">
+        <p className={cn("text-left text-xs font-medium text-brand-muted px-2 border-l-2 border-brand-teal/40 ml-2 italic", captionClassName)}>
           {media.caption}
         </p>
       )}

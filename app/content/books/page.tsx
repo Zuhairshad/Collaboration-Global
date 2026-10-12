@@ -20,10 +20,10 @@ export default function BooksPage() {
    {BOOKS.map((b, idx) => (
     <RevealOnScroll key={b.title} delay={0.05 + idx * 0.04}>
     <Card className="flex h-full flex-col">
-     <p className="text-lg font-semibold tracking-tight text-white">
+     <p className="text-lg font-semibold tracking-tight text-brand-text">
      {b.title}
      </p>
-     <p className="mt-4 text-sm leading-relaxed text-white/70 md:text-[15px] md:leading-[1.8]">
+     <p className="mt-4 text-sm leading-relaxed text-brand-muted md:text-[15px] md:leading-[1.8]">
      {b.description}
      </p>
      <div className="mt-8">

@@ -13,7 +13,7 @@ export function Offerings() {
  const paidOfferings = OFFERINGS.filter((o) => o.price !== "Free");
 
  return (
- <section id="offerings" className="bg-white py-24 md:py-32">
+ <section id="offerings" className="bg-white py-20 md:py-32">
   <Container>
   <motion.div
    variants={staggerContainer}
@@ -35,7 +35,12 @@ export function Offerings() {
     Explore whether you are suited to a learning space in The Academy or a proactive space as a Collaborator Pro.
    </motion.p>
    <motion.div variants={fadeUp}>
-    <ImageBlock id="story-community-2" variant="landscape" className="mt-6 mx-auto max-w-[480px]" />
+    <ImageBlock
+     id="story-community-2"
+     variant="landscape"
+     className="mt-6 mx-auto max-w-[480px]"
+     sizes="(max-width: 767px) min(100vw, 480px), 1px"
+    />
    </motion.div>
   </motion.div>
 
@@ -52,19 +57,19 @@ export function Offerings() {
     variants={staggerItem}
     whileHover={{ scale: 1.015 }}
     transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-    className={`relative flex flex-col rounded-2xl border p-8 ${
+    className={`relative flex flex-col rounded-2xl border p-6 md:p-8 ${
     offering.highlighted
      ? "border-[var(--reunion-accent)]/30 bg-[var(--reunion-accent)]/[0.04]"
      : "border-gray-100 bg-brand-card"
     }`}
    >
     {offering.highlighted && (
-    <div className="absolute right-4 top-4 rounded-full bg-[var(--reunion-accent)] px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+    <div className="absolute right-4 top-4 rounded-full bg-[var(--reunion-accent)] px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-brand-text">
      Popular
     </div>
     )}
 
-    <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--reunion-accent)]">
+    <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
     {offering.tag}
     </p>
     <p className="mt-3 text-xl font-bold tracking-tight text-brand-text">
@@ -80,7 +85,7 @@ export function Offerings() {
     <ul className="mt-6 flex-1 space-y-3">
     {offering.features.map((f) => (
      <li key={f} className="flex items-start gap-3">
-     <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--reunion-accent)]" strokeWidth={2.5} />
+     <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand-teal-text)]" strokeWidth={2.5} />
      <span className="text-[14px] text-brand-muted">{f}</span>
      </li>
     ))}

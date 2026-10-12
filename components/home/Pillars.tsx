@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Users } from "lucide-react";
 import { WHO_ATTENDS } from "@/lib/constants";
@@ -22,14 +23,20 @@ function AudienceCard({
   {/* Top accent line */}
   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/60 to-transparent" />
   {/* Subtle top glow bloom */}
-  <div className="pointer-events-none absolute -top-10 left-1/2 h-24 w-40 -translate-x-1/2 rounded-full bg-[var(--brand-purple)]/10 blur-2xl" />
+  <div
+  className="pointer-events-none absolute -top-20 left-1/2 h-44 w-60 -translate-x-1/2"
+  style={{
+   background:
+   "radial-gradient(closest-side, color-mix(in oklab, var(--brand-purple) 10%, transparent) 35%, transparent)",
+  }}
+  />
   {/* Watermark number */}
   <p className="pointer-events-none absolute -right-3 -top-4 select-none text-[88px] font-black leading-none text-gray-100">
   0{index + 1}
   </p>
 
   {/* Content */}
-  <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+  <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-teal-text)]">
   0{index + 1}
   </p>
   <p className="relative mt-3 text-[15px] font-semibold tracking-tight text-brand-text">
@@ -48,18 +55,23 @@ function ScrollColumn({
  items,
  direction,
  startIndex,
+ className = "",
+ duration,
 }: {
- items: AudienceItem[];
+ items: readonly AudienceItem[];
  direction: "up" | "down";
  startIndex: number;
+ className?: string;
+ duration?: string;
 }) {
  const doubled = [...items, ...items];
  return (
- <div className="relative flex-1 overflow-hidden">
+ <div className={`relative flex-1 overflow-hidden ${className}`}>
   <div
   className={`flex flex-col gap-3 ${
    direction === "up" ? "animate-marquee-up" : "animate-marquee-down"
   }`}
+  style={duration ? { animationDuration: duration } : undefined}
   >
   {doubled.map((item, i) => (
    <AudienceCard
@@ -75,11 +87,24 @@ function ScrollColumn({
 }
 
 export function Pillars() {
+ const sectionRef = useRef<HTMLElement>(null);
+
+ // Pause the CSS marquees while the section is off-screen
+ useEffect(() => {
+ const el = sectionRef.current;
+ if (!el || typeof IntersectionObserver === "undefined") return;
+ const io = new IntersectionObserver(([entry]) => {
+  el.dataset.paused = entry.isIntersecting ? "false" : "true";
+ });
+ io.observe(el);
+ return () => io.disconnect();
+ }, []);
+
  const col1 = WHO_ATTENDS.filter((_, i) => i % 2 === 0); // 0, 2, 4
  const col2 = WHO_ATTENDS.filter((_, i) => i % 2 === 1); // 1, 3, 5
 
  return (
- <section id="pillars" className="overflow-hidden bg-brand-card py-24 md:py-32">
+ <section ref={sectionRef} id="pillars" className="overflow-hidden bg-brand-card py-24 md:py-32">
   <Container>
   <div className="grid items-center gap-12 lg:grid-cols-[1fr_2fr] lg:gap-16">
 
@@ -131,11 +156,19 @@ export function Pillars() {
 
    {/* ── RIGHT: two scrolling columns (2/3 viewport) ── */}
    <div
-   className="flex h-[520px] gap-3 lg:h-[620px]"
+   className="flex h-[440px] gap-3 sm:h-[520px] lg:h-[620px]"
    aria-hidden
    >
-   <ScrollColumn items={col1} direction="up" startIndex={0} />
-   <ScrollColumn items={col2} direction="down" startIndex={1} />
+   {/* Phones: a single column with every audience card */}
+   <ScrollColumn
+   items={WHO_ATTENDS}
+   direction="up"
+   startIndex={0}
+   duration="44s"
+   className="sm:hidden"
+   />
+   <ScrollColumn items={col1} direction="up" startIndex={0} className="hidden sm:block" />
+   <ScrollColumn items={col2} direction="down" startIndex={1} className="hidden sm:block" />
    </div>
 
   </div>
