@@ -262,24 +262,27 @@ export const FOUNDER = {
   tedxUrl: "https://www.youtube.com/watch?v=87REHnkNUMs&t=7s",
 } as const;
 
+/** Gill Tiney's Amazon author store: lists all of her books */
+export const AMAZON_AUTHOR_URL = "https://www.amazon.co.uk/stores/Gill-Tiney/author/B00M9GP08U";
+
 export const BOOKS = [
   {
     title: "Together We Can Do Something Wonderful",
     description:
       "Gill’s core framework for true collaboration and the profiles, patterns, and practices that make it succeed. A guide to creating something of significance with others.",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: AMAZON_AUTHOR_URL,
   },
   {
     title: "Making of a Movement: The BeCollaboration Story",
     description:
       "The journey behind Collaboration Global from first spark to a living community. A story of the “why” that keeps the movement growing.",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: AMAZON_AUTHOR_URL,
   },
   {
     title: "STEP UP: From Desperation to Inspiration",
     description:
       "A practical book for small business owners ready to move from overwhelm into clarity and momentum. Tools for taking control and building the future you want.",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: AMAZON_AUTHOR_URL,
   },
 ] as const;
 
