@@ -1,5 +1,7 @@
 "use client";
 
+import { AMAZON_AUTHOR_URL } from "@/lib/constants";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, ExternalLink } from "lucide-react";
@@ -94,19 +96,19 @@ const BOOKS = [
  title: "Together We Can Do Something Wonderful",
  description:
   "Gill's core framework for true collaboration the profiles, patterns, and practices that make it succeed. A guide to creating something of significance with others.",
- amazonUrl: "https://www.amazon.com/",
+ amazonUrl: AMAZON_AUTHOR_URL,
  },
  {
  title: "Making of a Movement: The BeCollaboration Story",
  description:
   "The journey behind Collaboration Global from first spark to a living community. The story of the 'why' that keeps the movement growing.",
- amazonUrl: "https://www.amazon.com/",
+ amazonUrl: AMAZON_AUTHOR_URL,
  },
  {
  title: "STEP UP: From Desperation to Inspiration",
  description:
   "A practical book for small business owners ready to move from overwhelm into clarity and momentum. Tools for taking control and building the future you want.",
- amazonUrl: "https://www.amazon.com/",
+ amazonUrl: AMAZON_AUTHOR_URL,
  },
 ] as const;
 
