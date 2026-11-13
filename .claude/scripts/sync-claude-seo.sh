@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+# Vendors the claude-seo toolkit (https://github.com/AgriciDaniel/claude-seo)
+# into this repository's .claude/ directory.
+#
+# Why vendor instead of `/plugin install`: Claude Code cloud sessions
+# (claude.ai/code) do not install plugins that a repository enables in
+# .claude/settings.json, and /plugin is unavailable there. Repo-level
+# .claude/skills/ and .claude/agents/ DO load, because they are part of the clone.
+#
+# This mirrors upstream's own manual installer (install.sh) with two changes:
+#   1. Paths are rewritten to be repo-relative instead of $HOME-absolute, so
+#      they work in any clone on any machine or cloud container.
+#   2. Not vendored: extensions/ and the two extension-mirror skills (they need
+#      paid APIs + MCP servers; see EXCLUDED_* below), and the PostToolUse
+#      schema hook. That hook only json.loads() literal <script ld+json> bodies,
+#      so on Next.js TSX (JSON.stringify expressions) it never finds anything,
+#      yet it would spawn node+python on every .tsx edit.
+#
+# Usage policy for Claude lives in the repo-root CLAUDE.md. Do not put docs
+# inside .claude/skills/seo*: this script deletes and recreates those dirs.
+#
+# Usage:  bash .claude/scripts/sync-claude-seo.sh [git-tag]   (default: pinned tag)
+# Re-running is safe: previously vendored files (listed in the lock file) are
+# removed first, so files deleted upstream do not linger.
+set -euo pipefail
+
+TAG="${1:-v2.6.0}"
+REPO_URL="https://github.com/AgriciDaniel/claude-seo.git"
+
+# Extension mirrors that need paid APIs + MCP servers this project does not have.
+EXCLUDED_SKILLS=(seo-dataforseo seo-image-gen)
+EXCLUDED_AGENTS=(seo-dataforseo seo-image-gen)
+
+ROOT="$(git rev-parse --show-toplevel)"
+CLAUDE_DIR="${ROOT}/.claude"
+RUNTIME_DIR="${CLAUDE_DIR}/skills/seo"
+LOCK="${CLAUDE_DIR}/claude-seo.lock"
+
+is_excluded() { local n="$1"; shift; for x in "$@"; do [[ "$x" == "$n" ]] && return 0; done; return 1; }
+
+TMP="$(mktemp -d)"
+trap 'rm -rf -- "${TMP}"' EXIT
+
+echo "Fetching claude-seo ${TAG}..."
+git clone --quiet --depth 1 --branch "${TAG}" -c advice.detachedHead=false "${REPO_URL}" "${TMP}/src"
+SRC="${TMP}/src"
+COMMIT="$(git -C "${SRC}" rev-parse HEAD)"
+
+# 1. Remove what the previous sync vendored (and nothing else).
+if [[ -f "${LOCK}" ]]; then
+    while IFS= read -r path; do
+        [[ -z "${path}" || "${path}" == \#* ]] && continue
+        case "${path}" in
+            skills/seo|skills/seo-*|agents/seo-*.md) rm -rf -- "${CLAUDE_DIR:?}/${path}" ;;
+            *) echo "Refusing to delete unexpected lock entry: ${path}" >&2; exit 1 ;;
+        esac
+    done < <(grep -v '^#' "${LOCK}")
+fi
+
+mkdir -p "${CLAUDE_DIR}/skills" "${CLAUDE_DIR}/agents"
+vendored=()
+
+# 2. Skills (the 'seo' hub skill also hosts the shared runtime, as upstream does).
+for dir in "${SRC}"/skills/*/; do
+    name="$(basename "${dir}")"
+    is_excluded "${name}" "${EXCLUDED_SKILLS[@]}" && continue
+    # Clear first: cp -R into an existing dir would nest it (e.g. after a failed run).
+    rm -rf -- "${CLAUDE_DIR:?}/skills/${name}"
+    cp -R "${dir%/}" "${CLAUDE_DIR}/skills/${name}"
+    vendored+=("skills/${name}")
+done
+
+# 3. Agents.
+for file in "${SRC}"/agents/*.md; do
+    name="$(basename "${file}" .md)"
+    is_excluded "${name}" "${EXCLUDED_AGENTS[@]}" && continue
+    cp "${file}" "${CLAUDE_DIR}/agents/${name}.md"
+    vendored+=("agents/${name}.md")
+done
+
+# 4. Python runtime + data files, laid out exactly as upstream's install.sh does.
+cp -R "${SRC}/scripts" "${RUNTIME_DIR}/scripts"
+cp -R "${SRC}/schema"  "${RUNTIME_DIR}/schema"
+cp -R "${SRC}/data"    "${RUNTIME_DIR}/data"
+cp "${SRC}/requirements.txt" "${RUNTIME_DIR}/requirements.txt"
+cp "${SRC}/.claude-plugin/plugin.json" "${RUNTIME_DIR}/runtime-plugin.json"
+cp "${SRC}/LICENSE" "${RUNTIME_DIR}/LICENSE"
+chmod +x "${RUNTIME_DIR}/scripts/claude-seo"
+
+# 5. Rewrite plugin-root paths to repo-relative ones.
+#    - Launcher: resolved from the git toplevel so it works from any subdirectory.
+#    - Reference docs: opened with the Read tool, relative to the project root.
+LAUNCHER='"$(git rev-parse --show-toplevel)/.claude/skills/seo/scripts/claude-seo"'
+for path in "${vendored[@]}"; do
+    while IFS= read -r -d '' doc; do
+        sed -i \
+            -e "s#\"\${CLAUDE_PLUGIN_ROOT}/scripts/claude-seo\"#${LAUNCHER}#g" \
+            -e 's#\${CLAUDE_PLUGIN_ROOT}/skills/#.claude/skills/#g' \
+            "${doc}"
+    done < <(find "${CLAUDE_DIR}/${path}" -type f -name '*.md' -print0)
+done
+
+# 6. Fail loudly if upstream introduced a path form this script does not handle.
+#    Only Markdown matters: it is what Claude reads as instructions. Mentions in
+#    Python/bash comments are inert.
+leftover="$(cd "${CLAUDE_DIR}" && grep -rn --include='*.md' '\${CLAUDE_PLUGIN_ROOT}/' "${vendored[@]}" || true)"
+if [[ -n "${leftover}" ]]; then
+    echo "Unrewritten \${CLAUDE_PLUGIN_ROOT}/ paths remain; update this script:" >&2
+    echo "${leftover}" >&2
+    exit 1
+fi
+
+{
+    echo "# Generated by .claude/scripts/sync-claude-seo.sh — do not edit by hand."
+    echo "# upstream: ${REPO_URL}"
+    echo "# tag: ${TAG}"
+    echo "# commit: ${COMMIT}"
+    printf '%s\n' "${vendored[@]}"
+} > "${LOCK}"
+
+echo "Vendored claude-seo ${TAG} (${COMMIT:0:7}): ${#vendored[@]} entries."
+echo "Next: run the runtime setup when an SEO task needs the Python tools:"
+echo "  \"\$(git rev-parse --show-toplevel)/.claude/skills/seo/scripts/claude-seo\" setup --skip-browser"
