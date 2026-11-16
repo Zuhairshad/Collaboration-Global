@@ -264,13 +264,6 @@ export default function CollaboratorProPage() {
                 Join Collaborator Pro, £50/month
                 <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={1.8} />
               </Button>
-              <Button
-                href="/programs/community-sessions"
-                variant="outline"
-                className="gap-2 border-white/20 text-sm normal-case tracking-normal text-white hover:border-white/40 hover:bg-white/[0.06]"
-              >
-                Try a free session first
-              </Button>
             </motion.div>
           </motion.div>
         </Container>
@@ -497,15 +490,6 @@ export default function CollaboratorProPage() {
                   Join Collaborator Pro
                   <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={1.8} />
                 </Button>
-                <p className="mt-4 text-center text-[12px] text-brand-dim">
-                  Not sure yet?{" "}
-                  <a
-                    href="/programs/community-sessions"
-                    className="font-medium text-[var(--brand-teal-text)] hover:underline"
-                  >
-                    Try a free session first →
-                  </a>
-                </p>
               </motion.div>
             </motion.div>
           </div>
