@@ -9,7 +9,6 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { ImageBlock } from "@/components/media/ImageBlock";
 import { TESTIMONIALS } from "@/lib/constants";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/animations";
 import storyMainEvent from "@/public/media/story-main-event.jpg";
@@ -356,9 +355,18 @@ export default function CollaboratorProPage() {
                 Being able to ask for support from a community who know your story, your needs, and who genuinely want to see you succeed, that&apos;s beyond measure. You become part of a growing community operating within a new paradigm of Love, Connection, and Abundance.
               </motion.p>
 
-              {/* Mobile image */}
-              <div>
-                <ImageBlock id="story-collaboration" variant="landscape" showCaption={false} />
+              {/* Mobile image: shown at the photo's own proportions (it's a portrait shot),
+                  so neither person is cropped and no background fill is needed. */}
+              <div className="my-6 md:hidden">
+                <div className="max-w-md overflow-hidden rounded-2xl shadow-sm">
+                  <Image
+                    src={storyCollaboration}
+                    alt="Collaboration in action"
+                    placeholder="blur"
+                    sizes="(max-width: 768px) 100vw, 0px"
+                    className="h-auto w-full"
+                  />
+                </div>
               </div>
 
               <motion.div variants={fadeUp} className="mt-6">
